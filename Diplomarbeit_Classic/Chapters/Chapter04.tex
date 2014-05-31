@@ -4,7 +4,7 @@
 \section{Meta Heuristic Extended Local Planning}
 
 \section{Introduction}
-Navigation and planning are essential for mobile robots to act in out- and indoor environments. 
+Planning and navigation are essential for mobile robots to act in out- and indoor environments. 
 Uncountable articles are describing approaches and applied solutions of autonomous system driving safely in different domains, e.g. Stanley \cite{stanley} a self driving car that won the DARPA Grand Challenge by driving 132~miles through the Mojave desert, or the mobile robots of Kiva Systems \cite{kiva} handling goods in distribution centers and warehouses like Amazon. 
 Articles like \cite{stanley} and \cite{kiva} present the relationship between the environmental complexity and the computational on-board power needed to deal with it.
 Stanley has a six processor computing platform sponsored by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment. 
@@ -234,7 +234,16 @@ The neighborhood of a solution is simply defined by making a number of discretiz
 The 4-neighborhood makes a step by either increasing or decreasing the current linear and angular velocity by one discretization step (Manhattan distance $=1$). 
 The 8-neighborhood takes all neighbors into account which are reachable in one discretization step (Moore neighborhood). 
 16-neighborhood are all neighbors reachable in two steps. 
-This process continues until the whole search space is the neighborhood. 
+This process continues until the whole search space is the neighborhood. Figure~\ref{fig:fig_nb} visualizes the neighborhood structure.
+\begin{figure}[thpb]
+   \footnotesize
+   \centering
+   \def\svgwidth{\textwidth}
+   \includesvg{figures/fig_neighborhood3d}     
+   \caption[]{Neighborhood structure in the 2-dim velocity space.}
+   \label{fig:fig_nb}
+\end{figure}
+
 
 Using Local Search the neighborhood is either exhaustively searched for the best solution (Best-Improvement heuristic) or stopped after finding the first improving solution (First-Improvement heuristic).
 
