@@ -7,6 +7,7 @@
 The family of algorithm using Meta-Heuristics is extremely successful in solving combinatorial problems (e.g. Traveling Salesman problem, MAX-Sat problem, scheduling problems). 
 These algorithm build on the idea of executing multiple searches to find local optimal solutions in different parts of the search space using randomization, which together yield a global approximate optimal solution.
 
+\subsection{Local Search}
 The basic Local Search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
 The set of solutions in this region is denoted as the neighborhood of $x$. The necessary steps to get from the initial solution to a solution in the neighborhood is called a move.
 \begin{algorithm}
@@ -23,6 +24,7 @@ The set of solutions in this region is denoted as the neighborhood of $x$. The n
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Iterative Local Search}
 A nice survey of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}. 
 The main idea is to call a local search procedure iteratively, until a certain stopping criteria is satisfied. 
 In each iteration the current solution might be perturbed by changing parts of the solution. 
@@ -44,7 +46,13 @@ In addition, a history of already found solutions may be used to steer perturbat
 \end{algorithmic}
 \end{algorithm}
 
-Instead of using a fixed neighborhood, the Basic Variable Neighborhood Search (cf. Algorithm~\ref{vnsalgo}) as presented in \cite{VNS} uses a neighborhood structure of possibly nested neighborhoods $N_k(x)=N_1(x),N_2(x),\dots,N_{k_{max}}(x)$ which together are guaranteed to explore the whole solution space. 
+\subsection{Variable Neighborhood Search}
+Instead of using a fixed neighborhood, the Basic Variable Neighborhood Search (cf. Algorithm~\ref{vnsalgo}) as presented in \cite{VNS} uses a neighborhood structure of possibly nested neighborhoods (cf. Equation~\ref{eq:nb}), which together are guaranteed to explore the whole solution space. 
+\begin{equation}
+N_k(x)=N_0(x),N_1(x),\dots,N_{k_{max}}(x)
+\label{eq:nb}
+\end{equation}
+
 In the shaking phase the algorithm chooses a random solution of the current neighborhood to avoid getting captured in local minima. 
 If the solution found by the Local Search does not improve the next neighborhood will be considered (cf. Algorithm~\ref{changealgo}).
 
@@ -81,12 +89,12 @@ If the solution found by the Local Search does not improve the next neighborhood
 \end{algorithmic}
 \end{algorithm}
 
-
+\subsection{Tabu Search}
 Another successful Meta-Heuristic strategy is Tabu Search (cf. Algorithm~\ref{tabualgo}) proposed in \cite{glover1999tabu}. 
 To avoid local minima a Tabu list keeps track of moves which are not allowed during the exploration of the current neighborhood. 
 In its simplest form the Tabu list includes all visited solutions. 
 This might be too restrictive, or the list might grow too large, hence one can restrict the list to a certain length, and delete e.g. the oldest item in the list in each iteration. 
-One advantage of this method is, that it can be easily combined with other Meta-Heuristic algorithm.
+One advantage of this method is, that it can be easily combined with other Meta-Heuristic algorithms.
 
 \begin{algorithm}
 \caption{Tabu Search}
@@ -117,9 +125,9 @@ The trajectory sampling and selection of the DWA are implemented in python minim
    \label{eq:simplecost}
 \end{equation}
 
-Instead of performing an exhaustive \textit{Brute Force} search on all velocity samples, Meta-Heuristic algorithm are here used to boost the search performance. 
+Instead of performing an exhaustive \textit{Brute Force} search on all velocity samples, Meta-Heuristic algorithms are here used to boost the search performance. 
 
-The reduced search space are all tuples of forward and angular velocities $(v,w)$ within given limits $v_{min} \geq v \leq v_{max}$ and $w_{min} \geq w \leq w_{max}$ and a step size for discretization by fixing the number of samples.
+The reduced search space are all tuples of forward and angular velocities $(v,w)$ within given limits $v_{min} \leq v \leq v_{max}$ and $w_{min} \leq w \leq w_{max}$ and a step size for discretization by fixing the number of samples.
 
 \subsection{Neighborhood and Local Search (LS)}
 The neighborhood of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
