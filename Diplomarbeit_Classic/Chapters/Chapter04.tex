@@ -1,16 +1,49 @@
 % Chapter 4
 \chapter{Meta Heuristic Extended Local Planning}\label{ch:meta}
 
-\section{Meta Heuristic Extended Local Planning}
 In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. The main idea is to apply well established Meta-Heuristic search algorithms to find good trajectories within a given sample of different applicable velocities, a robotic motion model and a given time period for simulation. 
 
 The next section provides background information of Meta-Heuristic search, followed by a detailed description about the specific algorithms used for extending local planners.
 
-The relevant local planners we took into consideration are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed in chapter.
+The relevant local planners we took into consideration are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed at the end of this chapter.
 
-\subsection{Meta-Heuristic Search}
-The family of algorithms using Meta-Heuristics is extremely successful in solving combinatorial problems (e.g. Traveling Salesman problem, MAX-Sat problem, scheduling problems). 
-These algorithm build on the idea of executing multiple searches to find local optimal solutions in different parts of the search space using randomization, which together yield a global approximate optimal solution.
+\section{Meta-Heuristic Search}
+The family of Meta-Heuristics algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP)), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem).
+
+In general an optimization problem can be defined as follows (see \cite{blum2003metaheuristics}): 
+\begin{definition}
+An optimization problem $P = (S, f_c)$ can be defined by:\\
+- a set of variables $X = \{x_1,\dots,x_n\} $;\\
+- the values the variables can take (domains) $D_1,\dots,D_n$;\\
+- constraints\\
+- a cost function $f_c$ which has to be minimized, where $f_c:D_1 \times \dots \times D_n \rightarrow \mathbb{R}^+$; (which is the same as maximizing $-f_c$)\\
+\end{definition}
+The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the search or solution space.
+A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is discrete a discrete optimization problem is given.
+
+Solutions which fulfill all constraints are called feasible solutions. It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
+
+To solve an optimization problem one has to search the solution space to find a solution $s^*\in S$ with minimum cost value. 
+\begin{definition}
+ A \emph{global} minimal solution is a solution $s^* \in S$ such that
+ $f_c(s^*)\leq f_c(s) \forall s \in S$. 
+\end{definition}
+Since there might be more than one optimal solution $S^* \subseteq S$ is the set of \emph{globally} optimal solutions.
+
+The main idea of meta-heuristic algorithms is to combine heuristic methods with strategic components which allow for an efficient and effective exploration of the search space. 
+
+One basic heuristic approximation method is local search which given a initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
+\begin{definition}
+A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
+\end{definition}
+Defining the neighborhood function is crucial for good performance of many meta-heuristic algorithms. A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point, or by the set of applicable transformations that can be applied to the current solution.
+
+Minimal solutions within a given neighborhood structure are defined as \emph{locally} minimal.
+\begin{definition}
+ A \emph{local} minimal solution w.r.t. a neighborhood structure $N$ is a solution $\hat{s}$  such that $\forall s_n \in N(\hat{s}):f_c(\hat{s})\leq f(s_n)$. 
+\end{definition}
+
+
 
 \subsection{Local Search}
 The basic Local Search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
