@@ -64,7 +64,7 @@ A visualization of the concepts of local vs. global minimal solutions is visuali
 \begin{figure}[thpb]
    \footnotesize
    \centering
-   \def\svgwidth{\textwidth}
+   \def\svgwidth{0.75\textwidth}
    \includesvg{figures/fig_local_global_minima}     
    \caption[]{This figures shows different kind of solutions to an optimization problem. The solutions $\hat{a}$ and $\hat{b}$ are local minimal solutions in the neighborhood $N_1(a)$ and $N_2(b)$ respectively, whereas the global minimal solution is $s^*$.}
    \label{fig:fig_local_global}
@@ -96,6 +96,16 @@ In each iteration the current solution might be perturbed by changing parts of t
 The following local search takes this altered solution as a starting point and returns a new solution. 
 If it satisfies an acceptance condition (e.g. the best solution so far), the process restarts with the new solution. 
 In addition, a history of already found solutions may be used to steer perturbation and the acceptance test.
+The steps of ILS are visualized in Figure~\ref{fig:fig_ils}
+
+\begin{figure}[thb] 
+   \footnotesize
+   \centering
+    \def\svgwidth{0.75\textwidth}
+    \includesvg{figures/fig_ils}
+    \caption[Pertubation step in ILS]{Pertubation of a local minimal solution $\hat{s}$, leads to an intermediate solution $s^\prime$. A local search is applied and a new local minimal solution $\hat{s}^\prime$ is found. (reproduced from \cite{blum2003metaheuristics})}  
+     \label{fig:fig_ils}
+\end{figure}
  
 \begin{algorithm}
 \caption{Iterative Local Search (ILS)}
@@ -117,6 +127,29 @@ Instead of using a fixed neighborhood, the Basic Variable Neighborhood Search (c
 N_k(x)=N_0(x),N_1(x),\dots,N_{k_{max}}(x)
 \label{eq:nb}
 \end{equation}
+A specific neighborhood structure determines the topology of the search space within this neighborhood, or in other words a neighborhood specific landscape (see \cite{blum2003metaheuristics}).
+
+Different neighborhood structures yield different landscapes. 
+Furthermore a local minimal solution within one landscape, does not have to be a local minimal solution in another, and a search procedure will find a better local minimal solution (see Figure~\ref{fig:fig_vns}). 
+
+\begin{figure}[thb]
+   \footnotesize
+   \centering
+   \myfloatalign
+   \captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_vns_1}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_vns_2}
+    }
+    \caption[Search landscapes of two different neighborhoods.]{This figures shows two different landscape from different neighborhood structures. On the left image the local search stops at the local minimal solution $\hat{s}_1$. On the right the local search can proceed to a better local minimum $\hat{s}_2$. (reproduced from \cite{blum2003metaheuristics})}  
+     \label{fig:fig_vns}
+\end{figure}
 
 In the shaking phase the algorithm chooses a random solution of the current neighborhood to avoid getting captured in local minima. 
 If the solution found by the Local Search does not improve the next neighborhood will be considered (cf. Algorithm~\ref{changealgo}).
