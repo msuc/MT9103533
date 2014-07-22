@@ -19,14 +19,14 @@ The proposed methods are tested and refined and implemented into a robotic navig
 \item{\bf{VNSF-POSNEG}} Refining VNSF-Tabu with short term memory
 \end{itemize}
 
-The next section provides background information of Meta-Heuristic search, followed by a detailed description about the specific algorithms used for extending local planners.
+The next section provides background information of meta-heuristic search, followed by a detailed description about the specific algorithms used for extending local planners.
 
 The relevant local planners we took into consideration are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed at the end of this chapter.
 
 \section{Meta-Heuristic Search}
-The family of Meta-Heuristics algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP)), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem).
+The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP)), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem).
 
-In general an optimization problem can be defined as follows (see \cite{blum2003metaheuristics}): 
+In general an optimization problem and its solutions can be defined as follows (see \cite{blum2003metaheuristics}): 
 \begin{definition}
 An optimization problem $P = (S, f_c)$ can be defined by:\\
 - a set of variables $X = \{x_1,\dots,x_n\} $;\\
@@ -40,7 +40,7 @@ A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ 
 Solutions which fulfill all constraints are called feasible solutions. 
 It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
 
-To solve an optimization problem one has to search the solution space to find a solution $s^*\in S$ with minimum costs. 
+The solution $s^*\in S$ of an optimization problem with minimum cost is called a \emph{global} optimal solution. 
 \begin{definition}
  A \emph{global} minimal solution is a solution $s^* \in S$ such that
  $f_c(s^*)\leq f_c(s) \forall s \in S$. 
@@ -69,6 +69,8 @@ A visualization of the concepts of local vs. global minimal solutions is visuali
    \caption[]{This figures shows different kind of solutions to an optimization problem. The solutions $\hat{a}$ and $\hat{b}$ are local minimal solutions in the neighborhood $N_1(a)$ and $N_2(b)$ respectively, whereas the global minimal solution is $s^*$.}
    \label{fig:fig_local_global}
 \end{figure}
+
+
 
 \section{Single Solution Based Meta-Heuristics}
 \subsection{Local Search}
@@ -245,7 +247,6 @@ This process continues until the whole search space is the neighborhood. Figure~
    \caption[]{Neighborhood structure in the 2-dim velocity space.}
    \label{fig:fig_nb}
 \end{figure}
-
 
 Using Local Search the neighborhood is either exhaustively searched for the best solution (Best-Improvement heuristic) or stopped after finding the first improving solution (First-Improvement heuristic).
 
