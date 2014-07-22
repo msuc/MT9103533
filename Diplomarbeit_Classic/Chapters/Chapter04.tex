@@ -3,6 +3,22 @@
 
 In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. The main idea is to apply well established Meta-Heuristic search algorithms to find good trajectories within a given sample of different applicable velocities, a robotic motion model and a given time period for simulation. 
 
+We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
+
+\begin{itemize}
+\item{\bf{RST:}}    Random Restart method using simple term memory
+\item{\bf{ILS-Tabu:}}  Based on Iterated Local Search and the use of a simple memory
+\item{\bf{VNSB-Tabu:}} Based on Variable Neighborhood Search and the use of a simple memory and Best Improvement heuristic.
+\item{\bf{VNSF-Tabu:}} Based on Variable Neighborhood Search and the use of a simple memory and Best Improvement heuristic.
+\end{itemize}
+
+The proposed methods are tested and refined and implemented into a robotic navigation system which already supports implementations of a local planner based on Dynamic Window Approach and Trajectory Rollout.
+
+\begin{itemize}
+\item{\bf{VNSB-POSNEG}} Refining VNSB-Tabu with short term memory
+\item{\bf{VNSF-POSNEG}} Refining VNSF-Tabu with short term memory
+\end{itemize}
+
 The next section provides background information of Meta-Heuristic search, followed by a detailed description about the specific algorithms used for extending local planners.
 
 The relevant local planners we took into consideration are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed at the end of this chapter.
@@ -21,9 +37,10 @@ An optimization problem $P = (S, f_c)$ can be defined by:\\
 The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the search or solution space.
 A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is discrete a discrete optimization problem is given.
 
-Solutions which fulfill all constraints are called feasible solutions. It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
+Solutions which fulfill all constraints are called feasible solutions. 
+It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
 
-To solve an optimization problem one has to search the solution space to find a solution $s^*\in S$ with minimum cost value. 
+To solve an optimization problem one has to search the solution space to find a solution $s^*\in S$ with minimum costs. 
 \begin{definition}
  A \emph{global} minimal solution is a solution $s^* \in S$ such that
  $f_c(s^*)\leq f_c(s) \forall s \in S$. 
@@ -36,15 +53,24 @@ One basic heuristic approximation method is local search which given a initial s
 \begin{definition}
 A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
 \end{definition}
-Defining the neighborhood function is crucial for good performance of many meta-heuristic algorithms. A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point, or by the set of applicable transformations that can be applied to the current solution.
+Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
+A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. The process of a step from one local solution to another local solution is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
 
 Minimal solutions within a given neighborhood structure are defined as \emph{locally} minimal.
 \begin{definition}
  A \emph{local} minimal solution w.r.t. a neighborhood structure $N$ is a solution $\hat{s}$  such that $\forall s_n \in N(\hat{s}):f_c(\hat{s})\leq f(s_n)$. 
 \end{definition}
+A visualization of the concepts of local vs. global minimal solutions is visualized in Figure~\ref{fig:fig_local_global}.
+\begin{figure}[thpb]
+   \footnotesize
+   \centering
+   \def\svgwidth{\textwidth}
+   \includesvg{figures/fig_local_global_minima}     
+   \caption[]{This figures shows different kind of solutions to an optimization problem. The solutions $\hat{a}$ and $\hat{b}$ are local minimal solutions in the neighborhood $N_1(a)$ and $N_2(b)$ respectively, whereas the global minimal solution is $s^*$.}
+   \label{fig:fig_local_global}
+\end{figure}
 
-
-
+\section{Single Solution Based Meta-Heuristics}
 \subsection{Local Search}
 The basic Local Search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
 The set of solutions in this region is denoted as the neighborhood of $x$. The necessary steps to get from the initial solution to a solution in the neighborhood is called a move.
@@ -153,6 +179,10 @@ One advantage of this method is, that it can be easily combined with other Meta-
 \end{algorithmic}
 \end{algorithm}
 
+\section{Population Based Meta-Heuristics}
+\subsection{Evolutionary Computation}
+\subsection{Ant Colony Optimization}
+\section{Classification and Comparison of Meta-Heuristics}
 
 \section{Approach} \label{sec:Approach}
 The aforementioned trajectory selection for forward movements, evaluation and collision test are costly operations. 
