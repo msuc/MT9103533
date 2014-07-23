@@ -1,0 +1,13 @@
+% Chapter 6
+\chapter{Conclusions}\label{ch:conc}
+Applying Meta-Heuristic search to trajectory selection of local planners like DWA is a first step in using the power of these search procedures in the context of local planning.
+The results of our experiments in Section~\ref{sec:testresults} show, that already the small selection using Iterated Local Search, and Variable Neighborhood Search provide significant performance improvement. 
+Therefore it would be of interest to investigate related algorithm like GRASP \cite{feo1995grasp}, reduced VNS, or Simulated Annealing \cite{Kirkpatrick83SimulatedAnnealing}. 
+In addition, developing more sophisticated neighborhood structures, and extending the tabu search method would also be valuable.
+
+The proposed method is also applicable for robot models of higher degree of freedom, since dealing with large trajectory samples is a particular strength of Meta-Heuristic search.
+
+The applicability to similar path-planning methods using trajectory samples, like Curvature Velocity Method \cite{simmons1996curvature}, or the Trajectory Rollout method implemented in \texttt{move\_base}, are also subject of further investigations. 
+
+One of the next goals is to integrate this trajectory selection in existing planning systems for robots using ROS and analyze the performance of the algorithm using state of the art methods for costmap calculations and collision testing. 
+With the gained data a fine tuned local planner using Meta-Heuristic based search methods can be tested under real and simulated environments.
