@@ -54,7 +54,7 @@ One basic heuristic approximation method is local search which given a initial s
 A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
-A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. The necessary steps from one local solution to another local solution is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
+A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. The necessary steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
 \begin{definition}
@@ -70,7 +70,7 @@ A visualization of the concepts of local vs. global minimal solutions is visuali
    \label{fig:fig_local_global}
 \end{figure}
 
-The main idea of meta-heuristic algorithms is to combine heuristic methods with strategic components which allow for an efficient and effective exploration of the search space.  
+The main idea of meta-heuristic algorithms is to combine heuristic methods with higher level strategic components to guide the search in an effective and efficient manner.  
 
 
 \section{Single Solution Based Meta-Heuristics}
