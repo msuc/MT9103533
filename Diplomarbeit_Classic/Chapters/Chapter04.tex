@@ -46,7 +46,7 @@ The solution $s^*\in S$ of an optimization problem with minimum cost is called a
 \end{definition}
 Since there might be more than one optimal solution $S^* \subseteq S$ is the set of \emph{globally} optimal solutions.
 
-To solve hard problems due to large solution space, hard runtime constraints, or both, finding an exact global optimal solution is not always feasible. Instead a "good" approximate solution, with the help of an heuristic is used and optimality is traded off with good performance.
+To solve hard problems due to large solution space, hard run time constraints, or both, finding an exact global optimal solution is not always feasible. Instead a \emph{good} approximate solution, with the help of an heuristic is used and optimality is traded off with good performance.
 
 One basic heuristic approximation method is local search which given a initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
 \begin{definition}\label{def:neighborhood}
@@ -80,6 +80,8 @@ How successful a meta-heuristic performs depends largely at how good it is to ba
 
  
 \section{Single Solution Based Meta-Heuristics}
+As the name suggests these meta-heuristic approaches operate on improving a single solution during the search. Starting from an initial solution the search describes a single trajectory in the search space, when moving from one solution to another. Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
+
 \subsection{Basic Local Search}
 The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
 The set of solutions in this region is denoted as the neighborhood of $x$. The necessary steps to get from the initial solution to a solution in the neighborhood is called a move.
@@ -238,8 +240,10 @@ A very different approach in guiding the search for optimal solutions than the p
      \label{fig:fig_gls}
 \end{figure}
 
+\subsection{Greedy Randomized Adaptive Search Procedure (GRASP)}
 
 \section{Population Based Meta-Heuristics}
+In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
 \subsection{Evolutionary Computation}
 \subsection{Ant Colony Optimization}
 \section{Classification and Comparison of Meta-Heuristics}
