@@ -53,9 +53,9 @@
     \put(0.10358132,0.2558252){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24145446\unitlength}\raggedright start-position\end{minipage}}}%
     \put(0.10355806,0.82250036){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24145446\unitlength}\raggedright end-position\end{minipage}}}%
     \put(0.46381758,0.77524591){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24145446\unitlength}\raggedright goal\end{minipage}}}%
-    \put(0.67802103,0.40457834){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40234588\unitlength}\raggedright best trajectory\end{minipage}}}%
-    \put(0.6362644,0.5313647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40234588\unitlength}\raggedright invalid trajectory\end{minipage}}}%
-    \put(0.63719465,0.32532749){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40234588\unitlength}\raggedright drivable trajectory\end{minipage}}}%
+    \put(0.67802103,0.40457834){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40234592\unitlength}\raggedright best trajectory\end{minipage}}}%
+    \put(0.6362644,0.5313647){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40234592\unitlength}\raggedright invalid trajectory\end{minipage}}}%
+    \put(0.63719465,0.32532749){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.40234592\unitlength}\raggedright drivable trajectory\end{minipage}}}%
     \put(0.10358057,0.59092653){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24145446\unitlength}\raggedright iteration 2\end{minipage}}}%
     \put(0.10358057,0.46069045){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24145446\unitlength}\raggedright iteration 1\end{minipage}}}%
     \put(0.62579515,0.85104691){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.39782939\unitlength}\raggedright cell distance to obstacle\end{minipage}}}%

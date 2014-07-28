@@ -5,6 +5,7 @@ To select a benchmark cost a brute force search is performed on random generated
 The time the algorithm needs to find this benchmark solution is used to compare their performance.
 
 All algorithm are tested using different minimal, and maximal velocities to account for different acceleration limits. 
+
 The weighting coefficients of the cost function are fixed to $\alpha=0.01$ and $\beta=1$. The local goal is also at a fixed location in the map. 
 The step size of the collision test is fixed to 0.015 meter. 
 Forward simulation time is fixed to one second. 
@@ -49,14 +50,13 @@ The following list shows the tested algorithm:
 \end{itemize}
 
 \section{Test results}\label{sec:testresults}
-All tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM. 
-
-In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. 
+\subsection{Overall Test}
+In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM.  
 Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, and using 2400 trajectory samples.
    \begin{figure}[thpb]
         \footnotesize
       \centering
-      \def\svgwidth{0.75\textwidth}
+      \def\svgwidth{\textwidth}
       \includesvg{figures/fig_allworlds}
       \caption{This figure shows the results of testing all 60 randomly generated instances. The top figure shows the run time performance for 240 trajectories, and the bottom figure for 2400 trajectories. Compared to brute force search, the Meta-Heuristic algorithms show a significant improvement. }
       \label{fig:fig_allworlds}
@@ -70,6 +70,7 @@ Furthermore the VNS exhibit a more stable performance than the ILS methods.
 Comparing the ILS algorithms reveals the connection of the search space size to the size of the neighborhood. 
 A small number of trajectories benefits smaller sized neighborhoods, whereas increasing the number of trajectories benefits larger neighborhoods. 
 
+\subsection{Tests on specific instances}
 The following tests only include the VNSF, VNSB and ILS4 algorithms. 
 The algorithms are executed with specific world instances, and repeated 50 times. 
 The results in Figure~\ref{fig:fig_special} show again that the VNS algorithms significantly outperform the Brute Force method. 
@@ -95,9 +96,13 @@ Analyzing the results of the ILS4 algorithms shows that a too small environment 
 Here the use of a neighborhood structure pays off and the VNS approaches perform evidently better than ILS. 
 In addition, the results show that the algorithms perform good independent of number and size of obstacles.
 
+\subsection{Tests comparing the influence of velocity bounds}
+
 As for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply to the local planning domain. 
 Looking at all the results, there is no clear winner among the algorithms. 
 Nevertheless using Variable Neighborhood search with Tabu List and Best Improvement heuristic seem to yields the best and most stable overall performance. 
 
 In general the run time of the python implementation is not very efficient compared to tuned C++ implementations. 
 Therefore the absolute numbers of the run time evaluations should be handled with care. 
+
+\subsection{Tests on extending existing local planner}
