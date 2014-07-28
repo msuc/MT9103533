@@ -1,15 +1,14 @@
 % Chapter 4
 \chapter{Meta Heuristic Extended Local Planning}\label{ch:meta}
 
-In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. The main idea is to apply well established Meta-Heuristic search algorithms to find good trajectories within a given sample of different applicable velocities, a robotic motion model and a given time period for simulation. 
+In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. The main idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation. 
 
 We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
 
 \begin{itemize}
-\item{\bf{RST:}}    Random Restart method using simple memory
 \item{\bf{ILS-Tabu:}}  Based on Iterated Local Search and the use of a simple memory
 \item{\bf{VNSB-Tabu:}} Based on Variable Neighborhood Search and the use of a simple memory and Best Improvement heuristic.
-\item{\bf{VNSF-Tabu:}} Based on Variable Neighborhood Search and the use of a simple memory and Best Improvement heuristic.
+\item{\bf{VNSF-Tabu:}} Based on Variable Neighborhood Search and the use of a simple memory and First Improvement heuristic.
 \end{itemize}
 
 The proposed methods are tested and refined and implemented into a robotic navigation system which already supports implementations of a local planner based on Dynamic Window Approach and Trajectory Rollout.
@@ -24,10 +23,10 @@ The next section provides background information of meta-heuristic search, follo
 The relevant local planners we took into consideration are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed at the end of this chapter.
 
 \section{Meta-Heuristic Search}
-The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP)), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem).
+The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
 
 In general an optimization problem and its solutions can be defined as follows (see \cite{blum2003metaheuristics}): 
-\begin{definition}
+\begin{definition}\label{def:problem}
 An optimization problem $P = (S, f_c)$ can be defined by:\\
 - a set of variables $X = \{x_1,\dots,x_n\} $;\\
 - the values the variables can take (domains) $D_1,\dots,D_n$;\\
@@ -50,7 +49,7 @@ Since there might be more than one optimal solution $S^* \subseteq S$ is the set
 To solve hard problems due to large solution space, hard runtime constraints, or both, finding an exact global optimal solution is not always feasible. Instead a "good" approximate solution, with the help of an heuristic is used and optimality is traded off with good performance.
 
 One basic heuristic approximation method is local search which given a initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
-\begin{definition}
+\begin{definition}\label{def:neighborhood}
 A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
@@ -70,16 +69,23 @@ A visualization of the concepts of local vs. global minimal solutions is visuali
    \label{fig:fig_local_global}
 \end{figure}
 
-The main idea of meta-heuristic algorithms is to combine heuristic methods with higher level strategic components to guide the search in an effective and efficient manner.  
+The main idea of meta-heuristic algorithms is to combine heuristic methods with higher level strategic components to guide the search in an effective and economic manner. 
+The name was introduced by Fred Glover who described his tabu search approach \grqq as a \emph{meta-heuristic} superimposed on another heuristic \grqq \cite{glover1988tabu}. 
 
+How successful a meta-heuristic performs depends largely at how good it is to balance two important objectives during a search:
+\begin{itemize}
+\item{\bf{intensification:}} Focus the search on regions with high quality solutions, by using knowledge gained during the search process.
+\item{\bf{diversification:}} Escaping local minimal solutions and visiting unexplored regions of the search space.
+\end{itemize}
 
+ 
 \section{Single Solution Based Meta-Heuristics}
-\subsection{Local Search}
-The basic Local Search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
+\subsection{Basic Local Search}
+The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
 The set of solutions in this region is denoted as the neighborhood of $x$. The necessary steps to get from the initial solution to a solution in the neighborhood is called a move.
 
 \begin{algorithm}
-\caption{Local Search  (LS)}
+\caption{Local Search  (BLS)}
 \label{localsearchalgo}
 \begin{algorithmic}[1] 
 \State $x\gets$ initial solution
@@ -91,6 +97,12 @@ The set of solutions in this region is denoted as the neighborhood of $x$. The n
 \Until{stopping criteria satisfied}
 \end{algorithmic}
 \end{algorithm}
+
+
+\subsection{Simulated Annealing}
+One of the first algorithms considered a meta-heuristic is Simulated Annealing (SA), which was introduced in \cite{Kirkpatrick83SimulatedAnnealing}. 
+Allowing to move to worse solutions during a local search with a certain probability, provides an explicit diversification mechanism to avoid getting trapped in local minimal solutions.
+The interplay between intensification and diversification is controlled by the temperature  parameter $T$. 
 
 \subsection{Iterative Local Search}
 A nice survey of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}. 
@@ -215,6 +227,18 @@ One advantage of this method is, that it can be easily combined with other Meta-
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Guided Local Search}
+A very different approach in guiding the search for optimal solutions than the previous introduced methods is Guided Local Search (GLS) which was introduced in TODO: cite [Voudouris and Tsang 1999]. While the aforementioned algorithms like ILS and VNS change the neighborhood of solutions, this approach changes the objective function itself to achieve the desired diversification. The neighborhood structure stays fixed. In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may lead to new local minimal solutions is visualized. 
+\begin{figure}[thb] 
+   \footnotesize
+   \centering
+    \def\svgwidth{0.75\textwidth}
+    \includesvg{figures/fig_gls}
+    \caption[Escaping a local minimal solution by gradually increasing the cost function.]{Escaping a local minimal solution by gradually increasing the cost function. (reproduced from \cite{blum2003metaheuristics})}  
+     \label{fig:fig_gls}
+\end{figure}
+
+
 \section{Population Based Meta-Heuristics}
 \subsection{Evolutionary Computation}
 \subsection{Ant Colony Optimization}
@@ -248,7 +272,7 @@ A generated costmap together with a visualization of consecutive local path plan
 		\label{fig:fig_instances_detail}
 \end{figure}
 
-\subsection{Neighborhood and Local Search (LS)}
+\subsection{Neighborhood}
 The neighborhood of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
 The 4-neighborhood makes a step by either increasing or decreasing the current linear and angular velocity by one discretization step (Manhattan distance $=1$). 
 The 8-neighborhood takes all neighbors into account which are reachable in one discretization step (Moore neighborhood). 
@@ -263,6 +287,7 @@ This process continues until the whole search space is the neighborhood. Figure~
    \label{fig:fig_nb}
 \end{figure}
 
+\subsection{Local Search (LS)}
 Using Local Search the neighborhood is either exhaustively searched for the best solution (Best-Improvement heuristic) or stopped after finding the first improving solution (First-Improvement heuristic).
 
 \subsection{Tabu List}
@@ -278,7 +303,13 @@ The algorithm can use a 4,8, and 16-neighborhood with Best Improvement heuristic
 For the VNS algorithm local search is performed in one neighborhood until no improvement occurs. 
 The shaking chooses a random solution in the current neighborhood. 
 If the shaking does not yield any solution, because the whole neighborhood is tabu, or does not include a collision free trajectory, the next neighborhood is chosen. 
-An ordering of neighborhoods according to their size yields the neighborhood structure $N_0(x)=$ 4-connected, $N_1(x)=$ 8-neighborhood, $\dots, N_k(x)=$ k-steps reachable neighborhood.
+An ordering of neighborhoods according to their size yields the neighborhood structure:
+\begin{itemize}
+ \item $N_0(x)=$ 4-connected
+ \item $N_1(x)=$ 8-neighborhood
+ \item $\dots$
+ \item $N_k(x)=$ k-steps reachable neighborhood.
+\end{itemize}
 Larger neighborhoods are too costly to evaluate. 
 Therefore the neighborhood structure is bounded above by $k_{max}=8$. 
 If no improvement is made up to the $N_{k_{max}}$ neighborhood, a new initial solution is generated at random. 

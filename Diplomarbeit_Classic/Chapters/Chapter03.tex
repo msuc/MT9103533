@@ -3,11 +3,18 @@
 \chapter{Planning Algorithms}\label{ch:planningalgorithms}
 %************************************************
 Overview and classification of path planning algorithms
-
 \section{Global Planning}\label{sec:global}
+\section{Local Planning and Obstacle Avoidance}\label{sec:local}
+\subsection{Bug Algorithms}
+\subsection{Vector Field Histogram(VFH)}
+\subsection{Virtual Force Fields (VFF)}
+\subsection{Nearness Diagrams (ND)}
+\subsection{Curvature Velocity Method (CVM)}
+The Curvature Velocity Method in \cite{simmons1996curvature} considers approximation techniques like simulated annealing to maximize the cost function using the whole velocity space, but abandoned the idea due to still high computational costs. 
+Instead of using discrete samples of the velocity space, it divides the space in sets of curvature intervals. 
+Evaluation is performed by evaluating over all curvature intervals.
 
-\section{Local Planning}\label{sec:local}
-\subsection{Local Planning and Obstacle Avoidance}
+\subsection{Dynamic Window Approach (DWA)}
 A well known method for local planning is the Dynamic Window Approach proposed in \cite{DWA1997}. 
 The method discretely samples the velocity space $(v,w)$ of the robot, where $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
 The velocity space is reduced to the reachable minimal and maximal velocity in one control cycle, taken the acceleration limits of the robot into account.
@@ -45,13 +52,13 @@ In Figure~\ref{fig:fig_local} the corresponding local view is depicted, includin
       \centering
     \subfloat[Path planning in global costmap.]
     {  \label{fig:fig_global}
-       \def\svgwidth{\textwidth}
+       \def\svgwidth{0.75\textwidth}
        \includesvg{figures/fig_global}
 
     } \\    
     \subfloat[Trajectory generation for linear, and angular velocities $(v,w)$ in local costmap guided by global path.]
     {  \label{fig:fig_local}
-       \def\svgwidth{\textwidth}
+       \def\svgwidth{0.75\textwidth}
        \includesvg{figures/fig_local}
     }
    \caption[]{}
@@ -60,10 +67,6 @@ In Figure~\ref{fig:fig_local} the corresponding local view is depicted, includin
 
 Concerning the optimization of the used cost functions the most common approach for DWA and related local planner is to evaluate all possible trajectories in a reduced discrete velocity space. 
 Examples of this approach can be found in \cite{kiss2012advanced}\cite{DBLP:conf/icra/Marder-EppsteinBFGK10}\cite{conf/icra/SederP07}. 
-
-The Curvature Velocity Method in \cite{simmons1996curvature} considers approximation techniques like simulated annealing to maximize the cost function using the whole velocity space, but abandoned the idea due to still high computational costs. 
-Instead of using discrete samples of the velocity space, it divides the space in sets of curvature intervals. 
-Evaluation is performed by evaluating over all curvature intervals.
 
 The proposed method extends the DWA approach, by using approximation algorithm to maximize the cost function in a discrete representation of the velocity space.
 
