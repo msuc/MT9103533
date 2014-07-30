@@ -96,19 +96,50 @@ The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local
 \begin{algorithmic}[1] 
 \State $x\gets$ initial solution
 \Repeat
-\State select a $x^\prime \in$ \Call{Neighborhood}{$x$}
-\If {\Call{$cost$}{$x^\prime$} $\leq$ \Call{$cost$}{$x$}}
-    \State $x\gets x^\prime$
-\EndIf
+\State $x\gets$ \Call{Improve}{$x$)}
 \Until{no improvement}
 \end{algorithmic}
 \end{algorithm}
 
-Starting from an initial solution it iteratively selects elements from the neighborhood which improve the current solution. The search stops at a local minimal solution if there are no improving solutions which can be selected.
-Several possible selelction function can be applied. The most frequently from an exhaustive search of the neighborhood 
+Starting from an initial solution it iteratively selects elements from the neighborhood which improve the current solution. 
+The search stops at a local minimal solution if there are no improving solutions which can be selected.
+
+The most frequently used improvement functions are \emph{Best Improvement}(or steepest descent) heuristic (cf. Algorithm~\ref{bestimprov}), which exhaustively looks at each neighbor to select the best solution, and \emph{First Improvement} (or first descent) heuristic (cf. Algorithm~\ref{firstimprov}), which returns as soon as a better neighbor is found. 
+
+\begin{algorithm}
+\caption{Best Improvement}
+\label{bestimprov}
+\begin{algorithmic}[1] 
+\Function{BestImprovement}{$x$}
+\State $i \gets 0$
+\Repeat
+\State $i \gets i+1$
+\State $x_i \in N(x)$, retrieve the i-th neighbor
+\If {\Call{$cost$}{$x_i$} $\leq$ \Call{$cost$}{$x$}}
+    \State $x \gets x_i$
+\EndIf
+\Until{$i=|N(x)|$}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{First Improvement}
+\label{firstimprov}
+\begin{algorithmic}[1] 
+\Function{FirstImprovement}{$x$}
+\State $i \gets 0$
+\Repeat
+\State $i \gets i+1$
+\State $x_i \in N(x)$, retrieve the i-th neighbor
+\Until{$i=|N(x)|$ or \Call{$cost$}{$x_i$} $\leq$ \Call{$cost$}{$x$}}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 
-
+  
+  
 \subsection{Simulated Annealing}
 One of the first algorithms considered a meta-heuristic is Simulated Annealing (SA), which was introduced in \cite{Kirkpatrick83SimulatedAnnealing}. 
 Allowing to move to worse solutions during a local search with a certain probability, provides an explicit diversification mechanism to avoid getting trapped in local minimal solutions.
