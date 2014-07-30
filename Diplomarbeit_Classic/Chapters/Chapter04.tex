@@ -28,15 +28,15 @@ The family of meta-heuristic algorithms is extremely successful in solving optim
 In general an optimization problem and its solutions can be defined as follows (see \cite{blum2003metaheuristics}): 
 \begin{definition}\label{def:problem}
 An optimization problem $P = (S, f_c)$ can be defined by:\\
-- a set of variables $X = \{x_1,\dots,x_n\} $;\\
-- the values the variables can take (domains) $D_1,\dots,D_n$;\\
-- constraints\\
-- a cost function $f_c$ which has to be minimized, where $f_c:D_1 \times \dots \times D_n \rightarrow \mathbb{R}^+$; (which is the same as maximizing $-f_c$)\\
+- a set of \emph{variables} $X = \{x_1,\dots,x_n\} $;\\
+- a set of \emph{domains}, defining the values the variables can take $D_1,\dots,D_n$;\\
+- possible \emph{constraints} on the variables\\
+- a \emph{cost function} (or more general an \emph{objective function}) $f_c$ which has to be minimized, where $f_c:D_1 \times \dots \times D_n \rightarrow \mathbb{R}^+$; (which is the same as maximizing $-f_c$)\\
 \end{definition}
-The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the search or solution space.
-A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is discrete a discrete optimization problem is given.
+The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the \emph{search} or \emph{solution space}.
+A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is discrete and finite a combinatorial optimization problem is given. 
 
-Solutions which fulfill all constraints are called feasible solutions. 
+Solutions which fulfill all constraints are called \emph{feasible} solutions, solutions violating constraints are called \emph{infeasible}. 
 It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
 
 The solution $s^*\in S$ of an optimization problem with minimum cost is called a \emph{global} optimal solution. 
@@ -46,14 +46,16 @@ The solution $s^*\in S$ of an optimization problem with minimum cost is called a
 \end{definition}
 Since there might be more than one optimal solution $S^* \subseteq S$ is the set of \emph{globally} optimal solutions.
 
-To solve hard problems due to large solution space, hard run time constraints, or both, finding an exact global optimal solution is not always feasible. Instead a \emph{good} approximate solution, with the help of an heuristic is used and optimality is traded off with good performance.
+To solve hard problems due to large solution space, hard run time constraints, or both, finding an exact global optimal solution is not always feasible. 
+Instead a \emph{good} approximate solution, with the help of an heuristic is used and optimality is traded off with good performance.
 
-One basic heuristic approximation method is local search which given a initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
+One basic heuristic approximation method is local search which given an initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
 \begin{definition}\label{def:neighborhood}
 A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
-A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. The necessary steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
+A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
+The necessary steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
 \begin{definition}
@@ -80,7 +82,9 @@ How successful a meta-heuristic performs depends largely at how good it is to ba
 
  
 \section{Single Solution Based Meta-Heuristics}
-As the name suggests these meta-heuristic approaches operate on improving a single solution during the search. Starting from an initial solution the search describes a single trajectory in the search space, when moving from one solution to another. Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
+As the name suggests these meta-heuristic approaches operate on improving a single solution during the search. 
+Starting from an initial solution the search describes a single trajectory in the search space, when moving from one solution to another. 
+Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
 
 \subsection{Basic Local Search}
 The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
@@ -230,7 +234,11 @@ One advantage of this method is, that it can be easily combined with other Meta-
 \end{algorithm}
 
 \subsection{Guided Local Search}
-A very different approach in guiding the search for optimal solutions than the previous introduced methods is Guided Local Search (GLS) which was introduced in TODO: cite [Voudouris and Tsang 1999]. While the aforementioned algorithms like ILS and VNS change the neighborhood of solutions, this approach changes the objective function itself to achieve the desired diversification. The neighborhood structure stays fixed. In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may lead to new local minimal solutions is visualized. 
+Changing the neighborhood of solutions, as in the afforementioned algorithms like ILS and VNS, is not the only mechanism to escape local minimal solutions.
+A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced in (see \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}). 
+
+In this approach diversification is achieved by changing the cost function itself. 
+The neighborhood structure stays fixed. In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may lead to new local minimal solutions is visualized. 
 \begin{figure}[thb] 
    \footnotesize
    \centering
@@ -239,6 +247,8 @@ A very different approach in guiding the search for optimal solutions than the p
     \caption[Escaping a local minimal solution by gradually increasing the cost function.]{Escaping a local minimal solution by gradually increasing the cost function. (reproduced from \cite{blum2003metaheuristics})}  
      \label{fig:fig_gls}
 \end{figure}
+
+Altering the cost function is based on penalysing the presents of \emph{solution features} which are distinguishing properties of different solutions. The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
 
 \subsection{Greedy Randomized Adaptive Search Procedure (GRASP)}
 
