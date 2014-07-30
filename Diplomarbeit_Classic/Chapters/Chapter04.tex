@@ -87,8 +87,8 @@ Starting from an initial solution the search describes a single trajectory in th
 Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
 
 \subsection{Basic Local Search}
-The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $cost(x)$ and a fixed sized region around an initial solution in the solution space. 
-The set of solutions in this region is denoted as the neighborhood of $x$. The necessary steps to get from the initial solution to a solution in the neighborhood is called a move.
+The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $f_c(x)$ in a region around an initial solution in the solution space, defined by a fixed neighborhood structure $N(x)$. 
+
 
 \begin{algorithm}
 \caption{Local Search  (BLS)}
@@ -100,9 +100,13 @@ The set of solutions in this region is denoted as the neighborhood of $x$. The n
 \If {\Call{$cost$}{$x^\prime$} $\leq$ \Call{$cost$}{$x$}}
     \State $x\gets x^\prime$
 \EndIf
-\Until{stopping criteria satisfied}
+\Until{no improvement}
 \end{algorithmic}
 \end{algorithm}
+
+Starting from an initial solution it iteratively selects elements from the neighborhood which improve the current solution. The search stops at a local minimal solution if there are no improving solutions which can be selected.
+Several possible selelction function can be applied. The most frequently from an exhaustive search of the neighborhood 
+
 
 
 \subsection{Simulated Annealing}
@@ -238,7 +242,9 @@ Changing the neighborhood of solutions, as in the afforementioned algorithms lik
 A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced in (see \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}). 
 
 In this approach diversification is achieved by changing the cost function itself. 
-The neighborhood structure stays fixed. In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may lead to new local minimal solutions is visualized. 
+The neighborhood structure stays fixed. 
+For intensification a local search method is performed in each iteration.
+In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may lead to new local minimal solutions is visualized. 
 \begin{figure}[thb] 
    \footnotesize
    \centering
@@ -251,6 +257,7 @@ The neighborhood structure stays fixed. In Figure~\ref{fig:fig_gls} the graduall
 Altering the cost function is based on penalysing the presents of \emph{solution features} which are distinguishing properties of different solutions. The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
 
 \subsection{Greedy Randomized Adaptive Search Procedure (GRASP)}
+\fxnote{Not sure if I include this too}
 
 \section{Population Based Meta-Heuristics}
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
@@ -258,7 +265,7 @@ In contrast to the aforementioned methods, population based meta-heuristics oper
 \subsection{Ant Colony Optimization}
 \section{Classification and Comparison of Meta-Heuristics}
 
-\section{Approach} \label{sec:Approach}
+\section{Trajectory Selection Using Meta-Heuristics} \label{sec:trajselmeta}
 The aforementioned trajectory selection for forward movements, evaluation and collision test are costly operations. 
 The focus lies on improving this part of the DWA algorithm. 
 The trajectory sampling and selection of the DWA are implemented in python minimizing a simpler cost function $f_c(v,w)$ (cf. Equation~\ref{eq:simplecost}), where $f_g(v,w)$ is the distance of the center of the robot in the end position to a predefined goal position, and $f_o(v,w)$ is the maximal distance to an obstacle on the trajectory path.
