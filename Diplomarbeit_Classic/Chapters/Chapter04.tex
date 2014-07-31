@@ -86,17 +86,16 @@ As the name suggests these meta-heuristic approaches operate on improving a sing
 Starting from an initial solution the search describes a single trajectory in the search space, when moving from one solution to another. 
 Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
 
-\subsection{Basic Local Search}
-The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $f_c(x)$ in a region around an initial solution in the solution space, defined by a fixed neighborhood structure $N(x)$. 
-
+\subsection{Local Search}
+The simple local search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $f_c(x)$ in a region around an initial solution in the solution space, defined by a fixed neighborhood structure $N(x)$. 
 
 \begin{algorithm}
-\caption{Local Search  (BLS)}
+\caption{Local Search  (LS)}
 \label{localsearchalgo}
 \begin{algorithmic}[1] 
 \State $x\gets$ initial solution
 \Repeat
-\State $x\gets$ \Call{Improve}{$x$)}
+\State $x\gets$ \Call{Select}{$x$}
 \Until{no improvement}
 \end{algorithmic}
 \end{algorithm}
@@ -104,7 +103,7 @@ The basic local search (BLS) (cf. Algorithm~\ref{localsearchalgo}) finds a local
 Starting from an initial solution it iteratively selects elements from the neighborhood which improve the current solution. 
 The search stops at a local minimal solution if there are no improving solutions which can be selected.
 
-The most frequently used improvement functions are \emph{Best Improvement}(or steepest descent) heuristic (cf. Algorithm~\ref{bestimprov}), which exhaustively looks at each neighbor to select the best solution, and \emph{First Improvement} (or first descent) heuristic (cf. Algorithm~\ref{firstimprov}), which returns as soon as a better neighbor is found. 
+The most frequently used selection functions are \emph{Best Improvement}(or steepest descent) (cf. Algorithm~\ref{bestimprov}), which exhaustively looks at each neighbor to select the best solution, and \emph{First Improvement} (or first descent) (cf. Algorithm~\ref{firstimprov}), which looks at the neighbors in a specific order and returns as soon as a better neighbor is found. 
 
 \begin{algorithm}
 \caption{Best Improvement}
@@ -115,10 +114,11 @@ The most frequently used improvement functions are \emph{Best Improvement}(or st
 \Repeat
 \State $i \gets i+1$
 \State $x_i \in N(x)$, retrieve the i-th neighbor
-\If {\Call{$cost$}{$x_i$} $\leq$ \Call{$cost$}{$x$}}
+\If {\Call{$cost$}{$x_i$} $<$ \Call{$cost$}{$x$}}
     \State $x \gets x_i$
 \EndIf
 \Until{$i=|N(x)|$}
+\State \Return $x$
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -132,13 +132,11 @@ The most frequently used improvement functions are \emph{Best Improvement}(or st
 \Repeat
 \State $i \gets i+1$
 \State $x_i \in N(x)$, retrieve the i-th neighbor
-\Until{$i=|N(x)|$ or \Call{$cost$}{$x_i$} $\leq$ \Call{$cost$}{$x$}}
+\Until{$i=|N(x)|$ or \Call{$cost$}{$x_i$} $<$ \Call{$cost$}{$x$}}
+\State \Return \Call{$argmin$}{\Call{$cost$}{$x_i$} , \Call{$cost$}{$x$}}
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
-
-
-  
   
 \subsection{Simulated Annealing}
 One of the first algorithms considered a meta-heuristic is Simulated Annealing (SA), which was introduced in \cite{Kirkpatrick83SimulatedAnnealing}. 
@@ -244,9 +242,9 @@ If the solution found by the Local Search does not improve the next neighborhood
 \end{algorithm}
 
 \subsection{Tabu Search}
-Another successful Meta-Heuristic strategy is Tabu Search (cf. Algorithm~\ref{tabualgo}) proposed in \cite{glover1999tabu}. 
-To avoid local minima a Tabu list keeps track of moves which are not allowed during the exploration of the current neighborhood. 
-In its simplest form the Tabu list includes all visited solutions. 
+Another successful Meta-Heuristic strategy is Tabu Search (cf. Algorithm~\ref{tabualgo}) (see \cite{glover1988tabu}). 
+The main contribution is the use of memory structures which are used to guide the local search procedure. The memory lists keeps track of moves which are not allowed to be revisited for a given amount of time during the exploration of the search space - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched.(see~\cite{glover1997tabu})} 
+In its simplest form the Tabu list includes complete visited solutions. 
 This might be too restrictive, or the list might grow too large, hence one can restrict the list to a certain length, and delete e.g. the oldest item in the list in each iteration. 
 One advantage of this method is, that it can be easily combined with other Meta-Heuristic algorithms.
 
