@@ -87,7 +87,7 @@ Starting from an initial solution the search describes a single trajectory in th
 Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
 
 \subsection{Local Search}
-The simple local search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $f_c(x)$ in a region around an initial solution in the solution space, defined by a fixed neighborhood structure $N(x)$. 
+The simple local search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $f_c(x)$ in a region around an initial solution in the solution space, defined by a neighborhood structure $N(x)$. 
 
 \begin{algorithm}
 \caption{Local Search  (LS)}
@@ -137,20 +137,69 @@ The most frequently used selection functions are \emph{Best Improvement}(or stee
 \EndFunction
 \end{algorithmic}
 \end{algorithm}
-  
-\subsection{Simulated Annealing}
-One of the first algorithms considered a meta-heuristic is Simulated Annealing (SA), which was introduced in \cite{Kirkpatrick83SimulatedAnnealing}. 
-Allowing to move to worse solutions during a local search with a certain probability, provides an explicit diversification mechanism to avoid getting trapped in local minimal solutions.
-The interplay between intensification and diversification is controlled by the temperature  parameter $T$. 
 
-\subsection{Iterative Local Search}
-A nice survey of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}. 
-The main idea is to call a local search procedure iteratively, until a certain stopping criteria is satisfied. 
-In each iteration the current solution might be perturbed by changing parts of the solution. 
-The following local search takes this altered solution as a starting point and returns a new solution. 
-If it satisfies an acceptance condition (e.g. the best solution so far), the process restarts with the new solution. 
-In addition, a history of already found solutions may be used to steer perturbation and the acceptance test.
-The steps of ILS are visualized in Figure~\ref{fig:fig_ils}
+The selection function may also just randomly choose a neighbor, or choose the best neighbor among a random sample taken from the current neighborhood. These strategies could be used if the number of neighbors is very large, or their evaluation is computational expensive.
+
+\subsection{Tabu Search} \label{sec:tabu}
+A very successful meta-heuristic strategy is Tabu Search (see \cite{glover1988tabu}). 
+The main contribution is the use of tabu lists, which are memory structures used to guide the local search procedure. In Algorithm~\ref{tabualgo} the basic form of this approach is presented. 
+
+\begin{algorithm}
+\caption{Tabu Search}
+\label{tabualgo}
+\begin{algorithmic}[1]
+\State $Tabulist \gets 0$
+\State $x\gets$ initial solution
+\Repeat
+ \State $X^\prime \gets$ \Call{Neighborhood}{$x$} $\not\in Tabulist$
+ \State $x^\prime \gets$ best solution in $X^\prime$
+ \State $Tabulist = Tabulist \cup \{x^\prime\}$
+ \State $x \gets x^\prime$
+ \If{$x$ is overall best solution}
+   \State store $x$ as best solution
+ \EndIf
+\Until{stopping criteria satisfied}
+\end{algorithmic}
+\end{algorithm}
+
+The memory keeps track of complete solutions (\emph{explicit} memory), moves, partial solutions, or other solution attributes (\emph{attributive} memory), which are used to prohibit moves during the exploration of the search space for a given amount of time - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched (see~\cite{glover1997tabu})}.
+
+The main usage of tabu lists is to prevent cycling back to recent solutions, and prevents from searching the same region of the search space over and over again. 
+This \emph{short term memory} approach contributes to the \emph{diversification} of the search, since the neighborhood of solutions is changed dynamically according to their tabu status. 
+
+Four different types of memory structures are presented in ~\cite{glover1997tabu}:  
+\begin{enumerate}
+\item{Recency-based memory:} Recording when an attribute or solution was used in the search process.
+\item{Frequency-based memory:} Recording how often an attribute or solution was used during the search process. 
+\item{Quality-based memory:} Recording attributes or solutions which lead to, or are common to good solutions.
+\item{Influence-based memory:} Recording information of attributes or solution considering the impact of solution quality and structure.
+\end{enumerate}
+
+According to the \emph{short term memory} analogy of the human memory, tabu lists can be furthermore classified in \emph{intermediate term memory}, and \emph{long term memory} strategies (see~\cite{gendreau2003tabusearch}).
+\begin{itemize}
+\item{short term memory:} Uses for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
+\item{intermediate term memory:} Uses for \emph{intensification} of the search. For example use a recency-based memory, which records good solution and restart the search from these elite solutions.
+Recency
+\item{long term memory:} Uses for \emph{diversification} of the search. For example implementing a frequency-based memory recording the total number of iterations in which solutions or their components have been used in the current solution. Restart the search using solutions which have a lower number of iterations.
+\end{itemize}
+
+An important role in controlling the \emph{diversification} of the search is the length of tabu lists (\emph{tabu tenure}).  
+As a general rule the longer the tabu list the higher the diversification effect, since preventing a larger number of candidate solutions in a neighborhood drastically changes the solution landscape (see \cite{blum2003metaheuristics}). 
+
+Restricting the tabus lists length is usually achieved by implementing it as cyclic lists, and deleting e.g. the oldest item as soon as a new item becomes tabu. 
+The tabu tenure can both be fixed or may be changed during the search.
+
+To avoid the tabu lists being too restrictive, and possibly loose good solutions, the tabu status of solutions may also be overridden using an \emph{aspiration criteria}. One example of such an criteria is to always allow solutions which are overall best, even if they are tagged as tabu.
+
+A big advantage of this method is, that it can be easily combined with other meta-heuristic algorithms.
+
+\subsection{Iterative Local Search}\label{sec:ils}
+The main idea of Iterated Local Search is to call a local search procedure iteratively, until a certain stopping criteria is satisfied. A nice survey of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}. 
+
+In each iteration the current solution might be \emph{perturbed} by changing parts of the solution. 
+The following \emph{local search} takes this altered solution as a starting point and returns a new solution. 
+If it satisfies an \emph{acceptance condition}, the process restarts with the new solution. 
+The basic steps of ILS are visualized in Figure~\ref{fig:fig_ils}
 
 \begin{figure}[thb] 
    \footnotesize
@@ -160,6 +209,8 @@ The steps of ILS are visualized in Figure~\ref{fig:fig_ils}
     \caption[Pertubation step in ILS]{Pertubation of a local minimal solution $\hat{s}$, leads to an intermediate solution $s^\prime$. A local search is applied and a new local minimal solution $\hat{s}^\prime$ is found. (reproduced from \cite{blum2003metaheuristics})}  
      \label{fig:fig_ils}
 \end{figure}
+
+In addition, short or long term memory concepts may be included in form of a \emph{history} of the search, which may be used to steer perturbation and the acceptance test (compare to Tabu Search memory structures in Section~\ref{sec:tabu}).
  
 \begin{algorithm}
 \caption{Iterative Local Search (ILS)}
@@ -241,31 +292,6 @@ If the solution found by the Local Search does not improve the next neighborhood
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Tabu Search}
-Another successful Meta-Heuristic strategy is Tabu Search (cf. Algorithm~\ref{tabualgo}) (see \cite{glover1988tabu}). 
-The main contribution is the use of memory structures which are used to guide the local search procedure. The memory lists keeps track of moves which are not allowed to be revisited for a given amount of time during the exploration of the search space - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched.(see~\cite{glover1997tabu})} 
-In its simplest form the Tabu list includes complete visited solutions. 
-This might be too restrictive, or the list might grow too large, hence one can restrict the list to a certain length, and delete e.g. the oldest item in the list in each iteration. 
-One advantage of this method is, that it can be easily combined with other Meta-Heuristic algorithms.
-
-\begin{algorithm}
-\caption{Tabu Search}
-\label{tabualgo}
-\begin{algorithmic}[1]
-\State $Tabulist \gets 0$
-\State $x\gets$ initial solution
-\Repeat
- \State $X^\prime \gets$ \Call{Neighborhood}{$x$} $\not\in Tabulist$
- \State $x^\prime \gets$ best solution in $X^\prime$
- \State $Tabulist = Tabulist \cup \{x^\prime\}$
- \State $x \gets x^\prime$
- \If{$x$ is overall best solution}
-   \State store $x$ as best solution
- \EndIf
-\Until{stopping criteria satisfied}
-\end{algorithmic}
-\end{algorithm}
-
 \subsection{Guided Local Search}
 Changing the neighborhood of solutions, as in the afforementioned algorithms like ILS and VNS, is not the only mechanism to escape local minimal solutions.
 A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced in (see \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}). 
@@ -283,10 +309,12 @@ In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may 
      \label{fig:fig_gls}
 \end{figure}
 
-Altering the cost function is based on penalysing the presents of \emph{solution features} which are distinguishing properties of different solutions. The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
+Altering the cost function is based on penalizing the presence of \emph{solution features} which are distinguishing properties of different solutions. The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
 
-\subsection{Greedy Randomized Adaptive Search Procedure (GRASP)}
-\fxnote{Not sure if I include this too}
+\subsection{Simulated Annealing}
+We conclude the presentation of single solution based meta-heuristics with Simulated Annealing (SA), which is one of the first algorithms considered a meta-heuristic. 
+It was introduced in \cite{Kirkpatrick83SimulatedAnnealing}, and provides an explicit diversification mechanism to avoid getting trapped in local minimal solutions by allowing moves to worse solutions during a local search with a certain probability. 
+The interplay between intensification and diversification is controlled by the temperature  parameter $T$. 
 
 \section{Population Based Meta-Heuristics}
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
@@ -308,7 +336,7 @@ Instead of performing an exhaustive \textit{Brute Force} search on all velocity 
 
 The reduced search space are all tuples of forward and angular velocities $(v,w)$ within given limits $v_{min} \leq v \leq v_{max}$ and $w_{min} \leq w \leq w_{max}$ and a step size for discretization by fixing the number of samples.
 
-A generated costmap together with a visualization of consecutive local path planning steps in a simulation is shown in Figure~\ref{fig:fig_instances_detail}.
+A generated cost-map together with a visualization of consecutive local path planning steps in a simulation is shown in Figure~\ref{fig:fig_instances_detail}.
    
 \begin{figure}[thpb]
      \footnotesize
@@ -318,7 +346,7 @@ A generated costmap together with a visualization of consecutive local path plan
        \def\svgwidth{\textwidth}
        %\fbox{\includesvg{figures/fig_inst_25_new}}
        \includesvg{figures/fig_inst_25_new}
-		\caption[Local-path planning simulation.]{This figure shows three applications of the local planner in a simulated experiment. The greyscale background image visualizes obstacle costs of a generated costmap. Trajectories in green are drive-able, whereas red trajectories collide with obstacles. In each local planning step possible trajectories are weighted with respect to obstacle closeness and progression towards goal destination. For example in the second step a longer valid trajectory is rejected, while a shorter trajectory which stays farther away from obstacles is selected for execution. After three local planning applications the robot safely reaches the goal destination.}
+		\caption[Local-path planning simulation.]{This figure shows three applications of the local planner in a simulated experiment. The greyscale background image visualizes obstacle costs of a generated cost-map. Trajectories in green are drive-able, whereas red trajectories collide with obstacles. In each local planning step possible trajectories are weighted with respect to obstacle closeness and progression towards goal destination. For example in the second step a longer valid trajectory is rejected, while a shorter trajectory which stays farther away from obstacles is selected for execution. After three local planning applications the robot safely reaches the goal destination.}
 		\label{fig:fig_instances_detail}
 \end{figure}
 
