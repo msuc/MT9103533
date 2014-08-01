@@ -193,12 +193,15 @@ To avoid the tabu lists being too restrictive, and possibly loose good solutions
 
 A big advantage of this method is, that it can be easily combined with other meta-heuristic algorithms.
 
-\subsection{Iterative Local Search}\label{sec:ils}
-The main idea of Iterated Local Search is to call a local search procedure iteratively, until a certain stopping criteria is satisfied. A nice survey of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}. 
+\subsection{Iterated Local Search}\label{sec:ils}
+Iterated Local Search provides a highly general scheme for search space exploration. 
+It treats the local search procedure as a black box, which in the ideal case incorporates all problem specific knowledge. 
+A detailed description of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}.
 
+Starting from an initial solution, the algorithm iteratively calls the embedded \emph{local search} procedure.
 In each iteration the current solution might be \emph{perturbed} by changing parts of the solution. 
-The following \emph{local search} takes this altered solution as a starting point and returns a new solution. 
-If it satisfies an \emph{acceptance condition}, the process restarts with the new solution. 
+The following \emph{local search} takes this altered solution as a new starting point and if it satisfies an \emph{acceptance criterion} the search restarts with \emph{perturbating} this new solution. 
+
 The basic steps of ILS are visualized in Figure~\ref{fig:fig_ils}
 
 \begin{figure}[thb] 
@@ -206,11 +209,17 @@ The basic steps of ILS are visualized in Figure~\ref{fig:fig_ils}
    \centering
     \def\svgwidth{0.75\textwidth}
     \includesvg{figures/fig_ils}
-    \caption[Pertubation step in ILS]{Pertubation of a local minimal solution $\hat{s}$, leads to an intermediate solution $s^\prime$. A local search is applied and a new local minimal solution $\hat{s}^\prime$ is found. (reproduced from \cite{blum2003metaheuristics})}  
+    \caption[Perturbation step in ILS]{Perturbation of a local minimal solution $\hat{s}$, leads to an intermediate solution $s^\prime$. A local search is applied and a new local minimal solution $\hat{s}^\prime$ is found. (reproduced from \cite{blum2003metaheuristics})}  
      \label{fig:fig_ils}
 \end{figure}
 
-In addition, short or long term memory concepts may be included in form of a \emph{history} of the search, which may be used to steer perturbation and the acceptance test (compare to Tabu Search memory structures in Section~\ref{sec:tabu}).
+The \emph{strength} of the perturbation is defined as the number of changed solution components. 
+If the perturbation strength is large, the \emph{diversification} effect is large and the procedure is similar to a random restart method. On the other hand if the strength is small, perturbation favors the \emph{intensification} of the search. The strength may be fixed but may also be adapted during the search (see \cite{lourencco2001iterated}).
+
+The \emph{acceptance criterion} is the other mechanism in ILS which controls the interplay between \emph{diversification} and \emph{intensification} of the search. 
+On one extreme accepting only better solution favors intensification, on the other extreme accepting all solutions without regards to its costs has a high diversification effect. Every intermediate mechanism and incorporating adaptive strategies may be used in designing acceptance tests.  
+
+Another important component is the use of short or long term memory concepts, which may be included in form of a \emph{history} of the search. The\emph{history} is used to steer the perturbation step and the acceptance test (compare to Tabu Search memory structures in Section~\ref{sec:tabu}). As a simple example the history counts the iterations and restarts the algorithm after reaching a specific amount of iteration.
  
 \begin{algorithm}
 \caption{Iterative Local Search (ILS)}
