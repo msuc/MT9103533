@@ -54,7 +54,7 @@ One basic heuristic approximation method is local search which given an initial 
 A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
-A neighborhood my be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
+A neighborhood may be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
 The necessary steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
@@ -235,7 +235,7 @@ Another important component is the use of short or long term memory concepts, wh
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Variable Neighborhood Search}
+\subsection{Variable Neighborhood Search}\label{sec:vns}
 Instead of using a fixed neighborhood, the Basic Variable Neighborhood Search (cf. Algorithm~\ref{vnsalgo}) as presented in \cite{VNS} uses a neighborhood structure of possibly nested neighborhoods (cf. Equation~\ref{eq:nb}), which together are guaranteed to explore the whole solution space. 
 \begin{equation}
 N_k(x)=N_0(x),N_1(x),\dots,N_{k_{max}}(x)
@@ -265,8 +265,12 @@ Furthermore a local minimal solution within one landscape, does not have to be a
      \label{fig:fig_vns}
 \end{figure}
 
-In the shaking phase the algorithm chooses a random solution of the current neighborhood to avoid getting captured in local minima. 
-If the solution found by the Local Search does not improve the next neighborhood will be considered (cf. Algorithm~\ref{changealgo}).
+In the \emph{shaking} phase the algorithm chooses a random solution of the current neighborhood to avoid getting captured in a local minima.  
+
+If the solution found by local search does not improve the next neighborhood will be considered (cf. Algorithm~\ref{changealgo}). 
+The selection of this neighborhood might be deterministic, but also other schemes are possible. For example one could randomly choose the next neighborhood, or use additional parameter to adjust the step sizes for the \emph{neighborhood change} dynamically.
+
+Variants of this basic scheme are obtained by removing the random shaking phase, which results in deterministic descent method called \emph{Variable neighborhood descent} (VND). Omitting the local search step results in the \emph{Reduced VNS} (RVNS) method, which is a purely stochastic method.
 
 \begin{algorithm}
 \caption{Variable Neighborhood Search (VNS)}
@@ -303,7 +307,7 @@ If the solution found by the Local Search does not improve the next neighborhood
 
 \subsection{Guided Local Search}
 Changing the neighborhood of solutions, as in the afforementioned algorithms like ILS and VNS, is not the only mechanism to escape local minimal solutions.
-A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced in (see \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}). 
+A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced by Tsang and Voudouris (see \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}). 
 
 In this approach diversification is achieved by changing the cost function itself. 
 The neighborhood structure stays fixed. 
