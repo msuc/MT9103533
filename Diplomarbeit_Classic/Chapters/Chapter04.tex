@@ -167,21 +167,21 @@ The memory keeps track of complete solutions (\emph{explicit} memory), moves, pa
 The main usage of tabu lists is to prevent cycling back to recent solutions, and prevents from searching the same region of the search space over and over again. 
 This \emph{short term memory} approach contributes to the \emph{diversification} of the search, since the neighborhood of solutions is changed dynamically according to their tabu status. 
 
-Four different types of memory structures are presented in ~\cite{glover1997tabu}:  
-\begin{enumerate}
-\item{Recency-based memory:} Recording when an attribute or solution was used in the search process.
-\item{Frequency-based memory:} Recording how often an attribute or solution was used during the search process. 
-\item{Quality-based memory:} Recording attributes or solutions which lead to, or are common to good solutions.
-\item{Influence-based memory:} Recording information of attributes or solution considering the impact of solution quality and structure.
-\end{enumerate}
+Usable other types of memory structures are the following (presented in ~\cite{glover1997tabu}):  
+\begin{description}
+\item[Recency-based memory:] Recording when an attribute or solution was used in the search process.
+\item[Frequency-based memory:] Recording how often an attribute or solution was used during the search process. 
+\item[Quality-based memory:] Recording attributes or solutions which lead to, or are common to good solutions.
+\item[Influence-based memory:] Recording information of attributes or solution considering the impact of solution quality and structure.
+\end{description}
 
 According to the \emph{short term memory} analogy of the human memory, tabu lists can be furthermore classified in \emph{intermediate term memory}, and \emph{long term memory} strategies (see~\cite{gendreau2003tabusearch}).
-\begin{itemize}
-\item{short term memory:} Uses for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
-\item{intermediate term memory:} Uses for \emph{intensification} of the search. For example use a recency-based memory, which records good solution and restart the search from these elite solutions.
+\begin{description}
+\item[short term memory:] Used for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
+\item[intermediate term memory:] Used for \emph{intensification} of the search. For example use a recency-based memory, which records good solution and restart the search from these elite solutions.
 Recency
-\item{long term memory:} Uses for \emph{diversification} of the search. For example implementing a frequency-based memory recording the total number of iterations in which solutions or their components have been used in the current solution. Restart the search using solutions which have a lower number of iterations.
-\end{itemize}
+\item[long term memory:] Used for \emph{diversification} of the search. For example implementing a frequency-based memory recording the total number of iterations in which solutions or their components have been used in the current solution. Restart the search using solutions which have a lower number of iterations.
+\end{description}
 
 An important role in controlling the \emph{diversification} of the search is the length of tabu lists (\emph{tabu tenure}).  
 As a general rule the longer the tabu list the higher the diversification effect, since preventing a larger number of candidate solutions in a neighborhood drastically changes the solution landscape (see \cite{blum2003metaheuristics}). 
@@ -322,7 +322,8 @@ In Figure~\ref{fig:fig_gls} the gradually change of the cost function which may 
      \label{fig:fig_gls}
 \end{figure}
 
-Altering the cost function is based on penalizing the presence of \emph{solution features} which are distinguishing properties of different solutions. The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
+Altering the cost function is based on penalizing the presence of \emph{solution features} which are distinguishing properties of different solutions. 
+The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
 
 \subsection{Simulated Annealing}
 We conclude the presentation of single solution based meta-heuristics with Simulated Annealing (SA), which is one of the first algorithms considered a meta-heuristic. 
@@ -331,9 +332,13 @@ The interplay between intensification and diversification is controlled by the t
 
 \section{Population Based Meta-Heuristics}
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
+
 \subsection{Evolutionary Computation}
+
 \subsection{Ant Colony Optimization}
+
 \section{Classification and Comparison of Meta-Heuristics}
+\fxnote{Summarize metaheuristics using classifications. Do not know if to include}
 
 \section{Trajectory Selection Using Meta-Heuristics} \label{sec:trajselmeta}
 The aforementioned trajectory selection for forward movements, evaluation and collision test are costly operations. 
