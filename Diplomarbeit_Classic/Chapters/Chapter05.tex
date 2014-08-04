@@ -1,5 +1,6 @@
 % Chapter 5
 \chapter{Evaluation}\label{ch:eval}
+\fxnote{Explain 2-step approach - Experiments with artificial local maps and example planner, and experiments within a simulation and real planners. Explain the boxplot.}
 \section{Experiments}
 To select a benchmark cost a brute force search is performed on random generated test instances, evaluating a fixed number of trajectories. 
 The time the algorithm needs to find this benchmark solution is used to compare their performance.
@@ -49,8 +50,8 @@ The following list shows the tested algorithm:
 \item{\bf{Variable Neighborhood Search:}} Variable Neighborhood search with Best-,and First-Improvement heuristic, and Tabu List (VNSB, VNSF).
 \end{itemize}
 
-\section{Test results}\label{sec:testresults}
-\subsection{Overall Test}
+\section{Results}\label{sec:testresults}
+\subsection{Influence of trajectory size}
 In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM.  
 Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, and using 2400 trajectory samples.
    \begin{figure}[thpb]
@@ -70,7 +71,7 @@ Furthermore the VNS exhibit a more stable performance than the ILS methods.
 Comparing the ILS algorithms reveals the connection of the search space size to the size of the neighborhood. 
 A small number of trajectories benefits smaller sized neighborhoods, whereas increasing the number of trajectories benefits larger neighborhoods. 
 
-\subsection{Tests on specific instances}
+\subsection{Influence of trajectory size by specific instances}
 The following tests only include the VNSF, VNSB and ILS4 algorithms. 
 The algorithms are executed with specific world instances, and repeated 50 times. 
 The results in Figure~\ref{fig:fig_special} show again that the VNS algorithms significantly outperform the Brute Force method. 
@@ -96,7 +97,8 @@ Analyzing the results of the ILS4 algorithms shows that a too small environment 
 Here the use of a neighborhood structure pays off and the VNS approaches perform evidently better than ILS. 
 In addition, the results show that the algorithms perform good independent of number and size of obstacles.
 
-\subsection{Tests comparing the influence of velocity bounds}
+\subsection{Influence of velocity bounds}
+\fxnote{have the results and lots of figures. Need to do better visualization}
 
 As for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply to the local planning domain. 
 Looking at all the results, there is no clear winner among the algorithms. 
@@ -105,4 +107,5 @@ Nevertheless using Variable Neighborhood search with Tabu List and Best Improvem
 In general the run time of the python implementation is not very efficient compared to tuned C++ implementations. 
 Therefore the absolute numbers of the run time evaluations should be handled with care. 
 
-\subsection{Tests on extending existing local planner}
+\subsection{Simulated environment and robot}
+\fxnote{Have the results for the v4r environment using DWA and Trajectory Rollout with and without met-heuristics. Need to make figures.}

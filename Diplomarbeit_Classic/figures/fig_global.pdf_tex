@@ -50,9 +50,9 @@
   \makeatother%
   \begin{picture}(1,0.99076312)%
     \put(0,0){\includegraphics[width=\unitlength]{fig_global.pdf}}%
-    \put(0.36245569,0.58093632){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021443\unitlength}\centering obstacle\end{minipage}}}%
-    \put(0.64549944,0.49603331){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021443\unitlength}\centering global path\end{minipage}}}%
-    \put(0.11750802,0.34769858){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021443\unitlength}\raggedleft local map\end{minipage}}}%
-    \put(0.13817559,0.53329007){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021443\unitlength}\raggedleft robot\end{minipage}}}%
+    \put(0.36245569,0.58093632){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021441\unitlength}\centering obstacle\end{minipage}}}%
+    \put(0.64549944,0.49603331){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021441\unitlength}\centering global path\end{minipage}}}%
+    \put(0.11750802,0.34769858){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021441\unitlength}\raggedleft local map\end{minipage}}}%
+    \put(0.13817559,0.53329007){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.21021441\unitlength}\raggedleft robot\end{minipage}}}%
   \end{picture}%
 \endgroup%

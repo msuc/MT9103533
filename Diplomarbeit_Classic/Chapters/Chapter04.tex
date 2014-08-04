@@ -55,6 +55,7 @@ A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to ever
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
 A neighborhood may be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
+
 The necessary steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
@@ -142,7 +143,9 @@ The selection function may also just randomly choose a neighbor, or choose the b
 
 \subsection{Tabu Search} \label{sec:tabu}
 A very successful meta-heuristic strategy is Tabu Search (see \cite{glover1988tabu}). 
-The main contribution is the use of tabu lists, which are memory structures used to guide the local search procedure. In Algorithm~\ref{tabualgo} the basic form of this approach is presented. 
+The main contribution is the use of tabu lists, which are memory structures used to guide the local search procedure. 
+
+The memory keeps track of complete solutions (\emph{explicit} memory), moves, partial solutions, or other solution attributes (\emph{attributive} memory), which are used to prohibit moves during the exploration of the search space for a given amount of time - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched (see~\cite{glover1997tabu})}. In Algorithm~\ref{tabualgo} the basic form of this approach is presented. 
 
 \begin{algorithm}
 \caption{Tabu Search}
@@ -162,8 +165,6 @@ The main contribution is the use of tabu lists, which are memory structures used
 \end{algorithmic}
 \end{algorithm}
 
-The memory keeps track of complete solutions (\emph{explicit} memory), moves, partial solutions, or other solution attributes (\emph{attributive} memory), which are used to prohibit moves during the exploration of the search space for a given amount of time - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched (see~\cite{glover1997tabu})}.
-
 The main usage of tabu lists is to prevent cycling back to recent solutions, and prevents from searching the same region of the search space over and over again. 
 This \emph{short term memory} approach contributes to the \emph{diversification} of the search, since the neighborhood of solutions is changed dynamically according to their tabu status. 
 
@@ -179,7 +180,6 @@ According to the \emph{short term memory} analogy of the human memory, tabu list
 \begin{description}
 \item[short term memory:] Used for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
 \item[intermediate term memory:] Used for \emph{intensification} of the search. For example use a recency-based memory, which records good solution and restart the search from these elite solutions.
-Recency
 \item[long term memory:] Used for \emph{diversification} of the search. For example implementing a frequency-based memory recording the total number of iterations in which solutions or their components have been used in the current solution. Restart the search using solutions which have a lower number of iterations.
 \end{description}
 
@@ -331,7 +331,7 @@ We conclude the presentation of single solution based meta-heuristics with Simul
 It was introduced in \cite{Kirkpatrick83SimulatedAnnealing}, and provides an explicit \emph{diversification} mechanism to avoid getting trapped in local minimal solutions. 
 This is achieved by allowing moves to worse solutions during a local search with a certain probability (metropolis criterion, see~\ref{eq:metropolis}).
 \begin{equation}
-   P(accept(x^\prime))=\exp(\frac{-|f_c(x^\prime)-f_c(x)|}{T})
+   P(accept(x^\prime))=\exp{(\frac{-|f_c(x^\prime)-f_c(x)|}{T})}
    \label{eq:metropolis}
 \end{equation} 
 The interplay between \emph{intensification} and \emph{diversification} is controlled by the temperature  parameter $T$. A high temperature yields a high probability for moving to the new solution. On the other hand a low temperature makes it less probable to leave the current neighborhood.
@@ -344,38 +344,8 @@ Beside this basic form of a \emph{cooling schedule} oscillating schemes can be i
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
 
 \subsection{Evolutionary Computation}
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
 
 \subsection{Ant Colony Optimization}
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
-Hwo many line do I need to describe EC.
 
 \section{Classification and Comparison of Meta-Heuristics}
 \fxnote{Summarize metaheuristics using classifications. Do not know if to include}
