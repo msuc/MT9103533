@@ -18,9 +18,9 @@ The proposed methods are tested and refined and implemented into a robotic navig
 \item{\bf{VNSF-POSNEG}} Refining VNSF-Tabu with short term memory
 \end{itemize}
 
-The next section provides background information of meta-heuristic search, followed by a detailed description about the specific algorithms used for extending local planners.
+The next section provides background information of meta-heuristic search. Following well known classifications of meta-heuristics (see \cite{blum2003metaheuristics}, \cite{birattari2001classification} ) we proceed by introducing \emph{single solution based} meta heuristic, which are the main source for our proposed approach. To complete the presentation of meta-heuristic we give a short description on the ideas of \emph{population based} meta heuristics.
 
-The relevant local planners we took into consideration are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed at the end of this chapter.
+We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. These are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed towards the end of this chapter.
 
 \section{Meta-Heuristic Search}
 The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
@@ -86,7 +86,7 @@ As the name suggests these meta-heuristic approaches operate on improving a sing
 Starting from an initial solution the search describes a single trajectory in the search space, when moving from one solution to another. 
 Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
 
-\subsection{Local Search}
+\subsection{Local Search}\label{sec:ls}
 The simple local search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local optimum according to a cost function $f_c(x)$ in a region around an initial solution in the solution space, defined by a neighborhood structure $N(x)$. 
 
 \begin{algorithm}
@@ -327,15 +327,55 @@ The effect of the \emph{penalty parameters} on the cost function is in addition 
 
 \subsection{Simulated Annealing}
 We conclude the presentation of single solution based meta-heuristics with Simulated Annealing (SA), which is one of the first algorithms considered a meta-heuristic. 
-It was introduced in \cite{Kirkpatrick83SimulatedAnnealing}, and provides an explicit diversification mechanism to avoid getting trapped in local minimal solutions by allowing moves to worse solutions during a local search with a certain probability. 
-The interplay between intensification and diversification is controlled by the temperature  parameter $T$. 
+
+It was introduced in \cite{Kirkpatrick83SimulatedAnnealing}, and provides an explicit \emph{diversification} mechanism to avoid getting trapped in local minimal solutions. 
+This is achieved by allowing moves to worse solutions during a local search with a certain probability (metropolis criterion, see~\ref{eq:metropolis}).
+\begin{equation}
+   P(accept(x^\prime))=\exp(\frac{-|f_c(x^\prime)-f_c(x)|}{T})
+   \label{eq:metropolis}
+\end{equation} 
+The interplay between \emph{intensification} and \emph{diversification} is controlled by the temperature  parameter $T$. A high temperature yields a high probability for moving to the new solution. On the other hand a low temperature makes it less probable to leave the current neighborhood.
+
+Decreasing the temperature during the search is called \emph{annealing}, referring to the intuition of physical annealing processes, which sets materials in a stable (optimal) state by reducing their temperature. 
+
+Beside this basic form of a \emph{cooling schedule} oscillating schemes can be implemented (\emph{reheating}) which cycle between \emph{intensifiction} and \emph{diversification} phases. 
 
 \section{Population Based Meta-Heuristics}
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
 
 \subsection{Evolutionary Computation}
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
 
 \subsection{Ant Colony Optimization}
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
+Hwo many line do I need to describe EC.
 
 \section{Classification and Comparison of Meta-Heuristics}
 \fxnote{Summarize metaheuristics using classifications. Do not know if to include}
