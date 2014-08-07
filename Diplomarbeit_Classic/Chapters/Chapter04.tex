@@ -378,6 +378,31 @@ A generated cost-map together with a visualization of consecutive local path pla
 		\label{fig:fig_instances_detail}
 \end{figure}
 
+Increasing the performance of the local planner has an important impact on the resulting path. Clearly one benefit of decreasing the time the local planning steps take is its increased reactivity. The faster and hence more often the local planner can be invoked to adapt to recent sensory information.
+
+Another important quality increase is the number of trajectory samples the local planner can use for making a decision. A higher number of trajectories increases the granularity of the cost function it optimizes. In the end this yields a smoother and more effective path (see Figure~\ref{fig:fig_smooth}).
+
+\begin{figure}[thb]
+   \footnotesize
+   \centering
+   \myfloatalign
+   \captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_curvature_23_6}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_curvature_23_156}
+    }
+    \caption[Comparison of two paths generated using different amounts of trajectories.]{Comparison of two paths generated using different amounts of trajectories. The left path was generated with 144, and the right one with 3588 trajectories. The higher amount of sampled trajectories results in a smoother and more effective path.}  
+     \label{fig:fig_smooth}
+\end{figure}
+
+  
+
 \subsection{Neighborhood}
 The neighborhood of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
 The 4-neighborhood makes a step by either increasing or decreasing the current linear and angular velocity by one discretization step (Manhattan distance $=1$). 
