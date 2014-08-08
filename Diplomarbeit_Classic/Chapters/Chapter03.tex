@@ -41,7 +41,7 @@ The Curvature Velocity Method in \cite{simmons1996curvature} considers approxima
 Instead of using discrete samples of the velocity space, it divides the space in sets of curvature intervals. 
 Evaluation is performed by evaluating over all curvature intervals.
 
-\subsection{Dynamic Window Approach (DWA)}
+\subsection{Dynamic Window Approach (DWA)}\label{sec:dwa}
 A well known method for local planning is the Dynamic Window Approach proposed in \cite{DWA1997}. 
 The method discretely samples the velocity space $(v,w)$ of the robot, where $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
 The velocity space is reduced to the reachable minimal and maximal velocity in one control cycle, taken the acceleration limits of the robot into account.

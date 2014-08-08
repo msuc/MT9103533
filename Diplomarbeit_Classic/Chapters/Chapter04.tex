@@ -352,13 +352,7 @@ In contrast to the aforementioned methods, population based meta-heuristics oper
 
 \section{Trajectory Selection Using Meta-Heuristics} \label{sec:trajselmeta}
 The aforementioned trajectory selection for forward movements, evaluation and collision test are costly operations. 
-The focus lies on improving this part of the DWA algorithm. 
-The trajectory sampling and selection of the DWA are implemented in python minimizing a simpler cost function $f_c(v,w)$ (cf. Equation~\ref{eq:simplecost}), where $f_g(v,w)$ is the distance of the center of the robot in the end position to a predefined goal position, and $f_o(v,w)$ is the maximal distance to an obstacle on the trajectory path.
-
-\begin{equation}
-   f_c(v,w)=\alpha f_g(v,w) - \beta f_o(v,w)
-   \label{eq:simplecost}
-\end{equation}
+The focus lies on improving this part of local planners using meta-heuristic algorithm. 
 
 Instead of performing an exhaustive \textit{Brute Force} search on all velocity samples, Meta-Heuristic algorithms are here used to boost the search performance. 
 
