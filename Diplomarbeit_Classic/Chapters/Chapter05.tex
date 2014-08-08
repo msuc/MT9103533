@@ -29,7 +29,8 @@ The following 60 test instances include different obstacle counts and random pla
 \item 15 instances with 25 obstacles and side length 0.1 meter.
 \end{itemize}
 
-Figure~\ref{fig:fig_instances} illustrates three random instances. 
+The instances simulate a snapshot of the local environment of the robot at a given time point, which is used as a local map for input of the local planner.
+The resolution of the maps is fixed to 0.05 meter/pixel, resulting in a quadratic map of size 7.5 meter. Figure~\ref{fig:fig_instances} illustrates three random instances. 
 %\begin{figure}[thpb]
 \begin{figure}[thpb]
      \footnotesize
@@ -77,18 +78,41 @@ In Figure~\ref{fig:gazebo_v4r} the 3D-model, which is a simple artificial buildi
       \setlength\fboxrule{0.5pt}
        \subfloat[]
        {  
-           \fbox{\includegraphics[width=0.7\textwidth]{figures/fig_gazebo_v4r.png}}
+           \fbox{\includegraphics[width=\textwidth]{figures/fig_gazebo_v4r.png}}
        }\\
        \subfloat[]
        {  
-           \fbox{\includegraphics[width=0.7\textwidth]{figures/fig_rviz_v4r.png}}
+           \fbox{\includegraphics[width=\textwidth]{figures/fig_rviz_v4r.png}}
        }        
        \caption[Simulation environment]{Figure (a) shows the 3D model used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
       \label{fig:gazebo_v4r}
    \end{figure}
 
 \section{Results}\label{sec:testresults}
-\fxnote{Explain Boxplot, number of experiments, randomness, ev. the abbrevations used in diagrams}
+All experiments account for the randomness of the proposed methods by running the algorithm multiple times.
+The results are visualized using box-plots. 
+The colored box is bounded by the lower quartile and the upper quartile of the data ($25\%$ and $75\%$ of the data). 
+The median is indicated by a straight line through the box. 
+The upper whisker extending at one end of the box indicate the last data point which lies below the $75\%$ quartile plus $1.5$ times the
+inter quartile range (IQR). The lower whisker on the other end indicates the last data point which lies above the $25\%$ quartile minus 1.5 times the IQR. 
+Points outside of the whisker range are considered outliers.
+As a rule of thumb if the boxes between two measured data sets do not overlap, the difference between those data sets is significant.
+
+Figure~\ref{fig:fig_boxplot} shows a commmon boxplot. 
+%\begin{figure}[thpb]
+\begin{figure}[thpb]
+     \footnotesize
+      \centering
+      \myfloatalign
+      \setlength\fboxsep{0pt}
+      \setlength\fboxrule{0.5pt}
+       \subfloat[]
+       {  
+           \fbox{\includegraphics[width=0.75\textwidth]{figures/fig_box-and-whisker-plot.png}}
+       }        
+       \caption{A classical boxplot diagram.}
+      \label{fig:fig_boxplot}
+   \end{figure}
 
 \subsection{Influence of trajectory size}
 In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM.  

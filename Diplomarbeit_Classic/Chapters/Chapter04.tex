@@ -22,7 +22,7 @@ The next section provides background information of meta-heuristic search. Follo
 
 We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. These are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed towards the end of this chapter.
 
-\section{Meta-Heuristic Search}
+\section{Meta-Heuristic Search}\label{sec:meta}
 The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
 
 In general an optimization problem and its solutions can be defined as follows (see \cite{blum2003metaheuristics}): 
@@ -82,7 +82,7 @@ How successful a meta-heuristic performs depends largely at how good it is to ba
 \end{itemize}
 
  
-\section{Single Solution Based Meta-Heuristics}
+\section{Single Solution Based Meta-Heuristics}\label{sec:single}
 As the name suggests these meta-heuristic approaches operate on improving a single solution during the search. 
 Starting from an initial solution the search describes a single trajectory in the search space, when moving from one solution to another. 
 Usually these methods incorporate local search as a component, and additional strategies to escape from local minimal solution.  
@@ -355,23 +355,7 @@ In contrast to the aforementioned methods, population based meta-heuristics oper
 The aforementioned trajectory selection for forward movements, evaluation and collision test are costly operations. 
 The focus lies on improving this part of local planners using meta-heuristic algorithm. 
 
-Instead of performing an exhaustive \textit{Brute Force} search on all velocity samples, Meta-Heuristic algorithms are here used to boost the search performance. 
-
-The reduced search space are all tuples of forward and angular velocities $(v,w)$ within given limits $v_{min} \leq v \leq v_{max}$ and $w_{min} \leq w \leq w_{max}$ and a step size for discretization by fixing the number of samples.
-
-A generated cost-map together with a visualization of consecutive local path planning steps in a simulation is shown in Figure~\ref{fig:fig_instances_detail}.
-   
-\begin{figure}[thpb]
-     \footnotesize
-      \centering
-      \setlength\fboxsep{0pt}
-      \setlength\fboxrule{0.5pt}
-       \def\svgwidth{\textwidth}
-       %\fbox{\includesvg{figures/fig_inst_25_new}}
-       \includesvg{figures/fig_inst_25_new}
-		\caption[Local-path planning simulation.]{This figure shows three applications of the local planner in a simulated experiment. The greyscale background image visualizes obstacle costs of a generated cost-map. Trajectories in green are drive-able, whereas red trajectories collide with obstacles. In each local planning step possible trajectories are weighted with respect to obstacle closeness and progression towards goal destination. For example in the second step a longer valid trajectory is rejected, while a shorter trajectory which stays farther away from obstacles is selected for execution. After three local planning applications the robot safely reaches the goal destination.}
-		\label{fig:fig_instances_detail}
-\end{figure}
+Instead of performing an exhaustive \textit{Brute Force} search on all velocity samples, meta-heuristic algorithms are here used to increase the search performance. 
 
 Increasing the performance of the local planner has an important impact on the resulting path and behavior of the robot. 
 It allows for increasing the following properties of local planner:
@@ -404,8 +388,40 @@ It allows for increasing the following properties of local planner:
 \end{figure}
 \end{description}
 
-\subsection{Neighborhood}
-The neighborhood of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
+The choice of using single solution based meta-heuristics (see Section~\ref{sec:single}) was driven by the nice properties these algorithms provide. 
+They are \emph{general applicable} to optimization problems, since no domain specific knowledge is necessary, or can easily be captured using only the local search procedure.
+Furthermore they are easy to implement and incorporated into existing software solutions.
+Looking at the high number of parameters used for configuring current navigation systems the \emph{configuration process} is very tedious. Hence introducing lots of new parameters does not make it easier to find suitable configurations.
+Meta-heuristics are well suited for this task because they use only few parameters to achieve good performance.  
+
+In order to use meta-heuristics we need to formulate the local planning problem according to definitions given in Section~\ref{sec:meta}.
+
+Since we restrict the problem to non-holonomic robots moving on 2D-planes, the \emph{input variables} are all tuples of forward and angular velocities $(v,w)$ the robot is capable.
+The \emph{domain} of the variables is a discrete set of the real valued search space induced by using a fixed stepping size by selecting a specific amount of trajectories.
+ 
+Forward and angular velocities $(v,w)$ are furthermore \emph{constrained} within given limits $v_{min} \leq v \leq v_{max}$ and $w_{min} \leq w \leq w_{max}$.
+
+The optimization problem is given as a function over the control inputs (velocity tuples) for the motor controller. 
+The costs are calculated using a simulation of the robot with the given input velocity tuple and projecting the outline of the robot onto a cost-map. 
+
+A generated cost-map together with a visualization of consecutive local path planning steps in a simulation is shown in Figure~\ref{fig:fig_instances_detail}.
+   
+\begin{figure}[thpb]
+     \footnotesize
+      \centering
+      \setlength\fboxsep{0pt}
+      \setlength\fboxrule{0.5pt}
+       \def\svgwidth{\textwidth}
+       %\fbox{\includesvg{figures/fig_inst_25_new}}
+       \includesvg{figures/fig_inst_25_new}
+		\caption[Local-path planning simulation.]{This figure shows three applications of the local planner in a simulated experiment. The greyscale background image visualizes obstacle costs of a generated cost-map. Trajectories in green are drive-able, whereas red trajectories collide with obstacles. In each local planning step possible trajectories are weighted with respect to obstacle closeness and progression towards goal destination. For example in the second step a longer valid trajectory is rejected, while a shorter trajectory which stays farther away from obstacles is selected for execution. After three local planning applications the robot safely reaches the goal destination.}
+		\label{fig:fig_instances_detail}
+\end{figure}
+
+Solutions which do not succeed a given cost threshold are \emph{feasible} and free of collision. 
+On the other hand solutions which reach a given maximum cost value indicating a collision with an object are considered \emph{infeasible}.
+
+The \emph{neighborhood} of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
 The 4-neighborhood makes a step by either increasing or decreasing the current linear and angular velocity by one discretization step (Manhattan distance $=1$). 
 The 8-neighborhood takes all neighbors into account which are reachable in one discretization step (Moore neighborhood). 
 16-neighborhood are all neighbors reachable in two steps. 
@@ -419,19 +435,21 @@ This process continues until the whole search space is the neighborhood. Figure~
    \label{fig:fig_nb}
 \end{figure}
 
-\subsection{Local Search (LS)}
-Using Local Search the neighborhood is either exhaustively searched for the best solution (Best-Improvement heuristic) or stopped after finding the first improving solution (First-Improvement heuristic).
+Using \emph{Local Search} (see Section~\ref{sec:ls}) the neighborhood is either exhaustively searched for the best solution (Best-Improvement heuristic) or stopped after finding the first improving solution (First-Improvement heuristic).
 
-\subsection{Tabu List}
+Next we list the meta-heuristic algorithms used in our approach.
+
+\begin{description}
+\item[Tabu List:]
 Instead of recording all steps made in a Local Search run, all visited states are marked as tabu and will not be considered as valid solution in future steps of the algorithm. 
 The Tabu list is used by the other Meta-Heuristic algorithm during the Local Search.
 
-\subsection{Iterated Local Search (ILS)}
+\item[Iterated Local Search (ILS):]
 The perturbation step is very simplified and just finds the next random valid velocity tuple. 
 Instead of altering the current solution in each step, we make use of the history and apply it after a fixed amount of iterations. 
 The algorithm can use a 4,8, and 16-neighborhood with Best Improvement heuristic for the Local Search.
 
-\subsection{Variable Neighborhood Search (VNS)}
+\item[Variable Neighborhood Search (VNS):]
 For the VNS algorithm local search is performed in one neighborhood until no improvement occurs. 
 The shaking chooses a random solution in the current neighborhood. 
 If the shaking does not yield any solution, because the whole neighborhood is tabu, or does not include a collision free trajectory, the next neighborhood is chosen. 
@@ -446,4 +464,6 @@ Larger neighborhoods are too costly to evaluate.
 Therefore the neighborhood structure is bounded above by $k_{max}=8$. 
 If no improvement is made up to the $N_{k_{max}}$ neighborhood, a new initial solution is generated at random. 
 The VNS algorithm can be used with Best-, or First-Improvement heuristic for the Local Search.
+\end{description}
+
 
