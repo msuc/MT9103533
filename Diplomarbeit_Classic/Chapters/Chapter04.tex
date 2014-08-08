@@ -341,6 +341,7 @@ Decreasing the temperature during the search is called \emph{annealing}, referri
 Beside this basic form of a \emph{cooling schedule} oscillating schemes can be implemented (\emph{reheating}) which cycle between \emph{intensifiction} and \emph{diversification} phases. 
 
 \section{Population Based Meta-Heuristics}
+\fxnote{may be optional section and can be mentioned in the beginning of the chapter. interesting because those metaheuristic are really used in robot navigation.}
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
 
 \subsection{Evolutionary Computation}
@@ -372,9 +373,16 @@ A generated cost-map together with a visualization of consecutive local path pla
 		\label{fig:fig_instances_detail}
 \end{figure}
 
-Increasing the performance of the local planner has an important impact on the resulting path. Clearly one benefit of decreasing the time the local planning steps take is its increased reactivity. The faster and hence more often the local planner can be invoked to adapt to recent sensory information.
+Increasing the performance of the local planner has an important impact on the resulting path and behavior of the robot. 
+It allows for increasing the following properties of local planner:
+\begin{description}
+\item[Reactivity] Clearly one benefit of decreasing the time the local planning steps take is its increased reactivity. The faster and hence more often the local planner can be invoked to adapt to recent sensory information.
 
-Another important quality increase is the number of trajectory samples the local planner can use for making a decision. A higher number of trajectories increases the granularity of the cost function it optimizes. In the end this yields a smoother and more effective path (see Figure~\ref{fig:fig_smooth}).
+\item[Resolution] The performance gain can be used to increase the resolution of cost-maps and collision test of the robot.
+
+\item[Simulation-time] Performing longer simulation periods results often in smoother paths since the robot can react early to possible obstructions. In addition it might also find shortcuts at an earlier stage, which results in a shorter path. 
+
+\item[Trajectory-number] Another very important quality benefit is the number of trajectory samples the local planner can use for making a decision. A higher number of trajectories increases the granularity of the cost function it optimizes. In the end this yields a smoother and more effective path (see Figure~\ref{fig:fig_smooth}).
 
 \begin{figure}[thb]
    \footnotesize
@@ -394,8 +402,7 @@ Another important quality increase is the number of trajectory samples the local
     \caption[Comparison of two paths generated using different amounts of trajectories.]{Comparison of two paths generated using different amounts of trajectories. The left path was generated with 144, and the right one with 3588 trajectories. The higher amount of sampled trajectories results in a smoother and more effective path.}  
      \label{fig:fig_smooth}
 \end{figure}
-
-  
+\end{description}
 
 \subsection{Neighborhood}
 The neighborhood of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
