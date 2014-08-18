@@ -11,7 +11,7 @@ We introduce trajectory selection extensions using a combination of meta-heurist
 \item{\bf{VNSF-Tabu:}} Based on Variable Neighborhood Search and the use of a simple memory and First Improvement heuristic.
 \end{itemize}
 
-The proposed methods are tested and refined and implemented into a robotic navigation system which already supports implementations of a local planner based on Dynamic Window Approach and Trajectory Rollout.
+The proposed methods are tested and refined and implemented into a robotic navigation system which already supports implementations of a local planner based on Dynamic Window Approach and Trajectory Roll-out.
 
 \begin{itemize}
 \item{\bf{VNSB-POSNEG}} Refining VNSB-Tabu with short term memory
@@ -352,10 +352,13 @@ In contrast to the aforementioned methods, population based meta-heuristics oper
 \fxnote{Summarize meta-heuristics using classifications. Do not know if to include}
 
 \section{Trajectory Selection Using Meta-Heuristics} \label{sec:trajselmeta}
-The aforementioned trajectory selection for forward movements, evaluation and collision test are costly operations. 
-The focus lies on improving this part of local planners using meta-heuristic algorithm. 
+One basic step in creating a good local planner for mobile robots is the aforementioned trajectory selection. Especially forward movements are of particular interest, since their evaluation and collision test are costly operations.
+Only if forward movement does not yield valid movements, other strategies have to be applied, which provide escaping mechanisms, like turning around for relocation, or slow random backward movements to help the robot evade situations where it gets stuck. 
+The use of escaping mechanisms should be limited, since they are only relevant if the usual planning step fails. 
 
-Instead of performing an exhaustive \textit{Brute Force} search on all velocity samples, meta-heuristic algorithms are here used to increase the search performance. 
+In this paper the focus lies on improving the trajectory selection of local planners using meta-heuristic algorithm. 
+
+Instead of following an exhaustive generate and test procedure on all velocity samples, meta-heuristic algorithms are used to increase the search performance. 
 
 Increasing the performance of the local planner has an important impact on the resulting path and behavior of the robot. 
 It allows for increasing the following properties of local planner:
@@ -391,13 +394,14 @@ It allows for increasing the following properties of local planner:
 The choice of using single solution based meta-heuristics (see Section~\ref{sec:single}) was driven by the nice properties these algorithms provide. 
 They are \emph{general applicable} to optimization problems, since no domain specific knowledge is necessary, or can easily be captured using only the local search procedure.
 Furthermore they are easy to implement and incorporated into existing software solutions.
-Looking at the high number of parameters used for configuring current navigation systems the \emph{configuration process} is very tedious. Hence introducing lots of new parameters does not make it easier to find suitable configurations.
+Looking at the high number of parameters used for configuring current navigation systems the \emph{configuration process} is very tedious. 
+Hence introducing lots of new parameters does not make it easier to find suitable configurations.
 Meta-heuristics are well suited for this task because they use only few parameters to achieve good performance.  
 
-In order to use meta-heuristics we need to formulate the local planning problem according to definitions given in Section~\ref{sec:meta}.
+In order to use meta-heuristics we need to formulate the local planning problem according to the definitions given in Section~\ref{sec:meta}.
 
 Since we restrict the problem to non-holonomic robots moving on 2D-planes, the \emph{input variables} are all tuples of forward and angular velocities $(v,w)$ the robot is capable.
-The \emph{domain} of the variables is a discrete set of the real valued search space induced by using a fixed stepping size by selecting a specific amount of trajectories.
+The \emph{domain} of the variables is a discrete set of the real valued search space induced by using a fixed stepping size and selecting a specific amount of trajectories.
  
 Forward and angular velocities $(v,w)$ are furthermore \emph{constrained} within given limits $v_{min} \leq v \leq v_{max}$ and $w_{min} \leq w \leq w_{max}$.
 
@@ -423,7 +427,7 @@ On the other hand solutions which reach a given maximum cost value indicating a 
 
 The \emph{neighborhood} of a solution is simply defined by making a number of discretization steps to reachable regions from the current solution velocity tuple. 
 The 4-neighborhood makes a step by either increasing or decreasing the current linear and angular velocity by one discretization step (Manhattan distance $=1$). 
-The 8-neighborhood takes all neighbors into account which are reachable in one discretization step (Moore neighborhood). 
+The 8-neighborhood takes in addition also the diagonal neighbors into account which are reachable in one discretization step (Moore neighborhood). 
 16-neighborhood are all neighbors reachable in two steps. 
 This process continues until the whole search space is the neighborhood. Figure~\ref{fig:fig_nb} visualizes the neighborhood structure.
 \begin{figure}[thpb]
@@ -435,13 +439,24 @@ This process continues until the whole search space is the neighborhood. Figure~
    \label{fig:fig_nb}
 \end{figure}
 
-Using \emph{Local Search} (see Section~\ref{sec:ls}) the neighborhood is either exhaustively searched for the best solution (Best-Improvement heuristic) or stopped after finding the first improving solution (First-Improvement heuristic).
+Using \emph{Local Search} (see Section~\ref{sec:ls}) the neighborhood is either exhaustively searched for the best solution using Best-Improvement heuristic (see Section~\ref{bestimprov}) or stopped after finding the first improving solution using First-Improvement heuristic (see Section~\ref{firstimprov}).
 
 Next we list the meta-heuristic algorithms used in our approach.
 
 \begin{description}
 \item[Tabu List:]
-Instead of recording all steps made in a Local Search run, all visited states are marked as tabu and will not be considered as valid solution in future steps of the algorithm. 
+The \emph{memory structures} (see Section~\ref{tabualgo}) used in the proposed method are very simple. 
+Since the run-time requirements are very demanding, long term strategies are less suited to provide good results.
+
+The first strategy keeps all visited states during the search as tabu. They will not be considered as valid solution in future steps of the search process. 
+
+A more sophisticated strategy is used in the extension of existing planner.
+Here two types of tabu lists are present.
+\begin{enumerate}
+\item{long term memory:} Keeps all \emph{invalid} velocity tuples which lead to collision. The are never considered again in future searches. This is possible since the solution space is not too large.
+\item{short term memory:} Classical tabu list, with parametrized \emph{tabu tenure} which keeps the most recently visited \emph{valid} velocity tuples in a FILO list.
+\end{enumerate}
+
 The Tabu list is used by the other Meta-Heuristic algorithm during the Local Search.
 
 \item[Iterated Local Search (ILS):]
