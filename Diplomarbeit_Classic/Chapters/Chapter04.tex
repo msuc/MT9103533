@@ -457,17 +457,27 @@ Here two types of tabu lists are present.
 \item{short term memory:} Classical tabu list, with parametrized \emph{tabu tenure} which keeps the most recently visited \emph{valid} velocity tuples in a FILO list.
 \end{enumerate}
 
-The Tabu list is used by the other Meta-Heuristic algorithm during the Local Search.
+The Tabu list is used by the other meta-heuristic algorithms during the Local Search.
 
 \item[Iterated Local Search (ILS):]
-The perturbation step is very simplified and just finds the next random valid velocity tuple. 
-Instead of altering the current solution in each step, we make use of the history and apply it after a fixed amount of iterations. 
-The algorithm can use a 4,8, and 16-neighborhood with Best Improvement heuristic for the Local Search.
+The main structure of this algorithm was already shown in Section~\ref{ilsalgo}.
+The algorithm searches iteratively a fixed 4,8, and 16-neighborhood with Best Improvement heuristic for the Local Search.
+
+Since the solution vector is only 2-dimensional, there is no need for complicated perturbation schemes. 
+It is possible to either randomly generate a new linear velocity, a new angular velocity or both. 
+
+Using the \emph{history} capability of ILS it is possible to apply the perturbation step after a fixed amount of iterations. 
+Furthermore one can parametrize the algorithm to restart if the neighborhood is empty due to invalid neighbors or the application of the tabu list. 
+
 
 \item[Variable Neighborhood Search (VNS):]
-For the VNS algorithm local search is performed in one neighborhood until no improvement occurs. 
-The shaking chooses a random solution in the current neighborhood. 
-If the shaking does not yield any solution, because the whole neighborhood is tabu, or does not include a collision free trajectory, the next neighborhood is chosen. 
+For the VNS algorithm local search is performed in one neighborhood until no improvement occurs.
+The used algorithm follows the scheme shown in Section~\ref{fig:fig_vns}.
+
+The algorithm starts with either a random initial solution, or with the best solution found in the previous local planning step. 
+In the \emph{shaking} phase a new random solution in the current neighborhood is selected. 
+If \emph{shaking} does not yield any solution, because the whole neighborhood is tabu, or does not include a collision free trajectory, the next neighborhood is chosen. 
+
 An ordering of neighborhoods according to their size yields the neighborhood structure:
 \begin{itemize}
  \item $N_0(x)=$ 4-connected
@@ -475,9 +485,17 @@ An ordering of neighborhoods according to their size yields the neighborhood str
  \item $\dots$
  \item $N_k(x)=$ k-steps reachable neighborhood.
 \end{itemize}
-Larger neighborhoods are too costly to evaluate. 
-Therefore the neighborhood structure is bounded above by $k_{max}=8$. 
-If no improvement is made up to the $N_{k_{max}}$ neighborhood, a new initial solution is generated at random. 
+The different neighborhoods are nested which yield the following structure of neighborhoods:
+
+$N_0 \subseteq N_1 \subseteq \dots \subseteq N_k$
+
+In theory the union of all neighborhood is larger or equal the whole solution space of velocity tuples.
+Unfortunately large neighborhoods are very costly to evaluate. 
+Therefore the neighborhood structure is bounded above by a parameter $k_{max}$ which was fixed to 8 after empirical evaluations. 
+If no improvement is made up to the $N_{k_{max}}$ neighborhood, a new initial solution is generated at random and the search starts up again.
+
+Like the aforementioned ILS algorithm the VNS algorithm can use the same \emph{memory structures} during the search.
+
 The VNS algorithm can be used with Best-, or First-Improvement heuristic for the Local Search.
 \end{description}
 
