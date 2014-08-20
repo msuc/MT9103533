@@ -1,9 +1,9 @@
 % Chapter 4
 \chapter{Meta Heuristic Extended Local Planning}\label{ch:meta}
 
-In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. The main idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation. 
+In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. Examples of such local planners are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which were introduced in Section~\ref{sec:dwa}.
 
-We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
+The main idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation. We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
 
 \begin{itemize}
 \item{\bf{ILS-Tabu:}}  Based on Iterated Local Search and the use of a simple memory
@@ -20,7 +20,7 @@ The proposed methods are tested and refined and implemented into a robotic navig
 
 The next section provides background information of meta-heuristic search. Following well known classifications of meta-heuristics (see \cite{blum2003metaheuristics}, \cite{birattari2001classification} ) we proceed by introducing \emph{single solution based} meta heuristic, which are the main source for our proposed approach. To complete the presentation of meta-heuristic we give a short description on the ideas of \emph{population based} meta heuristics.
 
-We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. These are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which will be discussed towards the end of this chapter.
+We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. 
 
 \section{Meta-Heuristic Search}\label{sec:meta}
 The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
@@ -352,7 +352,7 @@ In contrast to the aforementioned methods, population based meta-heuristics oper
 \fxnote{Summarize meta-heuristics using classifications. Do not know if to include}
 
 \section{Trajectory Selection Using Meta-Heuristics} \label{sec:trajselmeta}
-One basic step in creating a good local planner for mobile robots is the aforementioned trajectory selection. Especially forward movements are of particular interest, since their evaluation and collision test are costly operations.
+One basic step in creating a good local planner for mobile robots is the aforementioned trajectory selection. Especially forward movements are of particular interest, since their evaluation and collision tests are costly operations.
 Only if forward movement does not yield valid movements, other strategies have to be applied, which provide escaping mechanisms, like turning around for relocation, or slow random backward movements to help the robot evade situations where it gets stuck. 
 The use of escaping mechanisms should be limited, since they are only relevant if the usual planning step fails. 
 
@@ -450,15 +450,20 @@ Since the run-time requirements are very demanding, long term strategies are les
 
 The first strategy keeps all visited states during the search as tabu. They will not be considered as valid solution in future steps of the search process. 
 
-A more sophisticated strategy is used in the extension of existing planner.
+A slightly more sophisticated strategy is used in the extension of existing planner.
 Here two types of tabu lists are present.
 \begin{enumerate}
-\item{long term memory:} Keeps all \emph{invalid} velocity tuples which lead to collision. The are never considered again in future searches. This is possible since the solution space is not too large.
-\item{short term memory:} Classical tabu list, with parametrized \emph{tabu tenure} which keeps the most recently visited \emph{valid} velocity tuples in a FILO list.
+\item{long term memory:} Keeps all \emph{infeasible} velocity tuples which lead to collision. The are never considered again in future searches. This is possible since the solution space is not too large.
+\item{short term memory:} Classical tabu list, with parametrized \emph{tabu tenure} which keeps the most recently visited \emph{feasible} velocity tuples in a FILO list.
 \end{enumerate}
 
-The Tabu list is used by the other meta-heuristic algorithms during the Local Search.
+The idea of avoiding the neighborhood of infeasible solutions and allowing to return to \emph{good} feasible solutions during search was inspired by the grid like representation of the search space, which resembles the famous guessing game Battleship. 
 
+The goal of the game is to try to hit all of the opponent ships, which can be viewed as the dual problem to obstacle avoidance. 
+If a player hits a ship during the game, a good strategy is to try out the immediate neighbors until the ship is destroyed. 
+In obstacle avoidance the opposite may be more efficient. If an obstacle is encountered, avoid its immediate neighbors.
+
+The Tabu list is used by the other meta-heuristic algorithms during the Local Search.
 \item[Iterated Local Search (ILS):]
 The main structure of this algorithm was already shown in Section~\ref{ilsalgo}.
 The algorithm searches iteratively a fixed 4,8, and 16-neighborhood with Best Improvement heuristic for the Local Search.
@@ -476,9 +481,9 @@ The used algorithm follows the scheme shown in Section~\ref{fig:fig_vns}.
 
 The algorithm starts with either a random initial solution, or with the best solution found in the previous local planning step. 
 In the \emph{shaking} phase a new random solution in the current neighborhood is selected. 
-If \emph{shaking} does not yield any solution, because the whole neighborhood is tabu, or does not include a collision free trajectory, the next neighborhood is chosen. 
+If \emph{shaking} does not yield a solution, because the whole neighborhood is tabu, or does not include a collision free trajectory, the next neighborhood is chosen. 
 
-An ordering of neighborhoods according to their size yields the neighborhood structure:
+An ordering of neighborhoods according to their size yields the neighborhood structures:
 \begin{itemize}
  \item $N_0(x)=$ 4-connected
  \item $N_1(x)=$ 8-neighborhood
@@ -498,5 +503,7 @@ Like the aforementioned ILS algorithm the VNS algorithm can use the same \emph{m
 
 The VNS algorithm can be used with Best-, or First-Improvement heuristic for the Local Search.
 \end{description}
+
+
 
 

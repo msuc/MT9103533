@@ -4,7 +4,7 @@ To evaluate the proposed method two classes of experiments are carried out. In a
 
 With the gained data the algorithms are improved and used to extend existing local planner. A fully simulated environment and robotic model using a sophisticated physic engine together with a complete robot navigation system is used to compare the original implementation of the local planner with our approach.
  
-\subsection{Experiments with Sample Planner}
+\section{Experiments with Sample Planner}
 The trajectory sampling and selection of a common DWA approach are implemented in python minimizing a simpler cost function $f_c(v,w)$ (cf. Equation~\ref{eq:simplecost}), where $f_g(v,w)$ is the distance of the center of the robot in the end position to a predefined goal position, and $f_o(v,w)$ is the maximal distance to an obstacle on the trajectory path.
 
 \begin{equation}
@@ -61,7 +61,7 @@ The following list shows the tested algorithm:
 \item{\bf{Variable Neighborhood Search:}} Variable Neighborhood search with Best-,and First-Improvement heuristic, and Tabu List (VNSB, VNSF).
 \end{itemize}
 
-\subsection{Experiments extending existing local planner}
+\section{Experiments extending existing local planner}
 To extend an existing local planner we use the navigation system implemented in ROS framework which provides a variety of different planning methods. 
 The planning system used for testing comes ready to use in the implemented navigation stack of the ROS framework, which was introduced and implemented by Marder-Eppstein (see \cite{DBLP:conf/icra/Marder-EppsteinBFGK10}).
 The local planning system consists of two planners based on \emph{DWA} implementation and \emph{Trajectory Roll-out} (see Section~\ref{sec:dwa}).
