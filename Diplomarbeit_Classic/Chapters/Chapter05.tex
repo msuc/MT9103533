@@ -1,6 +1,6 @@
 % Chapter 5
 \chapter{Evaluation}\label{ch:eval}
-To evaluate the proposed method two classes of experiments are carried out. In a first step an example planner is implemented which mimics the local planner step and provides an easy way to test the trajectory evaluation separated from the rest of a conventional planning system.
+To evaluate the proposed method two classes of experiments are carried out. In a first step an example planner is implemented which mimics the local planning step and provides an easy way to test the trajectory evaluation separated from the rest of a conventional planning system.
 
 With the gained data the algorithms are improved and used to extend existing local planner. A fully simulated environment and robotic model using a sophisticated physic engine together with a complete robot navigation system is used to compare the original implementation of the local planner with our approach.
  
@@ -126,7 +126,6 @@ Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, a
       \label{fig:fig_allworlds}
    \end{figure}
 
- 
 The results show that all algorithms, including RST, outperform the Brute Force generate-and-test method significantly. 
 As expected increasing the number of trajectories greatly favors the Meta-Heuristic algorithms, since they benefit from larger search spaces. 
 Notice that ILS and VNS algorithms differ apparently from the RST by exhibiting much smaller variance in their test results, indicating that randomization alone is not enough to achieve very good and stable performance.
@@ -135,33 +134,128 @@ Comparing the ILS algorithms reveals the connection of the search space size to 
 A small number of trajectories benefits smaller sized neighborhoods, whereas increasing the number of trajectories benefits larger neighborhoods. 
 
 \subsection{Influence of trajectory size by specific instances}
-The following tests only include the VNSF, VNSB and ILS4 algorithms. 
+The following tests include the VNSF, VNSB and only one ILS4 algorithm for comparison. 
 The algorithms are executed with specific world instances, and repeated 50 times. 
-The results in Figure~\ref{fig:fig_special} show again that the VNS algorithms significantly outperform the Brute Force method. 
+The results in Figure~\ref{fig:fig_special_240} show the application of the algorithm using 240 trajectories. Again the all tested algorithms significantly outperform the Brute Force method. 
 
 \begin{figure}[thb]
-   \myfloatalign
+   %\myfloatalign
    %\captionsetup[subfigure]{labelformat=empty} 
-    \subfloat[]
-    {  
+    %\subfloat[]
+    %{  
        \def\svgwidth{\textwidth}
        \includesvg{figures/fig_6_40}
-    }\\
-    \subfloat[]
-    {  
+    %}
+    \caption[Experiment: Specific instances with 240 trajectories]{The results of 50 consecutively executions with 240 trajectories, on particular instances which differ in number and size of obstacles. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+     \label{fig:fig_special_240}
+\end{figure}
+
+Increasing the number of trajectories favors the VNS algorithms over the ILS4 algorithm. The results in Figure~\ref{fig:fig_special_960} show the application of the algorithm using 960 trajectories.
+
+\begin{figure}[thb]
+   %\myfloatalign
+   %\captionsetup[subfigure]{labelformat=empty} 
+    %\subfloat[]
+    %{  
        \def\svgwidth{\textwidth}
        \includesvg{figures/fig_12_80}
-    }
-    \caption[Experiment: Trajectory size comparison]{The results of 50 consecutively executions with (a) 240 and (b) 960 trajectories, on particular instances which differ in number and size of obstacles. The blue line marks the run time for brute force search, which is used as a benchmark.}  
-     \label{fig:fig_special}
+    %}
+    \caption[Experiment: Specific instances with 960 trajectories]{The results of 50 consecutively executions with 960 trajectories, on particular instances which differ in number and size of obstacles. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+     \label{fig:fig_special_960}
 \end{figure}
    
-Analyzing the results of the ILS4 algorithms shows that a too small environment will quickly degrade to random search. 
+In contrast to the smaller number of trajectories, the results of the ILS4 algorithms shows that a too small environment will quickly degrade to random search if the number of trajectories increases. 
 Here the use of a neighborhood structure pays off and the VNS approaches perform evidently better than ILS. 
 In addition, the results show that the algorithms perform good independent of number and size of obstacles.
 
 \subsection{Influence of velocity bounds}
-\fxnote{have the results and lots of figures. Need to do better visualization}
+The next analysis focus on the influence of the velocity bounds on the performance of the local planning step. 
+The trajectory size is fixed to 240 trajectories and the velocity bounds are varied.
+Since the previous test has shown that the VNS approach is more promising, the following experiments omit the ILS algorithms.
+5 experiments with 50 runs and increasing acceleration windows are conducted.
+The test are again performed on different sizes and numbers of obstacles.
+
+In Figure~\ref{fig:fig_vel_big} the results on instances with 1 to 3 obstacle with size 1 meter are presented.  
+
+\begin{figure}[thb]
+   \myfloatalign
+    \footnotesize
+   %\captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_b_04_1}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_b_19_3}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_b_29_3}
+    }
+    \caption[Experiment: Instances with different velocity bounds (big)]{The results of 50 consecutively executions with 240 trajectories, on instances with 1 (a) and 3 obstacles (b-c) with size 1 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+     \label{fig:fig_vel_big}
+\end{figure}
+
+ 
+Figure~\ref{fig:fig_vel_medium} presents the results on instances with 5 obstacles with size 0.5 meter. 
+
+\begin{figure}[thb]
+   \myfloatalign
+    \footnotesize
+   %\captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_m_30_5}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_m_31_5}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_m_44_5}
+    }
+    \caption[Experiment: Medium obstacle instances with different velocity bounds]{The results of 50 consecutively executions with 240 trajectories, on instances with 5 obstacles with size 0.5 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+     \label{fig:fig_vel_medium}
+\end{figure}
+
+In Figure~\ref{fig:fig_vel_small} the results on instances with 25 obstacles with size 0.1 meter are presented. 
+
+\begin{figure}[thb]
+   \myfloatalign
+    \footnotesize
+   %\captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_s_47_25}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_s_53_25}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/vel_comp_s_58_25}
+    }
+    \caption[Experiment: Small obstacle instances with different velocity bounds]{The results of 50 consecutively executions with 240 trajectories, on instances with 25 obstacles with size 0.1 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+     \label{fig:fig_vel_small}
+\end{figure}
+
+All meta-heuristic algorithms outperform the generate and test method in all instances regardless of the different velocity bounds.
+The small instances with many obstacles provide the most difficulties for the proposed methods.
+This is increased by using a larger velocity space.
+The influence of bigger velocity windows on the performance is not as bad as in the original method.
+
 
 \subsection{Summary on test result with example planner}
 As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
