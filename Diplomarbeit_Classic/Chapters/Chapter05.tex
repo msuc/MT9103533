@@ -139,14 +139,40 @@ The algorithms are executed with specific world instances, and repeated 50 times
 The results in Figure~\ref{fig:fig_special_240} show the application of the algorithm using 240 trajectories. Again the all tested algorithms significantly outperform the Brute Force method. 
 
 \begin{figure}[thb]
-   %\myfloatalign
+   \myfloatalign
+    \footnotesize
    %\captionsetup[subfigure]{labelformat=empty} 
-    %\subfloat[]
-    %{  
-       \def\svgwidth{\textwidth}
-       \includesvg{figures/fig_6_40}
-    %}
-    \caption[Experiment: Specific instances with 240 trajectories]{The results of 50 consecutively executions with 240 trajectories, on particular instances which differ in number and size of obstacles. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/00_1_b_6_40}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/15_3_b_6_40}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/30_5_m_6_40}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/32_5_m_6_40}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/45_25_s_6_40}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/51_25_s_6_40}
+    }
+    \caption[Experiment: Specific instances with 240 trajectories]{The results of 50 consecutively executions with 240 trajectories. Plots (a,b) shows the result for 1 and 3 obstacles with size 1 meter. Plots (c,d) shows the result for 5 obstacles with size 0.5 meter, and plots (e,f) shows the result for 25 obstacles with size 0.1 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
      \label{fig:fig_special_240}
 \end{figure}
 

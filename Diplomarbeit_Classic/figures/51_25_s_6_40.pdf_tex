@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{463.95795898bp}%
+    \setlength{\unitlength}{496.72475586bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,7 +48,14 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.77417172)%
+  \begin{picture}(1,0.71942504)%
     \put(0,0){\includegraphics[width=\unitlength]{51_25_s_6_40.pdf}}%
+    \put(-0.00069203,0.69987196){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{t(sec)}}}%
+    \put(0.02671336,0.58239454){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$2.5$}}}%
+    \put(0.02671336,0.46685491){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$2.0$}}}%
+    \put(0.02671336,0.35074052){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$1.5$}}}%
+    \put(0.02671336,0.23321496){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$1.0$}}}%
+    \put(0.02671336,0.12077235){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$0.5$}}}%
+    \put(0.02671336,0.00378729){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$0.0$}}}%
   \end{picture}%
 \endgroup%
