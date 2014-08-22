@@ -337,9 +337,6 @@ Therefore the absolute numbers of the run time evaluations should be handled wit
 
 \subsection{Simulated environment and robot}
 The results of the simulation of a robot in an artificial building is presented in Figure~\ref{fig:fig_simu}. 
-The robot has to follow 4 landmarks yielding a round trip through the corridors of the building.
-The experiment is finished after 15 round trips. 
-For each call to the local planner the time and the control values found by the original methods (DWA or Trajectory,Rollout) is recorded. Immediately after a solution is found, the VNS search algorithm searches for the same exact control values.
  
 \begin{figure}[thpb]
      \footnotesize
@@ -354,3 +351,11 @@ For each call to the local planner the time and the control values found by the 
       \caption[Experiment: Robot simulation]{Results from a robot simulation of making 15 roundtrips in an artificial building. The original methods are based on DWA and Trajectory Rollout, which are compared to the result using those planners with the VNS trajectory selection method.}
       \label{fig:fig_simu}
 \end{figure}
+
+The robot has to follow 4 landmarks yielding a round trip through the corridors of the building.
+The experiment is finished after 15 round trips which result in approx. 6000 calls to the local planner. 
+For each call to the local planner the time and the control values found by the original methods (DWA or Trajectory Roll-out) are recorded. 
+Immediately after a solution is found, the VNS search algorithm searches for the same exact control values and the search times can be compared. 
+
+For both local planning methods, the meta-heuristic trajectory selection significantly outperforms the original methods.
+
