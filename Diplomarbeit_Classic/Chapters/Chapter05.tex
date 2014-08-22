@@ -115,14 +115,27 @@ Figure~\ref{fig:fig_boxplot} shows a commmon boxplot.
    \end{figure}
 
 \subsection{Influence of trajectory size}
-In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM.  
+In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. 
+The main reason conducting this experiment is to get a first impression on the usefulness of applying meta-heuristics in the context of local planning. 
+These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM.  
 Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, and using 2400 trajectory samples.
-   \begin{figure}[thpb]
-        \footnotesize
-      \centering
-      \def\svgwidth{\textwidth}
-      \includesvg{figures/fig_allworlds}
-      \caption[Experiment: All instances]{This figure shows the results of testing all 60 randomly generated instances. The top figure shows the run time performance for 240 trajectories, and the bottom figure for 2400 trajectories. Compared to brute force search, the Meta-Heuristic algorithms show a significant improvement. }
+
+\begin{figure}[thb]
+   \myfloatalign
+    \footnotesize
+    \centering
+   %\captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/fig_allworlds_6_40}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/fig_allworlds_24_100}
+    }
+    \caption[Experiment: All instances]{This figure shows the results of testing all 60 randomly generated instances. The top figure shows the run time performance for 240 trajectories, and the bottom figure for 2400 trajectories. Compared to brute force search, the meta-heuristic algorithms show a significant improvement. }
       \label{fig:fig_allworlds}
    \end{figure}
 
@@ -141,6 +154,7 @@ The results in Figure~\ref{fig:fig_special_240} show the application of the algo
 \begin{figure}[thb]
    \myfloatalign
     \footnotesize
+          \centering
    %\captionsetup[subfigure]{labelformat=empty} 
     \subfloat[]
     {  
@@ -181,6 +195,7 @@ Increasing the number of trajectories favors the VNS algorithms over the ILS4 al
 \begin{figure}[thb]
    \myfloatalign
     \footnotesize
+          \centering
    %\captionsetup[subfigure]{labelformat=empty} 
     \subfloat[]
     {  
@@ -232,6 +247,7 @@ In Figure~\ref{fig:fig_vel_big} the results on instances with 1 to 3 obstacle wi
 \begin{figure}[thb]
    \myfloatalign
     \footnotesize
+          \centering
    %\captionsetup[subfigure]{labelformat=empty} 
     \subfloat[]
     {  
@@ -258,6 +274,7 @@ Figure~\ref{fig:fig_vel_medium} presents the results on instances with 5 obstacl
 \begin{figure}[thb]
    \myfloatalign
     \footnotesize
+          \centering
    %\captionsetup[subfigure]{labelformat=empty} 
     \subfloat[]
     {  
@@ -283,6 +300,7 @@ In Figure~\ref{fig:fig_vel_small} the results on instances with 25 obstacles wit
 \begin{figure}[thb]
    \myfloatalign
     \footnotesize
+          \centering
    %\captionsetup[subfigure]{labelformat=empty} 
     \subfloat[]
     {  
@@ -318,4 +336,21 @@ In general the run time of the python implementation is not very efficient compa
 Therefore the absolute numbers of the run time evaluations should be handled with care.
 
 \subsection{Simulated environment and robot}
-\fxnote{Have the results for the v4r environment using DWA and Trajectory Rollout with and without met-heuristics. Need to make figures.}
+The results of the simulation of a robot in an artificial building is presented in Figure~\ref{fig:fig_simu}. 
+The robot has to follow 4 landmarks yielding a round trip through the corridors of the building.
+The experiment is finished after 15 round trips. 
+For each call to the local planner the time and the control values found by the original methods (DWA or Trajectory,Rollout) is recorded. Immediately after a solution is found, the VNS search algorithm searches for the same exact control values.
+ 
+\begin{figure}[thpb]
+     \footnotesize
+      \centering
+      \myfloatalign
+      \captionsetup[subfigure]{labelformat=empty} 
+      \subfloat[]
+      {  
+        \def\svgwidth{0.75\textwidth}
+        \includesvg{figures/simu}
+      }      
+      \caption[Experiment: Robot simulation]{Results from a robot simulation of making 15 roundtrips in an artificial building. The original methods are based on DWA and Trajectory Rollout, which are compared to the result using those planners with the VNS trajectory selection method.}
+      \label{fig:fig_simu}
+\end{figure}

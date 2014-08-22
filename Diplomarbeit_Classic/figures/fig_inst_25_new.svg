@@ -10,10 +10,10 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   height="628.86768"
+   height="622.26562"
    version="1.1"
-   viewBox="0 0 537.48945 503.09414"
-   width="671.86182"
+   viewBox="0 0 497.8125 497.8125"
+   width="622.26562"
    id="svg2"
    inkscape:version="0.48.3.1 r9886"
    sodipodi:docname="fig_inst_25_new.svg">
@@ -45,9 +45,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="210.51868"
-     inkscape:cy="469.35337"
+     inkscape:zoom="0.74853881"
+     inkscape:cx="54.434756"
+     inkscape:cy="318.00967"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -414,7 +414,7 @@
   <g
      id="figure_1"
      style="stroke-linecap:square;stroke-linejoin:round"
-     transform="translate(-341.5,-56.312107)">
+     transform="translate(-341.5,-61.59375)">
     <g
        id="axes_1"
        style="stroke-linecap:square;stroke-linejoin:round">
@@ -2249,11 +2249,11 @@
          id="rect5364"
          width="201.24747"
          height="67.066254"
-         x="660.39001"
-         y="56.619911" />
+         x="629.98999"
+         y="66.219902" />
       <g
          id="g5408"
-         transform="matrix(0,-1.2030895,2.5682694,0,-62.851663,-74.945052)"
+         transform="matrix(0,-1.2030895,2.5682694,0,-93.251663,-65.345052)"
          style="stroke-linecap:square;stroke-linejoin:round">
         <rect
            y="289.42834"
@@ -2289,7 +2289,7 @@
          xml:space="preserve"
          id="flowRoot5465"
          style="font-size:16px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         transform="matrix(0.8,0,0,0.8,1181.3183,55.581975)"><flowRegion
+         transform="matrix(0.8,0,0,0.8,1150.9183,65.181975)"><flowRegion
            id="flowRegion5467"><rect
              id="rect5469"
              width="267.28638"
@@ -2299,47 +2299,47 @@
            id="flowPara5471">cell distance to obstacle</flowPara></flowRoot>      <text
          xml:space="preserve"
          style="font-size:12.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         x="697.33289"
-         y="73.624992"
+         x="666.93286"
+         y="83.224983"
          id="text5473"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan5475"
-           x="697.33289"
-           y="73.624992">0</tspan></text>
+           x="666.93286"
+           y="83.224983">0</tspan></text>
       <text
          xml:space="preserve"
          style="font-size:12.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         x="809.53333"
-         y="72.743736"
+         x="779.1333"
+         y="82.343727"
          id="text5523"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan5525"
-           x="809.53333"
-           y="72.743736">$&lt;\gamma$</tspan></text>
+           x="779.1333"
+           y="82.343727">$&lt;\gamma$</tspan></text>
       <text
          xml:space="preserve"
          style="font-size:12.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         x="740.38037"
-         y="73.624992"
+         x="709.98035"
+         y="83.224983"
          id="text5473-9"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan5475-4"
-           x="740.38037"
-           y="73.624992">5</tspan></text>
+           x="709.98035"
+           y="83.224983">5</tspan></text>
       <text
          xml:space="preserve"
          style="font-size:12.80000019px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-         x="777.44141"
-         y="73.624992"
+         x="747.04138"
+         y="83.224983"
          id="text5588"
          sodipodi:linespacing="125%"><tspan
            sodipodi:role="line"
            id="tspan5590"
-           x="777.44141"
-           y="73.624992">10</tspan></text>
+           x="747.04138"
+           y="83.224983">10</tspan></text>
     </g>
   </g>
   <defs
