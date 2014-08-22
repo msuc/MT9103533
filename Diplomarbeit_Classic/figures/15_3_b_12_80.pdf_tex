@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{468.73828125bp}%
+    \setlength{\unitlength}{495.71259766bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,11 +48,21 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.81619119)%
+  \begin{picture}(1,0.72089526)%
     \put(0,0){\includegraphics[width=\unitlength]{15_3_b_12_80.pdf}}%
-    \put(0.80197168,0.77627163){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ILS4}}}%
-    \put(0.8056719,0.73117134){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{VNSF}}}%
-    \put(0.8056719,0.68501345){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{VNSB}}}%
-    \put(0.80197168,0.6436585){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Brute Force}}}%
+    \put(-0.00069345,0.70130225){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{t(sec)}}}%
+    \put(0.02848637,0.46783584){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$6.0$}}}%
+    \put(0.02848637,0.3905206){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$5.0$}}}%
+    \put(0.02848637,0.31320532){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$4.0$}}}%
+    \put(0.02848637,0.15857483){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$2.0$}}}%
+    \put(0.02848637,0.00379505){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$0.0$}}}%
+    \put(0.02848637,0.23589008){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$3.0$}}}%
+    \put(0.02848637,0.54515092){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$7.0$}}}%
+    \put(0.02848637,0.622466){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$8.0$}}}%
+    \put(0.02860668,0.08181882){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$1.0$}}}%
+    \put(0.65117785,0.64145667){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ILS4}}}%
+    \put(0.65719893,0.57928497){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{VNSF}}}%
+    \put(0.65719893,0.51565536){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{VNSB}}}%
+    \put(0.65117785,0.45864676){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Brute Force}}}%
   \end{picture}%
 \endgroup%

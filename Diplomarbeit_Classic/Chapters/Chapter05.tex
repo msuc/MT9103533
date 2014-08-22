@@ -50,7 +50,7 @@ The resolution of the maps is fixed to 0.05 meter/pixel, resulting in a quadrati
        {  
            \fbox{\includegraphics[width=0.3\textwidth]{figures/04_25_s_nocost.png}}
        }        
-       \caption{Figures (a)-(c) show 3 out of 60 random instances for experiments. The instances differ in number and size of obstacles and are used for local costmap creation.}
+       \caption[Test instances]{Figures (a)-(c) show 3 out of 60 random instances for experiments. The instances differ in number and size of obstacles and are used for local costmap creation.}
       \label{fig:fig_instances}
    \end{figure}
 
@@ -122,7 +122,7 @@ Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, a
       \centering
       \def\svgwidth{\textwidth}
       \includesvg{figures/fig_allworlds}
-      \caption{This figure shows the results of testing all 60 randomly generated instances. The top figure shows the run time performance for 240 trajectories, and the bottom figure for 2400 trajectories. Compared to brute force search, the Meta-Heuristic algorithms show a significant improvement. }
+      \caption[Experiment: All instances]{This figure shows the results of testing all 60 randomly generated instances. The top figure shows the run time performance for 240 trajectories, and the bottom figure for 2400 trajectories. Compared to brute force search, the Meta-Heuristic algorithms show a significant improvement. }
       \label{fig:fig_allworlds}
    \end{figure}
 
@@ -179,14 +179,40 @@ The results in Figure~\ref{fig:fig_special_240} show the application of the algo
 Increasing the number of trajectories favors the VNS algorithms over the ILS4 algorithm. The results in Figure~\ref{fig:fig_special_960} show the application of the algorithm using 960 trajectories.
 
 \begin{figure}[thb]
-   %\myfloatalign
+   \myfloatalign
+    \footnotesize
    %\captionsetup[subfigure]{labelformat=empty} 
-    %\subfloat[]
-    %{  
-       \def\svgwidth{\textwidth}
-       \includesvg{figures/fig_12_80}
-    %}
-    \caption[Experiment: Specific instances with 960 trajectories]{The results of 50 consecutively executions with 960 trajectories, on particular instances which differ in number and size of obstacles. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/00_1_b_12_80}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/15_3_b_12_80}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/30_5_m_12_80}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/32_5_m_12_80}
+    }\\
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/45_25_s_12_80}
+    }
+    \subfloat[]
+    {  
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/51_25_s_12_80}
+    }
+    \caption[Experiment: Specific instances with 960 trajectories]{The results of 50 consecutively executions with 960 trajectories. Plots (a,b) shows the result for 1 and 3 obstacles with size 1 meter. Plots (c,d) shows the result for 5 obstacles with size 0.5 meter, and plots (e,f) shows the result for 25 obstacles with size 0.1 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
      \label{fig:fig_special_960}
 \end{figure}
    
@@ -222,7 +248,7 @@ In Figure~\ref{fig:fig_vel_big} the results on instances with 1 to 3 obstacle wi
        \def\svgwidth{0.75\textwidth}
        \includesvg{figures/vel_comp_b_29_3}
     }
-    \caption[Experiment: Instances with different velocity bounds (big)]{The results of 50 consecutively executions with 240 trajectories, on instances with 1 (a) and 3 obstacles (b-c) with size 1 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
+    \caption[Experiment: Big obstacle instances with different velocity bounds]{The results of 50 consecutively executions with 240 trajectories, on instances with 1 (a) and 3 obstacles (b-c) with size 1 meter. The blue line marks the run time for brute force search, which is used as a benchmark.}  
      \label{fig:fig_vel_big}
 \end{figure}
 
