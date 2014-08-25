@@ -326,15 +326,6 @@ The small instances with many obstacles provide the most difficulties for the pr
 This is increased by using a larger velocity space.
 While increasing the velocity windows clearly has a obvious negative effect on the performance of the brute force method, the meta-heuristic algorithms soften this influence to a large degree. 
 
-\subsection{Summary on test result with example planner}
-As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
-So it is no surprise that looking at all the results, there is no clear winner among the algorithms. 
-
-Variable Neighborhood search with Tabu List and Best Improvement heuristic seem to yields the best and most stable overall performance, but it is a close call to using this approach with the First Improvement heuristic.
-
-In general the run time of the python implementation is not very efficient compared to tuned C++ implementations. 
-Therefore the absolute numbers of the run time evaluations should be handled with care.
-
 \subsection{Simulated environment and robot}
 The results of the simulation of a robot in an artificial building is presented in Figure~\ref{fig:fig_simu}. 
  
@@ -358,4 +349,30 @@ For each call to the local planner the time and the control values found by the 
 Immediately after a solution is found, the VNS search algorithm searches for the same exact control values and the search times can be compared. 
 
 For both local planning methods, the meta-heuristic trajectory selection significantly outperforms the original methods.
+
+\subsection{Summary}
+As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
+So it is no surprise that looking at all the results, there is no clear winner among the algorithms. 
+
+Variable Neighborhood search with Tabu List and Best Improvement heuristic seem to yields the best and most stable overall performance in all of the test with the example planner, but it is a close call to using this approach with the First Improvement heuristic. 
+
+In general the run time of the python implementation used for the example planner is not very efficient compared to tuned C++ implementations. 
+Therefore the absolute numbers of the run time evaluations should be handled with care.
+
+After analysis of the results with the example python planner, the VNS approach is selected to be incorporated into a navigation system based on a C++ implementation in the ROS framework.
+
+The tests conducted with a simulation software show that the previous results carry over to a real navigation scenario. Extensions to the DWA and Trajectory Roll-out planner within the navigation stack of ROS using the VNS algorithm outperform the unaltered versions significantly.
+
+\subsection{Implementation Details}
+The example planner was implemented using \emph{python} version $2.7$ (available at \url{http://www.python.com}). This allows for a fast prototype implementation of a local planner without the overhead and interruption of other parts of full planning systems.
+Hence the optimization algorithms could be evaluated focusing on the  specific trajectory selection part. 
+For visualization, geometry related processing, and the creation of test scripts the python packages \emph{Numpy} (available at \url{http://www.numpy.org}), \emph{Python Imaging Library} (available at \url{http://www.pythonware.com}) and \emph{Matplotlib} (available at \url{http://matplotlib.org}) were an essential part of the created software. 
+
+The VNS algorithm used in the navigation framework within ROS, was created using C++ and the BOOST-C++ Libraries (\url{http://www.boost.org}).
+The source code was compiled using \emph{GCC} $4.6.4$ with optimization enabled.
+
+Without the use of these exceptional open-source libraries the work presented in this thesis would not be possible.  
+
+
+ 
 

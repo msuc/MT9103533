@@ -41,9 +41,9 @@
      inkscape:window-height="724"
      id="namedview625"
      showgrid="false"
-     inkscape:zoom="0.85119201"
-     inkscape:cx="309.32687"
-     inkscape:cy="205.86855"
+     inkscape:zoom="0.67448328"
+     inkscape:cx="-291.352"
+     inkscape:cy="207.99673"
      inkscape:window-x="0"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -1405,6 +1405,82 @@
                id="tspan3778-1-6"
                x="-8.2852421"
                y="41.186798">t(sec)</tspan></text>
+          <g
+             transform="matrix(1.4621269,0,0,1.0494904,-485.83783,33.226062)"
+             id="patch_50"
+             style="stroke-linecap:square;stroke-linejoin:round">
+            <path
+               d="m 357.773,93.276 134.025,0 0,-86.076 -134.025,0 0,86.076 z"
+               style="fill:#ffffff;stroke:#000000;stroke-linecap:square;stroke-linejoin:round"
+               id="path1345"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             transform="matrix(1.7208485,0,0,1.4578502,-578.30039,-0.76405214)"
+             id="patch_52"
+             style="stroke-linecap:square;stroke-linejoin:round">
+            <path
+               d="m 363.533,45.0382 28.8,0 0,-10.08 -28.8,0 z"
+               style="fill:#cd853f;stroke:#000000;stroke-linecap:square;stroke-linejoin:round"
+               id="path1367"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             transform="matrix(1.7208485,0,0,1.4578502,-578.30039,-0.76405214)"
+             id="patch_53"
+             style="stroke-linecap:square;stroke-linejoin:round">
+            <path
+               d="m 363.533,66.1747 28.8,0 0,-10.08 -28.8,0 z"
+               style="fill:#d2691e;stroke:#000000;stroke-linecap:square;stroke-linejoin:round"
+               id="path1386"
+               inkscape:connector-curvature="0" />
+          </g>
+          <g
+             transform="matrix(1.7208485,0,0,1.4578502,-578.30039,-0.76405214)"
+             id="line2d_253"
+             style="stroke-linecap:square;stroke-linejoin:round">
+            <path
+               d="m 367.853,82.2712 20.16,0"
+               style="fill:none;stroke:#6a5acd;stroke-linecap:square;stroke-linejoin:round"
+               id="path1403"
+               inkscape:connector-curvature="0" />
+          </g>
+          <text
+             xml:space="preserve"
+             style="font-size:30.41088295px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="103.96683"
+             y="71.165306"
+             id="text4949"
+             sodipodi:linespacing="125%"
+             transform="scale(1.0864628,0.92041808)"><tspan
+               sodipodi:role="line"
+               id="tspan4951"
+               x="103.96683"
+               y="71.165306">VNSF</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:30.41088295px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="103.96683"
+             y="105.43452"
+             id="text4953"
+             sodipodi:linespacing="125%"
+             transform="scale(1.0864628,0.92041808)"><tspan
+               sodipodi:role="line"
+               id="tspan4955"
+               x="103.96683"
+               y="105.43452">VNSB</tspan></text>
+          <text
+             xml:space="preserve"
+             style="font-size:30.41088295px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+             x="103.09943"
+             y="137.29558"
+             id="text4957"
+             sodipodi:linespacing="125%"
+             transform="scale(1.0864628,0.92041808)"><tspan
+               sodipodi:role="line"
+               id="tspan4959"
+               x="103.09943"
+               y="137.29558">Brute Force</tspan></text>
         </g>
       </g>
       <g
