@@ -1,15 +1,44 @@
 % Chapter 6
 \chapter{Conclusions}\label{ch:conc}
-Applying Meta-Heuristic search to trajectory selection of local planners like DWA is a first step in using the power of these search procedures in the context of local planning.
-The results of our experiments in Section~\ref{sec:testresults} show, that already the small selection using Iterated Local Search, and Variable Neighborhood Search provide significant performance improvement. 
-Therefore it would be of interest to investigate related algorithm like GRASP \cite{feo1995grasp}, reduced VNS, or Simulated Annealing \cite{Kirkpatrick83SimulatedAnnealing}. 
-In addition, developing more sophisticated neighborhood structures, and extending the tabu search method would also be valuable.
+In this work we analyzed a promising approach to improve performance of existing local planning systems which are based on generate and test trajectory methods by using meta-heuristic search strategies.
 
-The proposed method is also applicable for robot models of higher degree of freedom, since dealing with large trajectory samples is a particular strength of Meta-Heuristic search.
+To this end we presented a thorough overview of planning methods with the focus on local planning methods and obstacle avoidance. 
+Identifying trajectory selection as the main part of local planning tasks for our improvement, we introduced well known meta-heuristic search algorithms for optimization.
 
-The applicability to similar path-planning methods using trajectory samples, like Curvature Velocity Method \cite{simmons1996curvature}, or the Trajectory Rollout method implemented in \texttt{move\_base}, are also subject of further investigations. 
+From the large family of meta-heuristic algorithms we selected the following search strategies to substitute the brute force approach of trajectory selection in a \emph{DWA} based local planning method:
+\begin{itemize}
+\item The basic structure of the single solution based meta-heuristics \emph{Iterated Local Search (ILS)} and \emph{Variable Neighborhood Search (VNS)}  
+\item An appropriate formulation of a set of \emph{neighborhood} structures
+\item Two basic \emph{memory structures} inspired from \emph{tabu search} to avoid infeasible solutions and short cycles during the search process. 
+\end{itemize}
 
-One of the next goals is to integrate this trajectory selection in existing planning systems for robots using ROS and analyze the performance of the algorithm using state of the art methods for costmap calculations and collision testing. 
-With the gained data a fine tuned local planner using Meta-Heuristic based search methods can be tested under real and simulated environments.
+We created a set of random generated environments simulating sensor information for one planning step and tested our approach with an example planner. 
+This allowed a focused investigation and improvement of the trajectory selection part separated from the overhead of full planning systems.
+
+The results of these experiments with the example planner showed, that the meta-heuristic algorithms provide significant performance improvement on all of the test instances. Especially the VNS implementations provided very good and stable results. 
+
+In a next step the VNS approach was used to extent a popular existing planner implementation and tested using a sophisticated simulation environment with realistic scenarios and physics. Two configurations were tested in an virtual building:
+\begin{itemize}
+\item VNS-ROL: Using VNS with best improvement heuristic to extend the roll-out method of the planner with continues acceleration limits.
+\item VNS-DWA: Using VNS with best improvement heuristic to extend the classical DWA method of the planner.
+\end{itemize}
+Both extensions showed superior run time performance against their unaltered counterparts.
+
+Summarizing the meta-heuristic algorithms are able to increase the performance of local planning systems based on trajectory generate and test methods. This allows the local planner to improve on \emph{reactivity}, the used \emph{resolution} for collision tests, the \emph{simulation-time} for look-ahead and the number of \emph{trajectories} used to model the robots motion capabilities.
 
 \section{Further Research}
+Applying Meta-Heuristic search to trajectory selection of local planners like DWA is a promising first step in using the power of these search procedures in the context of local planning. 
+We identified the following directions for further research.
+
+\begin{description}
+\item[Investigate additional meta-heuristics] In this work we presented the use of a very limited application of single solution based meta-heuristics. Therefore it would be of interest to investigate related algorithm like GRASP \cite{feo1995grasp}, reduced VNS, or Simulated Annealing \cite{Kirkpatrick83SimulatedAnnealing} or even population based meta-heuristics.
+In addition, developing and analyzing more sophisticated neighborhood structures would be recommended. 
+
+\item[Application to motion planning for high DOF models] The proposed method might also be applicable for robot models of higher degree of freedom, since dealing with large trajectory samples is a particular strength of meta-heuristic search.
+
+\item[Extending to three-dimensional space] This work deals ex-
+exclusively with two-dimensional workspaces. Application of this method to three-dimensional spaces is an interesting challenge. 
+
+\item[Extending other planning systems] The applicability to similar path-planning methods using trajectory samples, like Curvature Velocity Method \cite{simmons1996curvature}, would be of interest to show the general applicability of this method. 
+
+\end{description}
