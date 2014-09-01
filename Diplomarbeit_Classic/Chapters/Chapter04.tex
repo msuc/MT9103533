@@ -444,7 +444,7 @@ Using \emph{Local Search} (see Section~\ref{sec:ls}) the neighborhood is either 
 Next we list the meta-heuristic algorithms used in our approach.
 
 \begin{description}
-\item[Tabu List:]
+\item[Tabu List]\hfill \\
 The \emph{memory structures} (see Section~\ref{tabualgo}) used in the proposed method are very simple. 
 Since the run-time requirements are very demanding, long term strategies are less suited to provide good results.
 
@@ -464,7 +464,7 @@ If a player hits a ship during the game, a good strategy is to try out the immed
 In obstacle avoidance the opposite may be more efficient. If an obstacle is encountered, avoid its immediate neighbors.
 
 The Tabu list is used by the other meta-heuristic algorithms during the Local Search.
-\item[Iterated Local Search (ILS):]
+\item[Iterated Local Search (ILS)]\hfill \\
 The main structure of this algorithm was already shown in Section~\ref{ilsalgo}.
 The algorithm searches iteratively a fixed 4,8, and 16-neighborhood with Best Improvement heuristic for the Local Search.
 
@@ -475,7 +475,7 @@ Using the \emph{history} capability of ILS it is possible to apply the perturbat
 Furthermore one can parametrize the algorithm to restart if the neighborhood is empty due to invalid neighbors or the application of the tabu list. 
 
 
-\item[Variable Neighborhood Search (VNS):]
+\item[Variable Neighborhood Search (VNS)]\hfill \\
 For the VNS algorithm local search is performed in one neighborhood until no improvement occurs.
 The used algorithm follows the scheme shown in Section~\ref{fig:fig_vns}.
 
