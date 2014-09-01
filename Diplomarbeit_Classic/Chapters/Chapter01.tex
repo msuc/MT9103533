@@ -3,23 +3,59 @@
 %************************************************
 \section{Introduction}
 Navigation and planning are essential for mobile robots to act in out- and indoor environments. 
-Uncountable articles are describing approaches and applied solutions of autonomous system driving safely in different domains, e.g. Stanley \cite{stanley} a self driving car that won the DARPA Grand Challenge by driving 132~miles through the Mojave desert, or the mobile robots of Kiva Systems \cite{kiva} handling goods in distribution centers and warehouses like Amazon. 
+From self driving cars navigating 132~miles through the Mojave desert, or mobile robots handling goods in distribution centers and warehouses to mobile robots used for planetary exploration, autonomous robots have conquered every place on earth and beyond.
+ 
 Articles like \cite{stanley} and \cite{kiva} present the relationship between the environmental complexity and the computational on-board power needed to deal with it.
-Stanley has a six processor computing platform sponsored by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment. 
-The robot shown in Figure~\ref{fig:fig_pioneer} is used on our institute. The robot is able to drive autonomous within our lab/office environment and is equipped with one Intel processor (i5@3,4GHz) running Robotic Operation System (ROS)\footnote{Robot Operating System (ROS): \url{http://ww.ros.org/}}.  
-While the application domain and computational power varies strongly between the robotic systems, all of them have to move safely and efficient from one location to another. 
+Stanley has a six processor computing platform sponsored by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment.  
+While the application domain and computational power varies strongly between the robotic systems, all of them have to move safely and efficient from one location to another.   
+In order to give an impression of the importance of navigation and planning in the field of mobile robotics the next section gives some motivation and application examples.
 
-   \begin{figure}[thpb]
+\section{Motivation and Applications}\label{sec:motivation} 
+
+\begin{description}
+\item[Autonomous Vehicles]
+Stanley \citep{stanley}
+Google Cars
+Planetary Rovers
+UAV Project Wing
+\item[Search and Rescue]
+Taurob
+PIONEER Tschernobyl
+\item[Logistic and Transportation]
+AGV DS-Automation
+HELPMATE
+Kiva Systems \cite{kiva}
+\item[Assistance and Companion Robots]
+Companion KIBA, 
+Health Care HOBBIT, 
+Guide RHINO, ROBOX
+\item[Challenges and Competitions]
+FIRA
+Robocup
+Robotsoccer Standard platform League, other Leagues
+Robot@Home
+DARPA
+\item[Commercial]
+Mining Robots, law mowing, floor cleaning, harvesting
+\end{description}
+
+Other fields not in robotic environment. Knot entangling puzzles, automation and assembly, Molecular biology and medicine.
+And a short summary towards the goal of the thesis.
+
+\section{Goal of Thesis and Scientific Contribution}\label{sec:goal}
+A common strategy to deal with the complex planning problem is the division into a global and a local planning problem \cite{LaValle2006}.
+Global path-planning requires a simplified representation, e.g. static map, of the search problem to efficiently compute an optimal shortest path using variants of Dijkstra's \cite{dijkstra1959note} or $A^*$ \cite{DBLP:journals/tssc/HartNR68/Astar} algorithm, ignoring kinematic and acceleration constraints of the robot.
+In succession the retrieved global path is used by a local planner for guiding the robot through the environment.
+Figure~\ref{fig:fig_pioneer} illustrates the view of the environment from a robot perspective together with a global and local plan, which enables the robot to drive autonomous within our lab/office environment.
+
+\begin{figure}[thpb]
       \centering
       \def\svgwidth{0.7\textwidth}
       \includesvg{figures/pioneer_costmap}
       \caption{This figure shows a Pionner3DX and its view of the office environment while passing through a door. The blue line shows the global path and the green line the selected trajectory of the local planner.}
       \label{fig:fig_pioneer}
-   \end{figure}
+\end{figure}
 
-A common strategy to deal with the complex planning problem is the division into a global and a local planning problem \cite{LaValle2006}.
-Global path-planning requires a simplified representation, e.g. static map, of the search problem to efficiently compute an optimal shortest path using variants of Dijkstra's \cite{dijkstra1959note} or $A^*$ \cite{DBLP:journals/tssc/HartNR68/Astar} algorithm, ignoring kinematic and acceleration constraints of the robot.
-In succession the retrieved global path is used by a local planner for guiding the robot through the environment.
 %(REMARK: global path planning in la valle, D*, FD* usw. eventuel)%
 The local planner takes sensor readings of the robot into account and is reactive to changes within the sensor range. 
 It chooses the best values of available motor controls in respect to the kinematic and dynamic constraints of the robot. 
@@ -44,16 +80,10 @@ This enables the local planer to:
 \item use a higher costmap resolution
 \end{itemize}
 
-The next section presents related work, followed by a detailed description of the approach in Section~\ref{sec:Approach}, and results of the experiments are given in Section~\ref{sec:testresults}. 
-\section{Related Work} \label{sec:RelatedWork}
-Of particular interest are local planning methods which apply sampling and simulation of trajectories. 
-Here the maximization step can easily be substituted by the proposed method. The next two section describe the recent developments of this family of planners and gives an introduction to the used Meta-Heuristic algorithm.
-
-\section{Motivation and Applications}\label{sec:motivation}
-
-\section{Goal of Thesis and Scientific Contribution}\label{sec:goal}
-
 \section{Outline}\label{sec:outline}
+Of particular interest are local planning methods which apply sampling and simulation of trajectories. 
+Here the maximization step can easily be substituted by the proposed method. 
+
 %*****************************************
 %*****************************************
 %*****************************************
