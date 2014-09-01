@@ -81,9 +81,18 @@ This enables the local planer to:
 \end{itemize}
 
 \section{Outline}\label{sec:outline}
-Of particular interest are local planning methods which apply sampling and simulation of trajectories. 
-Here the maximization step can easily be substituted by the proposed method. 
+This work is structured in the following way. 
+In Chapter \ref{ch:introductionplanning} the basic sources for planning are outlined, covering the basic problem definition, representation of the environment and different robotic motion models. 
 
+Chapter \ref{ch:planningalgorithms} gives an overview of important planning algorithms and obstacle avoidance methods.
+ 
+Chapter \ref{ch:meta} represents the main part of this thesis and introduces meta-heuristic extensions to local planning methods. 
+Starting with an detailed overview of  meta-heuristic algorithm, two application based on ILS and VNS are used for trajectory selection of a local planner and described in Section \ref{sec:trajselmeta}.
+
+A detailed evaluation of these methods is presented in Chapter \ref{ch:eval}, using a very simple implementation of a local planner and randomly generated sensor maps. 
+The gathered data is then used to implement a meta-heuristic trajectory selection in a high sophisticated planner and tested using simulation software with a robust physical engine.
+
+Chapter \ref{ch:conc} concludes the work of this thesis with a short summary and an outlook on future research directions.
 %*****************************************
 %*****************************************
 %*****************************************
