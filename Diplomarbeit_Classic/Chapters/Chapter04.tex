@@ -374,19 +374,16 @@ It allows for increasing the following properties of local planner:
 \begin{figure}[thb]
    \footnotesize
    \centering
+   \setlength\fboxsep{0pt}
+   \setlength\fboxrule{0.5pt}
    \myfloatalign
    \captionsetup[subfigure]{labelformat=empty} 
     \subfloat[]
     {  
-       \def\svgwidth{0.5\textwidth}
-       \includesvg{figures/fig_curvature_23_6}
+       \def\svgwidth{\textwidth}
+       \includesvg{figures/fig_curvature}
     }
-    \subfloat[]
-    {  
-       \def\svgwidth{0.5\textwidth}
-       \includesvg{figures/fig_curvature_23_156}
-    }
-    \caption[Comparison of two paths generated using different amounts of trajectories.]{Comparison of two paths generated using different amounts of trajectories. The left path was generated with 144, and the right one with 3588 trajectories. The higher amount of sampled trajectories results in a smoother and more effective path.}  
+    \caption[Comparison of two paths generated using different amounts of trajectories.]{Comparison of two paths generated using different amounts of trajectories. The dotted path was generated with 150, and the other one with 3500 trajectories. The higher amount of sampled trajectories results in a smoother and more effective path.}  
      \label{fig:fig_smooth}
 \end{figure}
 \end{description}
