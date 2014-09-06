@@ -1,14 +1,14 @@
 % Chapter 6
 \chapter{Conclusions}\label{ch:conc}
-In this work we analyzed a promising approach to improve performance of existing local planning systems which are based on generate and test trajectory methods by using meta-heuristic search strategies.
+In this work we analysed a promising approach to improve performance of existing local planning systems which are based on generate and test trajectory methods by using meta-heuristic search strategies.
 
 To this end we presented a thorough overview of planning methods with the focus on local planning methods and obstacle avoidance. 
-Identifying trajectory selection as the main part of local planning tasks for our improvement, we introduced well known meta-heuristic search algorithms for optimization.
+Identifying trajectory selection as the main part of local planning tasks for improvement, we introduced well known meta-heuristic search algorithms for optimizing the selection process.
 
-From the large family of meta-heuristic algorithms we selected the following search strategies to substitute the brute force approach of trajectory selection in a \emph{DWA} based local planning method:
+From the large family of meta-heuristic algorithms the following search strategies were selected to substitute the brute force approach of trajectory selection in a \emph{DWA} based local planning method:
 \begin{itemize}
-\item The basic structure of the single solution based meta-heuristics \emph{Iterated Local Search (ILS)} and \emph{Variable Neighborhood Search (VNS)}  
-\item An appropriate formulation of a set of \emph{neighborhood} structures
+\item The basic algorithmic structure of the single solution based meta-heuristics \emph{Iterated Local Search (ILS)} and \emph{Variable Neighborhood Search (VNS)}.
+\item An appropriate formulation of a set of \emph{neighborhood} structures, which are used during \emph{Local Search}  with \emph{best improvement} and \emph{first improvement} heuristic.
 \item Two basic \emph{memory structures} inspired from \emph{tabu search} to avoid infeasible solutions and short cycles during the search process. 
 \end{itemize}
 
@@ -33,15 +33,19 @@ We identified the following directions for further research.
 \begin{description}
 \item[Investigate additional meta-heuristics]\hfill \\
 In this work we presented the use of a very limited application of single solution based meta-heuristics. Therefore it would be of interest to investigate related algorithm like GRASP \cite{feo1995grasp}, reduced VNS, or Simulated Annealing \cite{Kirkpatrick83SimulatedAnnealing} or even population based meta-heuristics.
-In addition, developing and analyzing more sophisticated neighborhood structures would be recommended. 
+In addition, developing and analysing more sophisticated neighborhood structures would be recommended. 
 
 \item[Application to high DOF robotic models]\hfill \\
 The proposed method might also be applicable for robot models of higher degree of freedom, since dealing with large trajectory samples is a particular strength of meta-heuristic search.
 
 \item[Extending to three-dimensional space]\hfill \\
-This work considers exclusively two-dimensional workspaces. Application of this method to three-dimensional spaces is an interesting challenge. 
+This work considers exclusively two-dimensional workspaces. Application of this method to three-dimensional spaces is an interesting challenge and would allow the use of new obstacle avoidance methods for robotic models like unmanned air vehicles (UAV).
 
 \item[Extending other planning systems]\hfill \\
 The applicability to similar path-planning methods using trajectory samples, like Curvature Velocity Method \cite{simmons1996curvature}, would be of interest to show the general applicability of this method. 
+
+
+\item[Increasing the planning horizon]\hfill \\
+The extended planning methods simulate trajectories by applying a constant amount of velocity over a given time. This restriction simplifies the planning step significantly and allows for brute force evaluation of trajectories. With the help of the proposed method the evaluation of chaining short series of different velocity commands may still be feasible and would allow for a better lookahead simulation, yielding more sophisticated maneuver.
 
 \end{description}

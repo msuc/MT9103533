@@ -14,7 +14,9 @@ In order to give an impression of the importance of navigation and planning in t
 \section{Motivation and Applications}\label{sec:motivation} 
 The goal of navigation encompasses the ability of robots to find a series of actions based on its knowledge of the environment and sensor values to reach its goal position in an effective and efficient manner.
 The resulting series of actions is called a \emph{plan}. 
+
 To ensure safety and flexibility in the presence of obstacles in a dynamic environment \emph{obstacle avoidance} is used to alter plans during execution and generating of collision free trajectories.
+
 A common strategy to deal with complex planning problems is to the divide the navigation task into a global and a local planning problem \cite{LaValle2006}.
 Global path-planning requires a simplified representation, e.g. static map, of the search problem to efficiently compute an optimal shortest path using variants of Dijkstra's \cite{dijkstra1959note} or $A^*$ \cite{DBLP:journals/tssc/HartNR68/Astar} algorithm, ignoring kinematic and acceleration constraints of the robot.
 In succession the retrieved global path is used by a local planner for guiding the robot through the environment.
