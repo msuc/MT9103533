@@ -3,9 +3,9 @@
 %************************************************
 \section{Introduction}
 Navigation and planning are essential for mobile robots to act in out- and indoor environments. 
-From self driving cars navigating 132~miles through the Mojave desert, or mobile robots handling goods in distribution centers and warehouses to mobile robots used for planetary exploration, autonomous robots have conquered every place on earth and beyond.
+From self driving cars navigating 132~miles through the Mojave desert, or mobile robots handling goods in distribution centers and warehouses to mobile robots used for planetary exploration, autonomous robots have conquered nearly every place on earth and beyond.
  
-Articles like \cite{stanley} and \cite{kiva} present the relationship between the environmental complexity and the computational on-board power needed to deal with it.
+Articles like \cite{stanley} and \cite{kiva} present the relationship between the environmental complexity and the computational on-board processing power needed to tackle the navigation problem.
 Stanley has a six processor computing platform sponsored by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment.  
 
 While the application domains and computational powers varies strongly between the robotic systems, all of them have to move safely and efficient from one location to another.   
@@ -36,46 +36,40 @@ It selects the best values of available motor controls in respect to the kinemat
 Navigation competence is essential for a broad spectrum of application domains within the field of mobile robotics which are presented below:
 
 \begin{description}
-\item[Autonomous Vehicles]\hfill \\
-Stanley \citep{stanley}
-DARPA Challenge Courtesy of Carnegie Mellon University
-
-Google Cars \url{http://googleblog.blogspot.co.at/2014/05/just-press-go-designing-self-driving.html}.
+\item[Self driving vehicles]\hfill \\
+Self driving cars (see Figure~\ref{fig:fig_auto}) like Stanley \cite{stanley} which won the 2005 DARPA Challenge and the Google car \footnote{Google self driving car available from \url{http://googleblog.blogspot.co.at/2014/05/just-press-go-designing-self-driving.html}} are two examples.
 
 \begin{figure}[thpb]
 	  \myfloatalign
       \footnotesize
       \centering
-    \subfloat
+    \subfloat[Stanley (taken from \cite{stanley}).]
     {  \label{fig:fig_stanley}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_stanley.jpg}
-        %\caption{Dijkstra}
     }    
-    \subfloat
+    \subfloat[Google car (Credit: Google).]
     {  \label{fig:fig_googlecar}
        \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_googlecar.jpg}
-       %\caption{A*}
     }
-   \caption[Selfdriving car]{Self driving cars: DARPA winners and Google car.}
+   \caption[Selfdriving car]{Self driving cars designed for different environments. On the left the winner of the 2005 DARPA challenge tackled wreckless driving through the Mojave desert and the right picture shows the new Google car designed for urban traffic.}
    \label{fig:fig_auto}
 \end{figure}
 
-Planetary Rovers
-three generations of Mars rovers developed at NASA
-Front and center is the flight spare for the first Mars rover, Sojourner, which landed on Mars in 1997 as part of the Mars Pathfinder Project. On the left is a Mars Exploration Rover Project test rover that is a working sibling to Spirit and Opportunity, which landed on Mars in 2004. On the right is a Mars Science Laboratory test rover the size of that project's Mars rover, Curiosity, which is on course for landing on Mars in August 2012.
-Image credit: NASA/JPL-Caltech.
-\cite{PavoneAcikmese2014rover}
+Another example of autonomous vehicles are planetary rovers.
+Three generations of Mars rovers developed at NASA are shown in Figure~\ref{fig:fig_nasa}. The first Mars rover, Sojourner, which landed on Mars in 1997 as part of the Mars Pathfinder Project, followed by Spirit and Opportunity in 2004. The latest rover Curiosity is on its mission on Mars since August 2012.
+
+An overview of recent developments in the field of planetary exploration including navigation topics can be found in \cite{PavoneAcikmese2014rover}.
 
 \begin{figure}[thpb]
 	  \myfloatalign
       \footnotesize
       \centering
-    \subfloat
+    \subfloat[NASA Mars rover (Credit: NASA JPL-Caltech).]
     {  \label{fig:fig_nasa}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_marsrover.jpg}
         %\caption{Dijkstra}
     }
-    \subfloat
+    \subfloat[Mawson rover (taken from \cite{Allister2012rover}.]
     {  \label{fig:fig_rover}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_rover.png}
         %\caption{Dijkstra}
