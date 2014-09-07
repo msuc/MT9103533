@@ -170,17 +170,24 @@ This \emph{short term memory} approach contributes to the \emph{diversification}
 
 Usable other types of memory structures are the following (presented in ~\cite{glover1997tabu}):  
 \begin{description}
-\item[Recency-based memory:] Recording when an attribute or solution was used in the search process.
-\item[Frequency-based memory:] Recording how often an attribute or solution was used during the search process. 
-\item[Quality-based memory:] Recording attributes or solutions which lead to, or are common to good solutions.
-\item[Influence-based memory:] Recording information of attributes or solution considering the impact of solution quality and structure.
+\item[Recency-based memory]\hfill \\
+Recording when an attribute or solution was used in the search process.
+\item[Frequency-based memory]\hfill \\
+Recording how often an attribute or solution was used during the search process. 
+\item[Quality-based memory]\hfill \\
+Recording attributes or solutions which lead to, or are common to good solutions.
+\item[Influence-based memory]\hfill \\
+Recording information of attributes or solution considering the impact of solution quality and structure.
 \end{description}
 
 According to the \emph{short term memory} analogy of the human memory, tabu lists can be furthermore classified in \emph{intermediate term memory}, and \emph{long term memory} strategies (see~\cite{gendreau2003tabusearch}).
 \begin{description}
-\item[short term memory:] Used for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
-\item[intermediate term memory:] Used for \emph{intensification} of the search. For example use a recency-based memory, which records good solution and restart the search from these elite solutions.
-\item[long term memory:] Used for \emph{diversification} of the search. For example implementing a frequency-based memory recording the total number of iterations in which solutions or their components have been used in the current solution. Restart the search using solutions which have a lower number of iterations.
+\item[short term memory]\hfill \\
+Used for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
+\item[intermediate term memory]\hfill \\
+Used for \emph{intensification} of the search. For example use a recency-based memory, which records good solution and restart the search from these elite solutions.
+\item[long term memory]\hfill \\
+Used for \emph{diversification} of the search. For example implementing a frequency-based memory recording the total number of iterations in which solutions or their components have been used in the current solution. Restart the search using solutions which have a lower number of iterations.
 \end{description}
 
 An important role in controlling the \emph{diversification} of the search is the length of tabu lists (\emph{tabu tenure}).  
@@ -363,13 +370,17 @@ Instead of following an exhaustive generate and test procedure on all velocity s
 Increasing the performance of the local planner has an important impact on the resulting path and behavior of the robot. 
 It allows for increasing the following properties of local planner:
 \begin{description}
-\item[Reactivity] Clearly one benefit of decreasing the time the local planning steps take is its increased reactivity. The faster and hence more often the local planner can be invoked to adapt to recent sensory information.
+\item[Reactivity]\hfill \\
+Clearly one benefit of decreasing the time the local planning steps take is its increased reactivity. The faster and hence more often the local planner can be invoked to adapt to recent sensory information.
 
-\item[Resolution] The performance gain can be used to increase the resolution of cost-maps and collision test of the robot.
+\item[Resolution]\hfill \\
+The performance gain can be used to increase the resolution of cost-maps and collision test of the robot.
 
-\item[Simulation-time] Performing longer simulation periods results often in smoother paths since the robot can react early to possible obstructions. In addition it might also find shortcuts at an earlier stage, which results in a shorter path. 
+\item[Simulation-time]\hfill \\
+Performing longer simulation periods results often in smoother paths since the robot can react early to possible obstructions. In addition it might also find shortcuts at an earlier stage, which results in a shorter path. 
 
-\item[Trajectory-number] Another very important quality benefit is the number of trajectory samples the local planner can use for making a decision. A higher number of trajectories increases the granularity of the cost function it optimizes. In the end this yields a smoother and more effective path (see Figure~\ref{fig:fig_smooth}).
+\item[Trajectory-number]\hfill \\
+Another very important quality benefit is the number of trajectory samples the local planner can use for making a decision. A higher number of trajectories increases the granularity of the cost function it optimizes. In the end this yields a smoother and more effective path (see Figure~\ref{fig:fig_smooth}).
 
 \begin{figure}[thb]
    \footnotesize
