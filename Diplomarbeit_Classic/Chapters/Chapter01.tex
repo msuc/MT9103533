@@ -24,7 +24,7 @@ Figure~\ref{fig:fig_pioneer} illustrates the view of the environment from a robo
 
 \begin{figure}[thpb]
       \centering
-      \def\svgwidth{0.7\textwidth}
+      \def\svgwidth{\textwidth}
       \includesvg{figures/pioneer_costmap}
       \caption[Global and local planning.]{This figure shows a Pionner3DX and its view of the office environment while passing through a door. The blue line shows the global path and the green line the selected trajectory of the local planner.}
       \label{fig:fig_pioneer}
@@ -131,9 +131,26 @@ UAV Project Wing
 
 \item[Assistance and Companion Robots]\hfill \\
 Companion KIBA, 
-Health Care HOBBIT, 
-Guide RHINO, ROBOX
-Strands Werner
+Health Care HOBBIT \cite{fischinger2013hobbit}, 
+Guide RHINO, ROBOX \cite{philippsen:2004:phd}
+\begin{figure}[thpb]
+	  \myfloatalign
+      \footnotesize
+      \centering
+    \subfloat
+    {  \label{fig:fig_agv}
+        \includegraphics[width=0.45\textwidth,height=0.3\textheight]{figures/fig_hobbit.png}
+        %\caption{Dijkstra}
+    }
+    \subfloat
+    {  \label{fig:fig_uav}
+        \includegraphics[width=0.45\textwidth,height=0.3\textheight]{figures/fig_robox.png}
+        %\caption{Dijkstra}
+    }     
+   \caption[Assitance robots]{Hobbit a care robot to support elderly people and Robox a museum tour guide.}
+   \label{fig:fig_rescue}
+\end{figure}
+
 
 \item[Commercial]\hfill \\
 Mining Robots, law mowing, floor cleaning, harvesting
