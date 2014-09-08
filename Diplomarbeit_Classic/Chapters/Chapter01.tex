@@ -6,7 +6,7 @@ Navigation and planning are essential for mobile robots to act in out- and indoo
 From self driving cars navigating 132~miles through the Mojave desert, or mobile robots handling goods in distribution centers and warehouses to mobile robots used for planetary exploration, autonomous robots have conquered nearly every place on earth and beyond.
  
 Articles like \cite{stanley} and \cite{kiva} present the relationship between the environmental complexity and the computational on-board processing power needed to tackle the navigation problem.
-Stanley has a six processor computing platform sponsored by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment.  
+The self driving car Stanley has a six processor computing platform provided by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment.  
 
 While the application domains and computational powers varies strongly between the robotic systems, all of them have to move safely and efficient from one location to another.   
 In order to give an impression of the importance of navigation and planning in the field of mobile robotics the next section gives some motivation and application examples.
@@ -17,8 +17,9 @@ The resulting series of actions is called a \emph{plan}.
 
 To ensure safety and flexibility in the presence of obstacles in a dynamic environment \emph{obstacle avoidance} is used to alter plans during execution and generating of collision free trajectories.
 
-A common strategy to deal with complex planning problems is to the divide the navigation task into a global and a local planning problem \cite{LaValle2006}.
-Global path-planning requires a simplified representation, e.g. static map, of the search problem to efficiently compute an optimal shortest path using variants of Dijkstra's \cite{dijkstra1959note} or $A^*$ \cite{DBLP:journals/tssc/HartNR68/Astar} algorithm, ignoring kinematic and acceleration constraints of the robot.
+A common strategy to deal with complex navigation problems is to the divide the planning task into a global and a local planning problem \cite{LaValle2006}.
+
+Global path-planning usually operates on a simplified representation of the environment and the robot itself (e.g. static map, circle representation of the robots outline) to efficiently compute an optimal shortest path using variants of Dijkstra's \cite{dijkstra1959note} or $A^*$ \cite{DBLP:journals/tssc/HartNR68/Astar} algorithm, ignoring kinematic and acceleration constraints of the robot.
 In succession the retrieved global path is used by a local planner for guiding the robot through the environment.
 Figure~\ref{fig:fig_pioneer} illustrates the view of the environment from a robot perspective together with a global and local plan, which enables the robot to drive autonomous within our lab/office environment.
 
@@ -85,18 +86,18 @@ An overview of recent developments in the field of planetary exploration includi
 \footnotetext{Google self driving car available from \url{http://googleblog.blogspot.co.at/2014/05/just-press-go-designing-self-driving.html}}
 
 \item[Search and Rescue]\hfill \\
-
+Mobile robots provide a useful tool for rescue teams, whenever human intervention is not possible due to imminent risk of health and life, like immediate explosion hazard or threat of nuclear radiation.  
 Figure~\ref{fig:fig_rescue} shows two prominent representatives of search and rescue robots.
 \begin{figure}[thpb]
 	  \myfloatalign
       \footnotesize
       \centering
-    \subfloat
+    \subfloat[Pioneer (Credit: Carnegie Mellon University)]
     {  \label{fig:fig_chernobyl}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_chernobyl_pioneer.jpg}
         %\caption{Dijkstra}
     }
-    \subfloat
+    \subfloat[Packbot (Credit: iRobot)]
     {  \label{fig:fig_fukushima}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_packbot.png}
         %\caption{Dijkstra}
@@ -113,28 +114,30 @@ In 2011 after an earthquake caused a nuclear disaster at the Fukushima Daiichi p
 While the aforementioned robots were remotely operated, autonomous robots are a hot research topic in this domain and already provide impressive results like Hector the winner of the 2014 RoboCup Rescue League \cite{2014:hector_rescue_tdp}.
 
 \item[Logistics and Transportation]\hfill \\
-AGV DS-Automation
-HELPMATE
-Kiva Systems \cite{kiva}
-UAV Project Wing
+Automated guided vehicles (AGV) are an essential part in industry to support automated manufacturing. Figure~\ref{fig:fig_agv} shows a typical AGV from the Austrian company DS-Automotion.
+The mobile robots follow markers, wires, or magnets in the floor, and make use of lasers and computer vision methods to accomplish navigation tasks. 
+Their main responsibility is to move materials safely and efficient around manufacturing facilities, warehouses (eg. Kiva Systems \cite{kiva}) or hospitals (eg. HELPMATE \cite{ROB:4520696}). 
+
+If transportation by road is not possible a flying drone might do the job. Projects from major companies like Googles \emph{project wing}\footnotetext{Google self driving delivery drones \url{https://plus.google.com/+google/posts/TqrsvRyPeNH}} and Amazons \emph{Prime Air} are working on self flying drones to deliver packages. 
+Figure~\ref{fig:fig_uav} shows a prototype drone on a test flight. 
+
 \begin{figure}[thpb]
 	  \myfloatalign
       \footnotesize
       \centering
-    \subfloat
+    \subfloat[AGV (Credit: DS-Automotion)]
     {  \label{fig:fig_agv}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_AGV-dsautomation.jpg}
         %\caption{Dijkstra}
     }
-    \subfloat
+    \subfloat[Project Wing delivery drone (Credit: KEYSTONE)]
     {  \label{fig:fig_uav}
         \includegraphics[width=0.45\textwidth,height=0.2\textheight]{figures/fig_wing.jpg}
         %\caption{Dijkstra}
     }     
-   \caption[Logistic robots]{AGV DS-Automation, Project Wing Credit: KEYSTONE.}
-   \label{fig:fig_rescue}
+   \caption[Logistic robots]{Transportation on earth using Automated Guided Vehicles and in the air with the support of self flying drones.}
+   \label{fig:fig_transport}
 \end{figure}
-
 
 \item[Assistance and Companion Robots]\hfill \\
 Companion KIBA, 
