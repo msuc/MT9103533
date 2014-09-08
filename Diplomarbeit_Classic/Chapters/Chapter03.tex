@@ -58,9 +58,9 @@ The distance to the closest obstacle is calculated in the function $f_d(v,w)$.
 The function $f_v(v,w)$ takes the forward velocity into account and rewards faster movements of the robot.
 This method does not use a global plan to guide the robot, so without further changes it is subject to get captured in local minima.
 
-Other applications of this approach in recent planning systems, adapt the corresponding cost function. 
+Other applications of this approach in recent planning systems adapt the corresponding cost function. 
 %give some recent papers about dwa in developments%
-The excellent \texttt{move\_base}\footnote{move\_base planning framework: \url{http://wiki.ros.org/move_base}} motion-planning framework introduced in \cite{DBLP:conf/icra/Marder-EppsteinBFGK10} implements within the navigation stack of Robot Operating System (ROS) local planner which incorporate global plans.
+The excellent \texttt{move\_base}\footnote{move\_base planning framework: \url{http://wiki.ros.org/move_base}} motion planning framework introduced in \cite{DBLP:conf/icra/Marder-EppsteinBFGK10} implements within the navigation stack of Robot Operating System (ROS) a local planner which uses a global plan as a guide.
 
 One implementation is based on DWA.
 There is also the option to use Trajectory rollout \cite{gerkey08planning} as a local planner which is very related to the DWA, but in contrast improves in simulating the robots trajectory by accurately applying acceleration limits over the whole simulation time.
