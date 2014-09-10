@@ -8,6 +8,18 @@ Articles like \cite{stanley} and \cite{kiva} present the relationship between th
 The self driving car Stanley has a six processor computing platform provided by Intel whilst Kiva robots are using low cost DSP's for navigation and vision processing\footnote{Kiva Systems Uses "Smart" Blackfin-powered Robots for Warehouse Navigation | Analog Devices: \url{http://www.analog.com/en/content/kiva_systems_bf548/fca.html}} to drive within a known environment.  
 
 While the application domains and computational powers varies strongly between the robotic systems, all of them have to move safely and efficient from one location to another.   
+
+In this thesis we propose a method for improving navigation for mobile robots by the use of combining local planning methods with search strategies based on meta-heuristics.
+
+This enables the local planner to:
+\begin{itemize}
+\item run at a higher frequency
+\item simulate trajectories for a longer time interval
+\item moving the robot at higher speed
+\item investigate a larger amount of trajectories
+\item use a higher costmap resolution
+\end{itemize}
+
 In order to give an impression of the importance of navigation and planning in the field of mobile robotics the next section gives some motivation and application examples.
 
 \section{Motivation and Applications}\label{sec:motivation} 
@@ -37,7 +49,7 @@ Navigation competence is essential for a broad spectrum of application domains w
 
 \begin{description}
 \item[Self driving cars]\hfill \\
-Self driving cars (see Figure~\ref{fig:fig_auto}) like Stanley \cite{stanley} which won the 2005 DARPA Grand Challenge and the Google car \cite{guizzo2011google} are two examples which illustrate the enormous potential of autonomous vehicles.
+Self driving cars (see Figure~\ref{fig:fig_auto}) like Stanley \cite{stanley} which won the 2005 DARPA (Defense Advanced Research Projects Agency of the United States) Grand Challenge and the Google car \cite{guizzo2011google} are two examples which illustrate the enormous potential of autonomous vehicles.
 While the former is confronted with rough terrain and manoeuvrs at high speeds, cars in urban traffic have to be prepared for other vehicles, pedestrians and have to incorporate traffic rules into the navigation task. 
 
 \begin{figure}[thpb]
@@ -192,18 +204,13 @@ Figure \ref{fig:fig_cropbot} shows a harvesting robot developed at the Technisch
 \end{figure}
 
 \item[Challenges and Competitions]\hfill \\
-The already mentioned DARPA Grand Challenge for self driving cars and RoboCup Rescue competitions for Search and Rescue robots.
+Attractive competitions have the purpose to spur innovation and sponsor research development in the field of robotics .  
+One of the most popular events are organized and sponsored by DARPA. Besides the already mentioned Grand Challenge for wreckless self driving cars, the successor events DARPA Urban Challenge focused on autonomous vehicles moving in urban areas. 
+In 2012 the first DARPA Robotics Challenge took place which provided a platform for wheeled and humanoid search and rescue robots.
 
-FIRA
-Robocup,Robotsoccer Standard platform League, other Leagues
-FIRA3 and RoboCup 4 are two organizations intended to promote robot soccer. They
-attempt to provide a standard problem where wide ranges of technologies must be combined
-and integrated.
-Federation of International Robot-soccer Association, founded in 1997. Details can be found at www.fira.net
-RoboCup Federation, founded in 1993. Details can be found at www.robocup.org.
-
-Robot@Home
-RobocupLogisticLeague
+World Competitions of soccer playing robots fascinate and motivate thousands of people every year and have a significant impact on the development of innovative methods including navigation and planning for mobile robots.
+Figure~\ref{fig:fig_competition} shows wheeled and humanoid robots trying their best at scoring more goals than their opponents.
+The biggest events are organized by FIRA\footnote{Federation of International Robot-soccer Association, founded in 1997. Details can be found at \url{www.fira.net}.} and RoboCup\footnote{RoboCup Federation, founded in 1993. Details can be found at \url{www.robocup.org}.}, which provide annual competitions for wheeled and humanoid soccer robots.
 
 \begin{figure}[thpb]
 	  \myfloatalign
@@ -224,28 +231,25 @@ RobocupLogisticLeague
 \end{figure}
 \end{description}
 
-Other fields not in robotic environment. Knot entangling puzzles, automation and assembly, Molecular biology and medicine.
-And a short summary towards the goal of the thesis.
+Navigation plays an essential role in mobile robotics and excellent planning algorithms are needed to guarantee a wide area of applications that allows autonomous and semi-autonomous machines to safely and economically move through in- and outdoor environments.
 
 \section{Goal of Thesis and Scientific Contribution}\label{sec:goal}
+The goal of this thesis is to provide an extension to local planning systems for mobile robots based on trajectory generation and parts of this work were presented at the Austrian Robotics Workshop 2014 \cite{myself}. 
+The proposed method applies meta-heuristic search strategies to improve the performance of local planner based on brute force evaluation of a fixed number of trajectories.
 
-
-One of the most popular local planer and reactive collision avoidance method is the Dynamic Window Approach (DWA)\cite{DWA1997}. Its based on evaluating a fixed number of trajectory samples in a reduced velocity space. 
-A dynamic window around the current robot fused with the current sensor readings of the robot represents a so called costmap.
-Trajectories are sampled into that costmap and weighted by a cost function.
-Recent adoptions of this method can be found in \cite{conf/icra/SederP07}\cite{DBLP:conf/icra/Marder-EppsteinBFGK10}
-
-In this paper we propose a method which finds the best velocity commands by using search strategies based on Meta-Heuristics instead of evaluating a fixed number of trajectories in a brute force manner.
-A combination of Iterated Local Search (ILS) with different neighborhood structures, Variable Neighborhood Search (VNS), and a Tabu list provides a significant documented performance boost. 
-
-This enables the local planer to:
-\begin{itemize}
-\item run at a higher frequency
-\item simulate trajectories for a longer time interval
-\item moving the robot at higher speed
-\item investigate a larger amount of trajectories
-\item use a higher costmap resolution
-\end{itemize}
+This includes the following sub-goals.
+\begin{description}
+\item[Compilation of planning approaches]\hfill \\
+A detailed overview of planning and obstacle avoidance methods has to be compiled. 
+\item[Investigating possible meta heuristic algorithms]\hfill \\
+Possible applicable meta-heuristics have to be selected and adapted to make them usable for trajectory selection.
+\item[Design of benchmark instances and sample planner]\hfill \\
+Suitable test instances and a sample planning program which allow to set the focus of investigating the proposed method on the local planning task have to be developed.  
+\item[Implementation]\hfill \\
+The gained data from the benchmark instances and the sample planner are used to implement meta-heuristic local planning in an existing navigation system for mobile robots.  
+\item[Evaluation]\hfill \\
+Experiments have to be designed and evaluated to document the performance of the meta-heuristic algorithms in comparison to their unaltered counterparts.
+\end{description}
 
 \section{Outline}\label{sec:outline}
 This work is structured in the following way. 
