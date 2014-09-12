@@ -27,25 +27,33 @@ An illustration is given in Figure~\ref{fig:fig_overview}
    \caption[Djikstra's and A* algorithm.]{The difference between Djikstra's and A* algorithm searching for a shortest path in a grid representation of a building. A* is more effective, as it visits by far less nodes in the search graph. }
    \label{fig:fig_overview}
 \end{figure}
-\subsection{Randomized Roadmaps}
+\subsection{Roadmap Based Navigation}
 \subsubsection{Rapidly Exploring Randomized Trees (RRT)}
 \subsubsection{Probabilistic Road Maps (PRM)}
 \subsection{Potential Field}
 \section{Local Planning and Obstacle Avoidance}\label{sec:local}
 \subsection{Bug Algorithms}
-\subsection{Vector Field Histogram(VFH)}
-\subsection{Virtual Force Fields (VFF)}
-\subsection{Nearness Diagrams (ND)}
+\subsection{HistogramMehods}
+Vector Field Histogram(VFH)
+Nearness Diagrams (ND)
+\subsection{Velocity Space Methods}
 \subsection{Curvature Velocity Method (CVM)}
-The Curvature Velocity Method in \cite{simmons1996curvature} considers approximation techniques like simulated annealing to maximize the cost function using the whole velocity space, but abandoned the idea due to still high computational costs. 
-Instead of using discrete samples of the velocity space, it divides the space in sets of curvature intervals. 
-Evaluation is performed by evaluating over all curvature intervals.
+The Curvature Velocity Method in \cite{simmons1996curvature} is an obstacle avoidance method which considers kinematic and dynamic constraints of the robot and the environment.
+These constraints are added to a \emph{velocity space} which consists of \emph{translational velocity} $v$ and \emph{rotational velocity} $w$.
+One basic assumption of this approach is that the robot can only travel along circles with curvature $c=w/v$. 
+This approximation neglects acceleration issues and restricts the robot motions to constant velocities over a given time horizon.   
+Another simplification is the representation of obstacles as circles, which is used for fast transformation of the obstacles into the velocity space.
+All curvatures which do not hit obstacles and adhere to the kinematic constraints of the robot are then evaluated using a cost function.
+Since approximation techniques like simulated annealing to maximize the cost function using the whole velocity space did not succeed, the velocity space is divided into finite sets of curvature intervals.
+The objective function is then evaluated over all curvature intervals.
 
 \subsection{Dynamic Window Approach (DWA)}\label{sec:dwa}
 A well known method for local planning is the Dynamic Window Approach proposed in \cite{DWA1997}. 
-The method discretely samples the velocity space $(v,w)$ of the robot, where $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
+The method discretely samples the velocity space $(v,w)$ of the robot, where again $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
 The velocity space is reduced to the reachable minimal and maximal velocity in one control cycle, taken the acceleration limits of the robot into account.
-For a fixed amount of velocity samples the corresponding trajectories are created using a predefined granularity by performing forward simulation for a short period of time, starting at the current position of the robot. Evaluating all trajectories with respect to a weighted cost function (cf. Equation~\ref{eq:costfunction}) identifies the best trajectory.
+For a fixed amount of velocity samples the corresponding trajectories are created using a predefined granularity by performing forward simulation for a short period of time, starting at the current position of the robot. 
+The trajectories which stop safely before an obstacles are called \emph{feasible}.
+Evaluating all \emph{feasible} trajectories with respect to a weighted cost function (cf. Equation~\ref{eq:costfunction}) identifies the best velocity tuple, which is then forwarded to the motor controller.
 
 \begin{equation}
    f_c(v,w)=\alpha f_a(v,w)+\beta f_d(v,w)+\gamma f_v(v,w)
