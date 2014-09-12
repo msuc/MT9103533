@@ -41,7 +41,8 @@ Nearness Diagrams (ND)
 The Curvature Velocity Method in \cite{simmons1996curvature} is an obstacle avoidance method which considers kinematic and dynamic constraints of the robot and the environment.
 These constraints are added to a \emph{velocity space} which consists of \emph{translational velocity} $v$ and \emph{rotational velocity} $w$.
 One basic assumption of this approach is that the robot can only travel along circles with curvature $c=w/v$. 
-This approximation neglects acceleration issues and restricts the robot motions to constant velocities over a given time horizon.   
+This approximation neglects acceleration issues and restricts the robot motions to constant velocities over a given time horizon. 
+  
 Another simplification is the representation of obstacles as circles, which is used for fast transformation of the obstacles into the velocity space.
 All curvatures which do not hit obstacles and adhere to the kinematic constraints of the robot are then evaluated using a cost function.
 Since approximation techniques like simulated annealing to maximize the cost function using the whole velocity space did not succeed, the velocity space is divided into finite sets of curvature intervals.
