@@ -18,7 +18,7 @@ The proposed methods are tested and refined and implemented into a robotic navig
 \item{\bf{VNS-DWA}} Refining VNSB-Tabu with short term memory for DWA planner
 \end{itemize}
 
-The next section provides background information of meta-heuristic search. Following well known classifications of meta-heuristics (see \cite{blum2003metaheuristics}, \cite{birattari2001classification} ) we proceed by introducing \emph{single solution based} meta heuristic, which are the main source for our proposed approach. To complete the presentation of meta-heuristic we give a short description on the ideas of \emph{population based} meta heuristics.
+The next section provides background information of meta-heuristic search. Following well known classifications of meta-heuristics (see \cite{blum2003metaheuristics}, \cite{birattari2001classification} ) we proceed by introducing \emph{single solution based} meta heuristic, which are the main source for our proposed approach. 
 
 We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. 
 
@@ -347,23 +347,22 @@ Decreasing the temperature during the search is called \emph{annealing}, referri
 
 Beside this basic form of a \emph{cooling schedule} oscillating schemes can be implemented (\emph{reheating}) which cycle between \emph{intensifiction} and \emph{diversification} phases. 
 
-\section{Population Based Meta-Heuristics}
-\fxnote{may be optional section and can be mentioned in the beginning of the chapter. interesting because those metaheuristic are really used in robot navigation.}
+\section{Summary}
+The presented meta-heurstics provide a powerful tool for general purpose optimization. 
+This work restricts the collection of investigated algorithms which operate on a single solution.
 In contrast to the aforementioned methods, population based meta-heuristics operate on a set of solutions. Instead of a single trajectory, the search process describes \grqq the evolution of a set of points in the search space \grqq \cite{blum2003metaheuristics}.  
+Examples of such algorithms include methods based on Evolutionary Computation, Ant Colony Optimization, and Artificial Immune Systems.
+For an in depth presentation of current meta-heuristic methods see \cite{Gendreau2010}.
 
-\subsection{Evolutionary Computation}
+The next section covers the approach to apply meta-heuristic search in the context of local planning.
 
-\subsection{Ant Colony Optimization}
-
-\section{Classification and Comparison of Meta-Heuristics}
-\fxnote{Summarize meta-heuristics using classifications. Do not know if to include}
-
+\clearpage
 \section{Trajectory Selection Using Meta-Heuristics} \label{sec:trajselmeta}
 One basic step in creating a good local planner for mobile robots is the aforementioned trajectory selection. Especially forward movements are of particular interest, since their evaluation and collision tests are costly operations.
 Only if forward movement does not yield valid movements, other strategies have to be applied, which provide escaping mechanisms, like turning around for relocation, or slow random backward movements to help the robot evade situations where it gets stuck. 
 The use of escaping mechanisms should be limited, since they are only relevant if the usual planning step fails. 
 
-In this paper the focus lies on improving the trajectory selection of local planners using meta-heuristic algorithm. 
+In this thesis the focus lies on improving the trajectory selection of local planners using meta-heuristic algorithm. 
 
 Instead of following an exhaustive generate and test procedure on all velocity samples, meta-heuristic algorithms are used to increase the search performance. 
 
