@@ -31,15 +31,18 @@ An illustration is given in Figure~\ref{fig:fig_overview}
 \subsubsection{Rapidly Exploring Randomized Trees (RRT)}
 \subsubsection{Probabilistic Road Maps (PRM)}
 \subsection{Potential Field}
+
 \section{Local Planning and Obstacle Avoidance}\label{sec:local}
 \subsection{Bug Algorithms}
-\subsection{HistogramMehods}
+
 M. I. Ribeiro. Obstacle avoidance. Institute for Systems and Robotics, [Online], Available:  \url{http://users.isr.ist.utl.pt/~mir/}, March 5, 2011.
-Vector Field Histogram(VFH)
-Nearness Diagrams (ND)
-\subsection{Velocity Space Methods}
+
+\subsection{Vector Field Histogram(VFH)}
+
+\subsection{Nearness Diagrams (ND)}
+
 \subsection{Curvature Velocity Method (CVM)}
-The Curvature Velocity Method in \cite{simmons1996curvature} is an obstacle avoidance method which considers kinematic and dynamic constraints of the robot and the environment.
+The Curvature Velocity Method in \cite{simmons1996curvature} describes an obstacle avoidance method which considers kinematic and dynamic constraints of the robot and the environment.
 These constraints are added to a \emph{velocity space} which consists of \emph{translational velocity} $v$ and \emph{rotational velocity} $w$.
 One basic assumption of this approach is that the robot can only travel along circles with curvature $c=w/v$. 
 This approximation neglects acceleration issues and restricts the robot motions to constant velocities over a given time horizon. 
@@ -49,11 +52,33 @@ All curvatures which do not hit obstacles and adhere to the kinematic constraint
 Since approximation techniques like simulated annealing to maximize the cost function using the whole velocity space did not succeed, the velocity space is divided into finite sets of curvature intervals.
 The objective function is then evaluated over all curvature intervals.
 
+A problem of this method arises when confronted with narrow passages which are perpendicular to the robots heading, which might lead to missing shorter paths. 
+This problem is solved by the Lane Curvature Method \cite{ko1998lane}, by
+dividing the workspace into finite number of lanes. 
+The best angular velocity for changing lanes is evaluated using the CVM method. 
+
 \subsection{Dynamic Window Approach (DWA)}\label{sec:dwa}
 A well known method for local planning is the Dynamic Window Approach proposed in \cite{DWA1997}. 
-The method discretely samples the velocity space $(v,w)$ of the robot, where again $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
-The velocity space is reduced to the reachable minimal and maximal velocity in one control cycle, taken the acceleration limits of the robot into account.
-For a fixed amount of velocity samples the corresponding trajectories are created using a predefined granularity by performing forward simulation for a short period of time, starting at the current position of the robot. 
+The method samples the \emph{velocity space} $(v,w)$ of the robot, where again $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
+The space is reduced to a \emph{dynamic window} which contains the reachable minimal and maximal velocity in one control cycle, taken the acceleration limits of the robot into account.
+
+Obstacles are transformed into the velocity space using a distance function.
+Figure \ref{fig:fig_dynamic} shows the obstacles in velocity space and the corresponding dynamic window. 
+\begin{figure}[thpb]
+	  \myfloatalign
+      \scriptsize
+      \centering
+    \subfloat
+    {  
+       \def\svgwidth{0.75\textwidth}
+       \includesvg{figures/fig_dynamic}
+    } 
+   \caption[Dynamic Window]{This Figure shows a dynamic window $V_d$ of a robot together with obstacles transformed in to a velocity space $V_s$. Only the velocities within the small area around the current robots speed $V_r$ are used for evaluating trajectories by a cost function. The best velocities are forwareded to the robots motor controller. (reproduced from \cite{DWA1997})}
+   \label{fig:fig_dynamic}
+\end{figure}
+
+
+For a fixed amount of velocity samples the corresponding trajectories are created using a predefined granularity by performing forward simulation for a short period of time, starting at the current position and speed of the robot. 
 The trajectories which stop safely before an obstacles are called \emph{feasible}.
 Evaluating all \emph{feasible} trajectories with respect to a weighted cost function (cf. Equation~\ref{eq:costfunction}) identifies the best velocity tuple, which is then forwarded to the motor controller.
 
@@ -66,11 +91,14 @@ The function $f_a(v,w)$ judges the angle between the robots heading and a given 
 It is maximal if the heading is a straight line to the goal.
 The distance to the closest obstacle is calculated in the function $f_d(v,w)$.
 The function $f_v(v,w)$ takes the forward velocity into account and rewards faster movements of the robot.
-This method does not use a global plan to guide the robot, so without further changes it is subject to get captured in local minima.
+
+In this method the obstacles are not approximated by circles, instead small lines are used to account for a more accurate representation of obstacles.
+The robot is still approximated as a circle.
+The original method does not use a global plan to guide the robot, so without further changes it is subject to get captured in local minima.
 
 Other applications of this approach in recent planning systems adapt the corresponding cost function. 
 %give some recent papers about dwa in developments%
-The excellent \texttt{move\_base}\footnote{move\_base planning framework: \url{http://wiki.ros.org/move_base}} motion planning framework introduced in \cite{DBLP:conf/icra/Marder-EppsteinBFGK10} implements within the navigation stack of Robot Operating System (ROS) a local planner which uses a global plan as a guide.
+The excellent \texttt{move\_base}\footnote{move\_base planning framework: \url{http://wiki.ros.org/move_base}} motion planning framework introduced in \cite{DBLP:conf/icra/Marder-EppsteinBFGK10} implements within the navigation stack of Robot Operating System (ROS) a local planner which uses a global plan as a guide, and uses a polygon to model the robot outline.
 
 One implementation is based on DWA.
 There is also the option to use Trajectory rollout \cite{gerkey08planning} as a local planner which is very related to the DWA, but in contrast improves in simulating the robots trajectory by accurately applying acceleration limits over the whole simulation time.
