@@ -126,6 +126,7 @@ In Figure~\ref{fig:gazebo_v4r} the 3D-model, which is a simple artificial buildi
 
 \section{Results}\label{sec:testresults}
 All experiments account for the randomness of the proposed methods by running the algorithm multiple times.
+
 The results are visualized using box-plots. 
 The colored box is bounded by the lower quartile and the upper quartile of the data ($25\%$ and $75\%$ of the data). 
 The median is indicated by a straight line through the box. 
@@ -176,7 +177,8 @@ Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, a
    \end{figure}
 
 The results show that all algorithms, including RST, outperform the Brute Force generate and test method significantly. 
-As expected increasing the number of trajectories greatly favors the Meta-Heuristic algorithms, since they benefit from larger search spaces. 
+As expected increasing the number of trajectories greatly favors the meta-heuristic algorithms, since they benefit from larger search spaces. 
+
 Notice that ILS and VNS algorithms differ apparently from the RST by exhibiting much smaller variance in their test results, indicating that randomization alone is not enough to achieve very good and stable performance.
 Furthermore the VNS exhibit a more stable performance than the ILS methods. 
 Comparing the ILS algorithms reveals the connection of the search space size to the size of the neighborhood. 
@@ -401,6 +403,7 @@ The tests conducted with a simulation software show that the previous results ca
 \subsection{Implementation Details}
 The example planner was implemented using \emph{python} version $2.7$ (available at \url{http://www.python.com}). This allows for a fast prototype implementation of a local planner without the overhead and interruption of other parts of full planning systems.
 Hence the optimization algorithms could be evaluated focusing on the  specific trajectory selection part. 
+
 For visualization, geometry related processing, and the creation of test scripts the python packages \emph{Numpy} (available at \url{http://www.numpy.org}), \emph{Python Imaging Library} (available at \url{http://www.pythonware.com}) and \emph{Matplotlib} (available at \url{http://matplotlib.org}) were an essential part of the created software. 
 
 The VNS algorithm used in the navigation framework within ROS, was created using C++ and the BOOST-C++ Libraries (\url{http://www.boost.org}).
