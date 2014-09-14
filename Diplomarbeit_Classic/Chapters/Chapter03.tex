@@ -109,6 +109,9 @@ Figure \ref{fig:fig_nd} shows identified regions and the corresponding diagrams.
 The best actual steering direction is evaluated using a binary decision tree representing a set of predefined \emph{situation} and \emph{action} pairs. 
 The values of RND and PND are applied as input to tree and are processed by the branching rules of the tree. 
 
+Improvements on the ND method appear in \cite{minguez2001global} which adds a global information to the evaluation process. 
+The Smooth Nearness Diagrams (SND) introduced in \cite{durham2008smooth} improves on the ND+ method by providing a unique motion law for all situations and incorporating all visible obstacles surrounding the robot, creating smoother paths for the robot.
+ 
 \subsection{Curvature Velocity Method (CVM)}
 The Curvature Velocity Method in \cite{simmons1996curvature} describes an obstacle avoidance method which considers kinematic and dynamic constraints of the robot and the environment.
 These constraints are added to a \emph{velocity space} which consists of \emph{translational velocity} $v$ and \emph{rotational velocity} $w$.
