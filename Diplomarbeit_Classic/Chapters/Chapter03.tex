@@ -1,46 +1,16 @@
 %Chapter 03
 %************************************************
-\chapter{Planning Algorithms}\label{ch:planningalgorithms}
+\chapter{Local Planning and Obstacle Avoidance}\label{ch:local}
 %************************************************
-Overview and classification of path planning algorithms
-\section{Global Planning}\label{sec:global}
-\subsection{Graph Search}
-\subsubsection{Breadth-First Search (BFS)}
-\subsubsection{Depth-First Search (DFS)}
-\subsubsection{Dijkstra's and A* algorithm}
-An illustration is given in Figure~\ref{fig:fig_overview}
-\begin{figure}[thpb]
-	  \myfloatalign
-      \footnotesize
-      \centering
-    \subfloat[Dijkstra algorithm]
-    {  \label{fig:fig_djikstra}
-        \includegraphics[width=0.75\textwidth]{figures/fig_djikstra.png}
-        %\caption{Dijkstra}
-    }
-    
-    \subfloat[A* algorithm]
-    {  \label{fig:fig_astar}
-       \includegraphics[width=0.75\textwidth]{figures/fig_astar.png}
-       %\caption{A*}
-    }
-   \caption[Djikstra's and A* algorithm.]{The difference between Djikstra's and A* algorithm searching for a shortest path in a grid representation of a building. A* is more effective, as it visits by far less nodes in the search graph. }
-   \label{fig:fig_overview}
-\end{figure}
-\subsection{Roadmap Based Navigation}
-\subsubsection{Rapidly Exploring Randomized Trees (RRT)}
-\subsubsection{Probabilistic Road Maps (PRM)}
-\subsection{Potential Field}
 
-\section{Local Planning and Obstacle Avoidance}\label{sec:local}
-\subsection{Bug Algorithms}
+\section{Bug Algorithms}
 
 M. I. Ribeiro. Obstacle avoidance. Institute for Systems and Robotics, [Online], Available:  \url{http://users.isr.ist.utl.pt/~mir/}, March 5, 2011.
 
-\subsection{Elastic Bands}
+\section{Elastic Bands}
 Khatib potential field Bubble band
 
-\subsection{Vector Field Histogram (VFH)}
+\section{Vector Field Histogram (VFH)}
 Vector Field Histograms \cite{borenstein1991vector} simplify the representation of the environment in a 2 step approach to allow for fast calculation of good directions for holonomic robots.
 In a first step a small local two-dimensional Cartesian \emph{histogram grid} is created.
 Each cell of the grid is incremented if an obstacle is reported from the sensors of the robot. 
@@ -73,7 +43,7 @@ Improvements of this method can be found in the VFH$+$ \cite{ulrich1998vfh+} and
 Here the second step yields an even simpler \emph{binary} polar histogram, where $1$ indicate a blocked and $0$ a free sector. 
 In addition some of the kinematics and dynamics are taken into account and the purely local approach is enhanced by adding information of a global path planning component using A$^*$ algorithm. 
 
-\subsection{Nearness Diagrams (ND)}
+\section{Nearness Diagrams (ND)}
 Another approach that makes use of graphic representation as a diagram is the Nearness Diagram method presented in \cite{minguez2004nearness} and its refinement in ND+ \cite{minguez2004divide}.
 The surrounding of the holonomic robot, approximated as a circle, is divided into a set of different sectors similar to the VFH method.
 
@@ -112,7 +82,7 @@ The values of RND and PND are applied as input to tree and are processed by the 
 Improvements on the ND method appear in \cite{minguez2001global} which adds a global information to the evaluation process. 
 The Smooth Nearness Diagrams (SND) introduced in \cite{durham2008smooth} improves on the ND+ method by providing a unique motion law for all situations and incorporating all visible obstacles surrounding the robot, creating smoother paths for the robot.
  
-\subsection{Curvature Velocity Method (CVM)}
+\section{Curvature Velocity Method (CVM)}
 The Curvature Velocity Method in \cite{simmons1996curvature} describes an obstacle avoidance method which considers kinematic and dynamic constraints of the robot and the environment.
 These constraints are added to a \emph{velocity space} which consists of \emph{translational velocity} $v$ and \emph{rotational velocity} $w$.
 One basic assumption of this approach is that the robot can only travel along circles with curvature $c=w/v$. 
@@ -128,7 +98,7 @@ This problem is solved by the Lane Curvature Method \cite{ko1998lane}, by
 dividing the workspace into finite number of lanes. 
 The best angular velocity for changing lanes is evaluated using the CVM method. 
 
-\subsection{Dynamic Window Approach (DWA)}\label{sec:dwa}
+\section{Dynamic Window Approach (DWA)}\label{sec:dwa}
 A well known method for local planning is the Dynamic Window Approach proposed in \cite{DWA1997}. 
 The method samples the \emph{velocity space} $(v,w)$ of the robot, where again $v$ is the \emph{linear velocity} and $w$ the \emph{angular velocity} of the robot, to create a set of feasible trajectories.
 The space is reduced to a \emph{dynamic window} which contains the reachable minimal and maximal velocity in one control cycle, taken the acceleration limits of the robot into account.
@@ -141,7 +111,7 @@ Figure \ref{fig:fig_dynamic} shows the obstacles in velocity space and the corre
       \centering
     \subfloat
     {  
-       \def\svgwidth{0.75\textwidth}
+       \def\svgwidth{\textwidth}
        \includesvg{figures/fig_dynamic}
     } 
    \caption[Dynamic Window]{This Figure shows a dynamic window $V_d$ of a robot together with obstacles transformed in to a velocity space $V_s$. Only the velocities within the small area around the current robots speed $V_r$ are used for evaluating trajectories by a cost function. The best velocities are forwareded to the robots motor controller. (reproduced from \cite{DWA1997})}
