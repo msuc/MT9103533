@@ -3,9 +3,53 @@
 \chapter{Local Planning and Obstacle Avoidance}\label{ch:local}
 %************************************************
 
-\section{Bug Algorithms}
 
-M. I. Ribeiro. Obstacle avoidance. Institute for Systems and Robotics, [Online], Available:  \url{http://users.isr.ist.utl.pt/~mir/}, March 5, 2011.
+
+\section{Bug Algorithms}
+One of the most straight forward strategy to generate collision free geometric paths is introduced by the family of bug algorithms, inspired by simple path planning strategies from insects.   
+
+Bug1 and Bug2 are the first mentioned algorithms in this family which are introduced and analyzed in \cite{lumelsky1987path}.
+Both algorithms allow to switch between two behaviors to create a path from the start position to the goal position without hitting an obstacle:
+\begin{enumerate}
+\item {\bf goal-approaching:} Follow the straight line from the current position toward the goal position.
+\item {\bf wall-following:} Follow the contour of a detected obstacle.
+\end{enumerate}
+
+The differences are in the way the algorithms apply those behaviors.
+Both algorithms starts approaching the target on a straight line.
+If Bug1 algorithm approaches an obstacles it follows the whole contour of the obstacles to determine the closest point from the contour to the goal position.
+From this point the algorithm starts again by applying the goal-approaching behavior.
+The approach is visualized in Figure~\ref{fig:bug1}.
+\begin{figure}[thpb]
+	  \myfloatalign
+      \footnotesize
+      \centering
+    \subfloat[]
+    {  
+        \includegraphics[width=\textwidth]{figures/fig_bug1.png}
+        %\caption{Dijkstra}
+    }
+   \caption[Bug1]{A path created by Bug1 algorithm.(taken from \cite{ribeiro2005obstacle})}
+   \label{fig:bug1}
+\end{figure}
+
+The Bug2 algorithm tries to immediately change from wall-following to goal-approaching behavior as soon as it encounters a point on the contour which intersects with the straight line connecting starting and goal position, which on average produces shorter paths than Bug1.
+Figure~\ref{fig:bug2} shows the Bug2 strategy. 
+
+\begin{figure}[thpb]
+	  \myfloatalign
+      \footnotesize
+      \centering
+    \subfloat[]
+    {  
+        \includegraphics[width=\textwidth]{figures/fig_bug2.png}
+        %\caption{Dijkstra}
+    }
+   \caption[Bug2]{A path created by Bug2 algorithm.(taken from \cite{ribeiro2005obstacle})}
+   \label{fig:bug2}
+\end{figure}
+
+Many improvements on the original approach are presented in the literature(eg.TangentBug, PointBug, VisBug,...).
 
 \section{Elastic Bands}
 Khatib potential field Bubble band
@@ -114,7 +158,7 @@ Figure \ref{fig:fig_dynamic} shows the obstacles in velocity space and the corre
        \def\svgwidth{\textwidth}
        \includesvg{figures/fig_dynamic}
     } 
-   \caption[Dynamic Window]{This Figure shows a dynamic window $V_d$ of a robot together with obstacles transformed in to a velocity space $V_s$. Only the velocities within the small area around the current robots speed $V_r$ are used for evaluating trajectories by a cost function. The best velocities are forwareded to the robots motor controller. (reproduced from \cite{DWA1997})}
+   \caption[Dynamic Window]{This Figure shows a dynamic window $V_d$ of a robot together with obstacles transformed in a velocity space $V_s$. Only the velocities within the small area around the current robots speed $V_r$ are used for evaluating trajectories by a cost function. The best velocities are forwarded to the robots motor controller. (reproduced from \cite{DWA1997})}
    \label{fig:fig_dynamic}
 \end{figure}
 
