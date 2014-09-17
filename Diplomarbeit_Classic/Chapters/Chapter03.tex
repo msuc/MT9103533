@@ -65,7 +65,7 @@ In a second step the grid is further reduced into a \emph{polar histogram} with 
 The angles are divided into a discrete set of sectors and each sector obtains an obstacle density value based on the values from the histogram grid.
 A threshold value is used to identify valleys in the polar histogram which are used to find gaps large enough for the robot.
 The identified valleys are then evaluated using a cost function.
-Figure \ref{fig:vfh} shows an example of the resulting diagrams.
+Figure \ref{fig:vfh} shows an example of the histogram grid, and figure \ref{fig:polar} the corresponding polar histogram.
 \begin{figure}[thpb]
 	  \myfloatalign
       \footnotesize
@@ -74,14 +74,22 @@ Figure \ref{fig:vfh} shows an example of the resulting diagrams.
     {  
         \includegraphics[width=0.75\textwidth]{figures/fig_histogram.png}
         %\caption{Dijkstra}
-    }\\
+    }
+   \caption[Vector Field Histogram Grid.]{This figure shows a histogram grid with three obstacles A,B and C. Darker cells indicate a higher probability of obstacles. From this information a one dimensional polar histogram is derived for further processing. (taken from \cite{borenstein1991vector})}
+   \label{fig:vfh}
+\end{figure}
+
+\begin{figure}[thpb]
+	  \myfloatalign
+      \footnotesize
+      \centering
     \subfloat[Polar histogram]
     {  
        \includegraphics[width=0.75\textwidth]{figures/fig_polar.png}
        %\caption{A*}
     }
-   \caption[Vector Field Histogram.]{Figure (a) shows the histogram grid of the Vector Field Histogram method. Figure (b) shows the corresponding polar grid. Large enough gaps in the polar grid are used to find the optimal steering directions for the robot.(taken from \cite{borenstein1991vector})}
-   \label{fig:vfh}
+   \caption[Vector Field Polar Histogram.]{This figure shows the corresponding polar grid from the histogram grid om Figure~\ref{fig:vfh}. Large enough gaps in the polar grid are used to find the optimal steering directions for the robot.(taken from \cite{borenstein1991vector})}
+   \label{fig:polar}
 \end{figure}
 
 Improvements of this method can be found in the VFH$+$ \cite{ulrich1998vfh+} and VFH$^*$ \cite{ulrich2000vfh} method. 
