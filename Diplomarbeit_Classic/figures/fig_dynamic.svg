@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="436.69162"
-   height="291.96045"
+   width="444.69162"
+   height="292.30673"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
@@ -123,9 +123,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="208.6493"
-     inkscape:cy="134.57339"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="92.1431"
+     inkscape:cy="75.97974"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -135,7 +135,7 @@
      fit-margin-bottom="0"
      inkscape:window-width="1313"
      inkscape:window-height="787"
-     inkscape:window-x="42"
+     inkscape:window-x="56"
      inkscape:window-y="96"
      inkscape:window-maximized="0" />
   <metadata
@@ -146,7 +146,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -154,15 +154,15 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-15.851137,-5.6691555)">
+     transform="translate(-11.851137,-5.322875)">
     <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2Lstart);marker-mid:none;marker-end:url(#Arrow2Lend)"
-       d="m 23.233509,278.7868 433.355441,0"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0;marker-start:url(#Arrow2Lstart);marker-mid:none;marker-end:url(#Arrow2Lend)"
+       d="m 13.519223,279.72041 441.355437,0"
        id="path3006"
        inkscape:connector-curvature="0"
-       transform="translate(-5.7142859,0.93361121)" />
+       sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.79240853;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow2Lstart);marker-mid:none;marker-end:none"
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:3, 3;stroke-dashoffset:0;marker-start:url(#Arrow2Lstart);marker-mid:none;marker-end:none"
        d="m 237.67932,6.990961 0,272.108769"
        id="path3006-7"
        inkscape:connector-curvature="0" />
@@ -229,13 +229,13 @@
     <text
        xml:space="preserve"
        style="font-size:10px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="80.285721"
+       x="106.28572"
        y="124.07647"
        id="text5432"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5434"
-         x="80.285721"
+         x="106.28572"
          y="124.07647">dynamic window $V_d$</tspan></text>
     <text
        xml:space="preserve"
