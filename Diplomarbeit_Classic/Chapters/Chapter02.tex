@@ -31,10 +31,19 @@ The formular is called a holonomic constraint.
 
 Nonholonimc:
 If state transitions can not be expressed without the use of velocities the system is called nonholonmic.
-As an example the unicycle or differential drive vehicles which can roll forward and backward but not sideways. 
-This is no-slip constraint on the velocities of the vehicle, where velocities can not be removed by integration (reducing the dimension of the configuration space).
+for example a robot with differential drive can roll forward and backward but not sideways. 
+This no-slip constraint on the velocities of the vehicle is a noonholonimc constraint.
+where velocities can not be removed by integration (reducing the dimension of the configuration space).
 Therefore nonholonomic constraints are sometimes referred to as being non integrable.
 
+
+The following example of a nonholonomic robot taken from Priciples of Robot Motion is a robot with differential drive illustrated in Figure \ref{fig_diff}.
+The configuration of the robot is determined by its position and orientation q(x,y,phi).
+The left and the rigth wheel can be actuated by a motor given the speeds $u_l$ and $u_r$.
+This yields the following system.
+
+This can not be integrated to eliminate x and y, hence the system is nonholonomic (see Planning algorithms).
+  
 
 Dynamic constraints:
 Constraints on the acceleration of the vehicle.
