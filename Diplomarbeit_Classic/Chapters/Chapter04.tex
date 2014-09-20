@@ -25,7 +25,7 @@ We conclude this chapter by a detailed description about how meta-heuristics are
 \section{Meta-Heuristic Search}\label{sec:meta}
 The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
 
-In general an optimization problem and its solutions can be defined as follows (see \cite{blum2003metaheuristics}): 
+In general an optimization problem and its solutions can be defined as follows  \cite{blum2003metaheuristics}: 
 \begin{definition}\label{def:problem}
 An optimization problem $P = (S, f_c)$ can be defined by:\\
 - a set of \emph{variables} $X = \{x_1,\dots,x_n\} $;\\
@@ -42,7 +42,7 @@ It is not necessary to allow only feasible solutions in the search space, as acc
 The solution $s^*\in S$ of an optimization problem with minimum cost is called a \emph{global} optimal solution. 
 \begin{definition}
  A \emph{global} minimal solution is a solution $s^* \in S$ such that
- $f_c(s^*)\leq f_c(s) \forall s \in S$. 
+ $f_c(s^*)\leq f_c(s) \forall s \in S$ \cite{blum2003metaheuristics}. 
 \end{definition}
 Since there might be more than one optimal solution $S^* \subseteq S$ is the set of \emph{globally} optimal solutions.
 
@@ -51,7 +51,7 @@ Instead a \emph{good} approximate solution, with the help of an heuristic is use
 
 One basic heuristic approximation method is local search which given an initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
 \begin{definition}\label{def:neighborhood}
-A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$.
+A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$ \cite{blum2003metaheuristics}.
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
 A neighborhood may be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
@@ -60,7 +60,7 @@ The necessary steps from one local solution to another local solution within a n
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
 \begin{definition}
- A \emph{local} minimal solution w.r.t. a neighborhood structure $N$ is a solution $\hat{s}$  such that $\forall s_n \in N(\hat{s}):f_c(\hat{s})\leq f(s_n)$. 
+ A \emph{local} minimal solution w.r.t. a neighborhood structure $N$ is a solution $\hat{s}$  such that $\forall s_n \in N(\hat{s}):f_c(\hat{s})\leq f(s_n)$ \cite{blum2003metaheuristics}. 
 \end{definition}
 A visualization of the concepts of local vs. global minimal solutions is visualized in Figure~\ref{fig:fig_local_global}.
 \begin{figure}[thpb]

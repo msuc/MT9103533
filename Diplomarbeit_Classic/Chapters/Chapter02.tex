@@ -17,37 +17,32 @@ Trajectories,
 \section{Constraints on Motion}\label{sec:model}
 The 
 
-a) kinematic constraints
-constraints on the velocities of a robot
+Kinematic constraints are constraints on the velocities of a robot.
 
-Unconstrained or free:
-The robot can move in any direction in the world. 
 
 Holonomic:
 A robot is called holonomic if all constraints can be expressed without using constraints on the velocity. 
-A free moving robot with no constraints at all is holonomic.
+
 A unicycle which can only move in one direction and is not allowed to change is orientation is also holonomic, since  it can be expressed without the use of derivates of state variables.
 The formular is called a holonomic constraint.
 
 Nonholonimc:
 If state transitions can not be expressed without the use of velocities the system is called nonholonmic.
 for example a robot with differential drive can roll forward and backward but not sideways. 
-This no-slip constraint on the velocities of the vehicle is a noonholonimc constraint.
-where velocities can not be removed by integration (reducing the dimension of the configuration space).
-Therefore nonholonomic constraints are sometimes referred to as being non integrable.
+This no-slip constraint on the velocities of the vehicle is a nonholonimc constraint.
+where velocities can not be removed by integration 
+
+Therefore nonholonomic systems are sometimes referred to as nonintegrable systems (See Autonomouse Mobile Robots).
 
 
 The following example of a nonholonomic robot taken from Priciples of Robot Motion is a robot with differential drive illustrated in Figure \ref{fig_diff}.
 The configuration of the robot is determined by its position and orientation q(x,y,phi).
-The left and the rigth wheel can be actuated by a motor given the speeds $u_l$ and $u_r$.
+The left and the right wheel can be actuated by a motor given the speeds $u_l$ and $u_r$.
 This yields the following system.
 
 This can not be integrated to eliminate x and y, hence the system is nonholonomic (see Planning algorithms).
   
-
-Dynamic constraints:
-Constraints on the acceleration of the vehicle.
-Taking accelerations of vehicles into account the state also involves second derivatives of state variables.
+Dynamic constraints are constraints on the acceleration of the robot.  Typically accelerations limits are induced for examples by the torques that are applied to motors, which results in minimal and maximal acceleration bounds.
 
 
 \section{Representation of the Environment}\label{sec:representation}
