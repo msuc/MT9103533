@@ -36,7 +36,7 @@ An optimization problem $P = (S, f_c)$ can be defined by:\\
 The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the \emph{search} or \emph{solution space}.
 A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is finite but large set a combinatorial optimization problem is given \cite{VNS}. 
 
-Solutions which fulfill all constraints are called \emph{feasible} solutions, solutions violating constraints are called \emph{infeasible}. 
+Solutions which fulfil all constraints are called \emph{feasible} solutions, solutions violating constraints are called \emph{infeasible}. 
 It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
 
 The solution $s^*\in S$ of an optimization problem with minimum cost is called a \emph{global} optimal solution. 
@@ -193,7 +193,7 @@ Used for \emph{diversification} of the search. For example implementing a freque
 An important role in controlling the \emph{diversification} of the search is the length of tabu lists (\emph{tabu tenure}).  
 As a general rule the longer the tabu list the higher the diversification effect, since preventing a larger number of candidate solutions in a neighborhood drastically changes the solution landscape (see \cite{blum2003metaheuristics}). 
 
-Restricting the tabus lists length is usually achieved by implementing it as cyclic lists, and deleting e.g. the oldest item as soon as a new item becomes tabu. 
+Restricting the tabu lists length is usually achieved by implementing it as cyclic lists, and deleting e.g. the oldest item as soon as a new item becomes tabu. 
 The tabu tenure can both be fixed or may be changed during the search.
 
 To avoid the tabu lists being too restrictive, and possibly loose good solutions, the tabu status of solutions may also be overridden using an \emph{aspiration criteria}. One example of such an criteria is to always allow solutions which are overall best, even if they are tagged as tabu.
@@ -461,7 +461,7 @@ A slightly more sophisticated strategy is used in the extension of existing plan
 Here two types of tabu lists are present.
 \begin{enumerate}
 \item{long term memory:} Keeps all \emph{infeasible} velocity tuples which lead to collision. The are never considered again in future searches. This is possible since the solution space is not too large.
-\item{short term memory:} Classical tabu list, with parametrized \emph{tabu tenure} which keeps the most recently visited \emph{feasible} velocity tuples in a FILO list.
+\item{short term memory:} Classical tabu list, with parametrized \emph{tabu tenure} which keeps the most recently visited \emph{feasible} velocity tuples.
 \end{enumerate}
 
 The idea of avoiding the neighborhood of infeasible solutions and allowing to return to \emph{good} feasible solutions during search was inspired by the grid like representation of the search space, which resembles the famous guessing game Battleship. 
