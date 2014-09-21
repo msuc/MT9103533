@@ -34,7 +34,7 @@ An optimization problem $P = (S, f_c)$ can be defined by:\\
 - a \emph{cost function} (or more general an \emph{objective function}) $f_c$ which has to be minimized, where $f_c:D_1 \times \dots \times D_n \rightarrow \mathbb{R}^+$; (which is the same as maximizing $-f_c$)\\
 \end{definition}
 The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the \emph{search} or \emph{solution space}.
-A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is discrete and finite a combinatorial optimization problem is given. 
+A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is finite but large set a combinatorial optimization problem is given \cite{VNS}. 
 
 Solutions which fulfill all constraints are called \emph{feasible} solutions, solutions violating constraints are called \emph{infeasible}. 
 It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
@@ -226,7 +226,7 @@ If the perturbation strength is large, the \emph{diversification} effect is larg
 The \emph{acceptance criterion} is the other mechanism in ILS which controls the interplay between \emph{diversification} and \emph{intensification} of the search. 
 On one extreme accepting only better solution favors intensification, on the other extreme accepting all solutions without regards to its costs has a high diversification effect. Every intermediate mechanism and incorporating adaptive strategies may be used in designing acceptance tests.  
 
-Another important component is the use of short or long term memory concepts, which may be included in form of a \emph{history} of the search. The\emph{history} is used to steer the perturbation step and the acceptance test (compare to Tabu Search memory structures in Section~\ref{sec:tabu}). As a simple example the history counts the iterations and restarts the algorithm after reaching a specific amount of iteration.
+Another important component is the use of short or long term memory concepts, which may be included in form of a \emph{history} of the search. The \emph{history} is used to steer the perturbation step and the acceptance test (compare to Tabu Search memory structures in Section~\ref{sec:tabu}). As a simple example the history counts the iterations and restarts the algorithm after reaching a specific amount of iteration.
  
 \begin{algorithm}
 \caption{Iterative Local Search (ILS)}
