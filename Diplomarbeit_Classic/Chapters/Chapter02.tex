@@ -3,6 +3,7 @@
 %************************************************
 This chapter gives an introduction to the main concepts and notions in the context of planning for mobile robots as described in \cite{Choset_2005_5167}\cite{LaValle2006}.
 
+\section{Problem Space}\label{sec:basic}
 The representation of the environment where a mobile robot is situated is called the \emph{workspace} or \emph{world}.
 Typical representations of the workspace are either planar ($\mathbb{R}^2$), or three-dimensional($\mathbb{R}^3$), but also higher dimensional representation are possible.
 
@@ -10,10 +11,6 @@ Robots and obstacles can be described by geometric models using polygonal ($\mat
 
 The \emph{configuration} of a robot is described by a set of parameters which enables the specification of the position of every point on the robot. The \emph{configuration space} of a robotic system is the space of all possible configurations.
 
-  
-
-
-\section{Classic Path Planning Problem}\label{sec:basic}
 Statespace,
 Configurationspace,
 Obstacles in Configurationspace,
@@ -23,10 +20,8 @@ Paths,
 Trajectories,
 
 \section{Constraints on Motion}\label{sec:model}
-The 
 
-Kinematic constraints are constraints on the velocities of a robot.
-
+\emph{Kinematic constraints} are constraints on the velocities of a robot.
 
 Holonomic:
 A robot is called holonomic if all constraints can be expressed without using constraints on the velocity. 
@@ -42,16 +37,15 @@ where velocities can not be removed by integration
 
 Therefore nonholonomic systems are sometimes referred to as nonintegrable systems (See Autonomouse Mobile Robots).
 
+\emph{Dynamic constraints} are constraints on the acceleration of the robot. Typically accelerations limits are induced for examples by the torques that are applied to motors, which results in minimal and maximal acceleration bounds.
 
+\section{Differential Drive}\label{sec:ddrive}
 The following example of a nonholonomic robot taken from Priciples of Robot Motion is a robot with differential drive illustrated in Figure \ref{fig_diff}.
 The configuration of the robot is determined by its position and orientation q(x,y,phi).
 The left and the right wheel can be actuated by a motor given the speeds $u_l$ and $u_r$.
 This yields the following system.
 
 This can not be integrated to eliminate x and y, hence the system is nonholonomic (see Planning algorithms).
-  
-Dynamic constraints are constraints on the acceleration of the robot.  Typically accelerations limits are induced for examples by the torques that are applied to motors, which results in minimal and maximal acceleration bounds.
-
 
 \section{Representation of the Environment}\label{sec:representation}
 Fixed Cell Decomposition
