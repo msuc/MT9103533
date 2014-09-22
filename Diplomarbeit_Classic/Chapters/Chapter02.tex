@@ -5,26 +5,30 @@ This chapter gives an introduction to the main concepts and notions in the conte
 
 \section{Problem Space}\label{sec:basic}
 The representation of the environment where a mobile robot is situated is called the \emph{workspace} or \emph{world}.
-Typical representations of the workspace are either planar ($\mathbb{R}^2$), or three-dimensional($\mathbb{R}^3$), but also higher dimensional representation are possible.
+Typical representations of the workspace are either planar ($\mathbb{R}^2$), or three-dimensional($\mathbb{R}^3$).
 
-Robots and obstacles can be described by geometric models using polygonal ($\mathbb{R}^2$), polyhedral ($\mathbb{R}^3$) or semi-algebraic sets \cite{LaValle2006}.
+The shapes of the robot and obstacles can be described by geometric models using polygonal ($\mathbb{R}^2$), polyhedral ($\mathbb{R}^3$) or semi-algebraic sets \cite{LaValle2006}. 
 
-The \emph{configuration} of a robot is described by a set of parameters which enables the specification of the position of every point on the robot. The \emph{configuration space} of a robotic system is the space of all possible configurations.
+The \emph{configuration} of a robot is described by a set of parameters which enables the specification of the position of every point on the robot. 
+For example a polygonal robot in two-dimensional case is specified by its position on the plane and orientation angle $(x,y,\phi)$. 
+The \emph{configuration space} of a robotic system is the set of all possible configurations. 
 
 Statespace,
-Configurationspace,
-Obstacles in Configurationspace,
-Workspace,
+
+The number to uniquely define the state 
+
+Obstacles,
 Actions,
 Paths,
 Trajectories,
 
 \section{Constraints on Motion}\label{sec:model}
 
-\emph{Kinematic constraints} are constraints on the velocities of a robot.
+\emph{Kinematic constraints} are constraints on the velocities of a robot. 
+
 
 Holonomic:
-A robot is called holonomic if all constraints can be expressed without using constraints on the velocity. 
+A system is called holonomic if all constraints can be expressed without using constraints on the velocity. 
 
 A unicycle which can only move in one direction and is not allowed to change is orientation is also holonomic, since  it can be expressed without the use of derivates of state variables.
 The formular is called a holonomic constraint.
