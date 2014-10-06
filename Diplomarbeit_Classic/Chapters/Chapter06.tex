@@ -1,9 +1,9 @@
 % Chapter 6
 \chapter{Conclusions}\label{ch:conc}
-In this work we analysed a promising approach to improve performance of existing local planning systems which are based on generate and test trajectory methods by using meta-heuristic search strategies.
+In this work a promising approach to improve performance of existing local planning systems which are based on generate and test trajectory methods by using meta-heuristic search strategies was analyzed.
 
-To this end we presented a thorough overview of planning methods with the focus on local planning methods and obstacle avoidance. 
-Identifying trajectory selection as the main part of local planning tasks for improvement, we introduced well known meta-heuristic search algorithms for optimizing the selection process.
+To this end this thesis presented a thorough overview of planning methods with the focus on local planning methods and obstacle avoidance. 
+Identifying trajectory selection as the main part of local planning tasks for improvement, well known meta-heuristic search algorithms were introduced for optimizing the selection process.
 
 From the large family of meta-heuristic algorithms the following search strategies were selected to substitute the brute force approach of trajectory selection in a \emph{DWA} based local planning method:
 \begin{itemize}
@@ -12,7 +12,8 @@ From the large family of meta-heuristic algorithms the following search strategi
 \item Two basic \emph{memory structures} inspired from \emph{tabu search} to avoid infeasible solutions and short cycles during the search process. 
 \end{itemize}
 
-We created a set of random generated environments simulating sensor information for one planning step and tested our approach with an example planner. 
+To evaluate the proposed method a set of random generated environments simulating sensor information for one planning step were created. 
+These instances were used to test the algorithms using an example planner. 
 This allowed a focused investigation and improvement of the trajectory selection part separated from the overhead of full planning systems.
 
 The results of these experiments with the example planner showed, that the meta-heuristic algorithms provide significant performance improvement on all of the test instances. Especially the VNS implementations provided very good and stable results. 
@@ -22,18 +23,19 @@ In a next step the VNS approach was used to extent a popular existing planner im
 \item VNS-ROL: Using VNS with best improvement heuristic to extend the roll-out method of the planner with continues acceleration limits.
 \item VNS-DWA: Using VNS with best improvement heuristic to extend the classical DWA method of the planner.
 \end{itemize}
-Both extensions showed superior run time performance against their unaltered counterparts.
+Both extensions showed superior run time performance compared to their unaltered counterparts.
 
-Summarizing the meta-heuristic algorithms are able to increase the performance of local planning systems based on trajectory generate and test methods. This allows the local planner to improve on \emph{reactivity}, the used \emph{resolution} for collision tests, the \emph{simulation-time} for look-ahead and the number of \emph{trajectories} used to model the robots motion capabilities.
+Summarizing the meta-heuristic algorithms are able to increase the performance of local planning systems based on trajectory generate and test methods. 
+This allows the local planner to improve on \emph{reactivity}, the used \emph{resolution} for collision tests, the \emph{simulation-time} for look-ahead and the number of \emph{trajectories} used to model the robots motion capabilities.
 
 \section{Further Research}
-Applying Meta-Heuristic search to trajectory selection of local planners like DWA is a promising first step in using the power of these search procedures in the context of local planning. 
-We identified the following directions for further research.
+Applying meta-heuristic search to trajectory selection of local planners like DWA shows to be a promising step in using the power of these search procedures in the context of local planning. 
+Therefore the following directions for further research are suggested:
 
 \begin{description}
 \item[Investigate additional meta-heuristics]\hfill \\
-In this work we presented the use of a very limited application of single solution based meta-heuristics. Therefore it would be of interest to investigate related algorithm like GRASP \cite{feo1995grasp}, reduced VNS, or Simulated Annealing \cite{Kirkpatrick83SimulatedAnnealing} or even population based meta-heuristics.
-In addition, developing and analysing more sophisticated neighborhood structures would be recommended. 
+This work presented the use of a very limited selection of single solution based meta-heuristics. Therefore it would be of interest to investigate related algorithm like GRASP \cite{feo1995grasp}, reduced VNS, or Simulated Annealing \cite{Kirkpatrick83SimulatedAnnealing} or even population based meta-heuristics.
+In addition, developing and analyzing more sophisticated neighborhood structures would be recommended. 
 
 \item[Application to high DOF robotic models]\hfill \\
 The proposed method might also be applicable for robot models of higher degree of freedom, since dealing with large trajectory samples is a particular strength of meta-heuristic search.
