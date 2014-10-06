@@ -1,9 +1,10 @@
 % Chapter 4
 \chapter{Meta Heuristic Local Planning}\label{ch:meta}
 
-In this chapter we propose an approach to extend local planning systems, which are based on trajectory simulation and evaluation. Examples of such local planners are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which were introduced in Section~\ref{sec:dwa}.
+This thesis proposes an approach to enhance certain types of local planning systems.
+Examples of such local planners are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which were introduced in Section~\ref{sec:dwa}.
 
-The main idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation. We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
+The idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation. We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
 
 \begin{itemize}
 \item{\bf{ILS-Tabu:}}  Based on Iterated Local Search and the use of a simple memory
@@ -23,7 +24,7 @@ The next section provides background information of meta-heuristic search. Follo
 We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. 
 
 \section{Meta-Heuristic Search}\label{sec:meta}
-The family of meta-heuristic algorithms is extremely successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
+The family of meta-heuristic algorithms is known to be successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
 
 In general an optimization problem and its solutions can be defined as follows  \cite{blum2003metaheuristics}: 
 \begin{definition}\label{def:problem}
@@ -36,7 +37,7 @@ An optimization problem $P = (S, f_c)$ can be defined by:\\
 The set of all possible assignments $S = \{s = \{(x_1,v_1),\dots,(x_n,v_n)\}\mid v_i \in D_i\}$ to the variables in $X$ is called the \emph{search} or \emph{solution space}.
 A continues optimization problem is given if $S=\mathbb{R}^n$, otherwise if $S$ is finite but large set a combinatorial optimization problem is given \cite{VNS}. 
 
-Solutions which fulfil all constraints are called \emph{feasible} solutions, solutions violating constraints are called \emph{infeasible}. 
+Solutions which fulfill all constraints are called \emph{feasible} solutions, solutions violating constraints are called \emph{infeasible}. 
 It is not necessary to allow only feasible solutions in the search space, as accepting infeasible solutions during the search process can improve the overall solution quality and performance of the algorithm.
 
 The solution $s^*\in S$ of an optimization problem with minimum cost is called a \emph{global} optimal solution. 
@@ -46,17 +47,18 @@ The solution $s^*\in S$ of an optimization problem with minimum cost is called a
 \end{definition}
 Since there might be more than one optimal solution $S^* \subseteq S$ is the set of \emph{globally} optimal solutions.
 
-To solve hard problems due to large solution space, hard run time constraints, or both, finding an exact global optimal solution is not always feasible. 
+Due to large solution space, or hard run time constraints finding an exact global optimal solution is not always feasible. 
 Instead a \emph{good} approximate solution, with the help of an heuristic is used and optimality is traded off with good performance.
 
-One basic heuristic approximation method is local search which given an initial solution tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
+One basic heuristic approximation method is local search. 
+Given an initial solution local search tries to iteratively replace this solution with a better one in a defined neighborhood of the current solution. 
 \begin{definition}\label{def:neighborhood}
 A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to every $s \in S$ a set of neighbors $N(s) \subseteq S$. $N(s)$ is called the neighborhood of $s$ \cite{blum2003metaheuristics}.
 \end{definition}
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
 A neighborhood may be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
 
-The necessary steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
+The steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
 \begin{definition}
@@ -76,10 +78,12 @@ The main idea of meta-heuristic algorithms is to combine heuristic methods with 
 The name was introduced by Fred Glover who described his tabu search approach \grqq as a \emph{meta-heuristic} superimposed on another heuristic \grqq \cite{glover1988tabu}. 
 
 How successful a meta-heuristic performs depends largely at how good it is to balance two important objectives during a search:
-\begin{itemize}
-\item{\bf{intensification:}} Focus the search on regions with high quality solutions, by using knowledge gained during the search process.
-\item{\bf{diversification:}} Escaping local minimal solutions and visiting unexplored regions of the search space.
-\end{itemize}
+\begin{description}
+\item[Intensification]\hfill \\
+The search focuses on regions with high quality solutions, which are identified using knowledge gained during the search process.
+\item[Diversification]\hfill \\
+The search escapes a local minimal solution and visits unexplored regions of the search space.
+\end{description}
 
  
 \section{Single Solution Based Meta-Heuristics}\label{sec:single}
@@ -139,11 +143,10 @@ The most frequently used selection functions are \emph{Best Improvement}(or stee
 \end{algorithmic}
 \end{algorithm}
 
-The selection function may also just randomly choose a neighbor, or choose the best neighbor among a random sample taken from the current neighborhood. These strategies could be used if the number of neighbors is very large, or their evaluation is computational expensive.
+Another possibility is to choose a neighbor at random, or choose the best neighbor among a random sample taken from the current neighborhood. These strategies could be used if the number of neighbors is very large, or their evaluation is computational expensive.
 
 \subsection{Tabu Search} \label{sec:tabu}
-A very successful meta-heuristic strategy is Tabu Search (see \cite{glover1988tabu}). 
-The main contribution is the use of tabu lists, which are memory structures used to guide the local search procedure. 
+An often successful meta-heuristic strategy is Tabu Search (see \cite{glover1988tabu}), which uses memory structures called \emph{tabu lists} to guide the search process.
 
 The memory keeps track of complete solutions (\emph{explicit} memory), moves, partial solutions, or other solution attributes (\emph{attributive} memory), which are used to prohibit moves during the exploration of the search space for a given amount of time - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched (see~\cite{glover1997tabu})}. In Algorithm~\ref{tabualgo} the basic form of this approach is presented. 
 
@@ -202,7 +205,7 @@ A big advantage of this method is, that it can be easily combined with other met
 
 \subsection{Iterated Local Search}\label{sec:ils}
 Iterated Local Search provides a highly general scheme for search space exploration. 
-It treats the local search procedure as a black box, which in the ideal case incorporates all problem specific knowledge. 
+It emphasizes the idea of treating the local search procedure as a black box, which in the ideal case incorporates all problem specific knowledge. 
 A detailed description of Iterative Local Search including the basic algorithm (cf. Algorithm~\ref{ilsalgo}) can be found in \cite{lourencco2001iterated}.
 
 Starting from an initial solution, the algorithm iteratively calls the embedded \emph{local search} procedure.
@@ -221,7 +224,7 @@ The basic steps of ILS are visualized in Figure~\ref{fig:fig_ils}
 \end{figure}
 
 The \emph{strength} of the perturbation is defined as the number of changed solution components. 
-If the perturbation strength is large, the \emph{diversification} effect is large and the procedure is similar to a random restart method. On the other hand if the strength is small, perturbation favors the \emph{intensification} of the search. The strength may be fixed but may also be adapted during the search (see \cite{lourencco2001iterated}).
+If the perturbation strength is large, the \emph{diversification} effect is large and the procedure is similar to a random restart method. On the other hand if the strength is small, perturbation favors the \emph{intensification} of the search. The strength may be fixed but may also be adapted during the search \cite{lourencco2001iterated}.
 
 The \emph{acceptance criterion} is the other mechanism in ILS which controls the interplay between \emph{diversification} and \emph{intensification} of the search. 
 On one extreme accepting only better solution favors intensification, on the other extreme accepting all solutions without regards to its costs has a high diversification effect. Every intermediate mechanism and incorporating adaptive strategies may be used in designing acceptance tests.  
@@ -248,7 +251,7 @@ Instead of using a fixed neighborhood, the Basic Variable Neighborhood Search (c
 N_k(x)=N_0(x),N_1(x),\dots,N_{k_{max}}(x)
 \label{eq:nb}
 \end{equation}
-A specific neighborhood structure determines the topology of the search space within this neighborhood, or in other words a neighborhood specific landscape (see \cite{blum2003metaheuristics}).
+A specific neighborhood structure determines the topology of the search space within this neighborhood, or in other words a neighborhood specific landscape \cite{blum2003metaheuristics}.
 
 Different neighborhood structures yield different landscapes. 
 Furthermore a local minimal solution within one landscape, does not have to be a local minimal solution in another, and a search procedure will find a better local minimal solution (see Figure~\ref{fig:fig_vns}). 
@@ -314,7 +317,7 @@ Variants of this basic scheme are obtained by removing the random shaking phase,
 
 \subsection{Guided Local Search}
 Changing the neighborhood of solutions, as in the afforementioned algorithms like ILS and VNS, is not the only mechanism to escape local minimal solutions.
-A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced by Tsang and Voudouris (see \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}). 
+A very different approach in guiding the search for optimal solutions is Guided Local Search (GLS), and was introduced by Tsang and Voudouris \cite{TsangVoudouris1997gls}\cite{TsangVoudouris1999gls}. 
 
 In this approach diversification is achieved by changing the cost function itself. 
 The neighborhood structure stays fixed. 
@@ -398,7 +401,7 @@ Another very important quality benefit is the number of trajectory samples the l
 \end{figure}
 \end{description}
 
-The choice of using single solution based meta-heuristics (see Section~\ref{sec:single}) was driven by the nice properties these algorithms provide. 
+The choice of using single solution based meta-heuristics (see Section~\ref{sec:single}) was driven by the properties these algorithms provide. 
 They are \emph{general applicable} to optimization problems, since no domain specific knowledge is necessary, or can easily be captured using only the local search procedure.
 Furthermore they are easy to implement and incorporated into existing software solutions.
 Looking at the high number of parameters used for configuring current navigation systems the \emph{configuration process} is very tedious. 
