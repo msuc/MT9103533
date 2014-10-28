@@ -30,7 +30,7 @@ The following 60 test instances include different obstacle counts and random pla
 \end{itemize}
 
 The instances simulate a snapshot of the local environment of the robot at a given time point, which is used as a local map for input of the local planner.
-The resolution of the maps is fixed to 0.05 meter/pixel, resulting in a quadratic map of size 7.5 meter. Figure~\ref{fig:fig_instances} illustrates three random instances. 
+The resolution of the maps is fixed to 0.05 meter/pixel, resulting in a quadratic map of size 7.5 meter. Figure~\ref{fig:fig_instances} illustrates random instances with differ in size and number of obstacles. 
 %\begin{figure}[thpb]
 \begin{figure}[thpb]
      \footnotesize
@@ -120,11 +120,32 @@ In Figure~\ref{fig:gazebo_v4r} the 3D-model, which is a simple artificial buildi
        {  
            \fbox{\includegraphics[width=0.85\textwidth]{figures/fig_rviz_v4r.png}}
        }        
-       \caption[Simulation environment]{Figure (a) shows the 3D model used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
+       \caption[Simulation: artificial environment]{Figure (a) shows the 3D model used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
       \label{fig:gazebo_v4r}
    \end{figure}
 
+In Figure~\ref{fig:gazebo_gh25} the second 3D-model used for testing is shown. Based on a real map this office environment includes more difficult planning situations, like small doorways and corridors.
+
+\begin{figure}[thpb]
+     \footnotesize
+      \centering
+      \myfloatalign
+      \setlength\fboxsep{0pt}
+      \setlength\fboxrule{0.5pt}
+       \subfloat[]
+       {  
+           \fbox{\includegraphics[width=0.9\textwidth]{figures/fig_gh25_gazebo.jpg}}
+       }\\
+       \subfloat[]
+       {  
+           \fbox{\includegraphics[width=0.9\textwidth]{figures/fig_gh25_rviz.png}}
+       }        
+       \caption[Simulation: office environment]{Figure (a) shows the 3D model used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
+      \label{fig:gazebo_gh25}
+   \end{figure}
+
 \section{Results}\label{sec:testresults}
+
 All experiments account for the randomness of the proposed methods by running the algorithm multiple times.
 
 The results are visualized using box-plots. 
