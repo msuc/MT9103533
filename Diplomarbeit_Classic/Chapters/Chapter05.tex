@@ -172,13 +172,16 @@ Figure~\ref{fig:fig_boxplot} shows a commmon boxplot.
       \label{fig:fig_boxplot}
    \end{figure}
 
-\subsection{Influence of trajectory size}
-In the first experiment the algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. 
+\subsection{Results using the sample planner}
+In this set of experiments the algorithms were tested using the sample planner and the artificial sensor map instances. 
+These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM. 
+
+\subsubsection{Influence of trajectory size}
+The algorithms were applied to all 60 instances to evaluate a broad spectrum of possible environments. 
 The main reason conducting this experiment is to get a first impression on the usefulness of applying meta-heuristics in the context of local planning. 
-These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM.  
 Figure~\ref{fig:fig_allworlds} illustrates the results using 240 trajectories, and using 2400 trajectory samples.
 
-\begin{figure}[thb]
+\begin{figure}[thpb]
    \myfloatalign
     \tiny
     \centering
@@ -205,12 +208,12 @@ Furthermore the VNS exhibit a more stable performance than the ILS methods.
 Comparing the ILS algorithms reveals the connection of the search space size to the size of the neighborhood. 
 A small number of trajectories benefits smaller sized neighborhoods, whereas increasing the number of trajectories benefits larger neighborhoods. 
 
-\subsection{Influence of trajectory size by specific instances}
+\subsubsection{Influence of trajectory size by specific instances}
 The following tests include the VNSF, VNSB and only one ILS4 algorithm for comparison. 
 The algorithms are executed with specific world instances, and repeated 50 times. 
 The results in Figure~\ref{fig:fig_special_240} show the application of the algorithm using 240 trajectories. Again the all tested algorithms significantly outperform the Brute Force method. 
 
-\begin{figure}[thb]
+\begin{figure}[thpb]
    \myfloatalign
     \tiny
           \centering
@@ -251,7 +254,7 @@ The results in Figure~\ref{fig:fig_special_240} show the application of the algo
 
 Increasing the number of trajectories favors the VNS algorithms over the ILS4 algorithm. The results in Figure~\ref{fig:fig_special_960} show the application of the algorithm using 960 trajectories.
 
-\begin{figure}[thb]
+\begin{figure}[thpb]
    \myfloatalign
     \tiny
           \centering
@@ -294,10 +297,10 @@ In contrast to the smaller number of trajectories, the results of the ILS4 algor
 Here the use of a neighborhood structure pays off and the VNS approaches perform evidently better than ILS. 
 In addition, the results show that the algorithms perform good independent of number and size of obstacles.
 
-\subsection{Influence of velocity bounds}
-The next analysis focus on the influence of the velocity bounds on the performance of the local planning step. 
+\subsubsection{Influence of velocity bounds}
+The next analysis focuses on the influence of the velocity bounds on the performance of the local planning step. 
 The trajectory size is fixed to 240 trajectories and the velocity bounds are varied.
-Since the previous test has shown that the VNS approach is more promising, the following experiments omit the ILS algorithms.
+Since the previous test has shown that the VNS approaches are more promising, the following experiments omit the ILS algorithms.
 5 experiments with 50 runs and increasing acceleration windows are conducted.
 The test are again performed on different sizes and numbers of obstacles.
 
@@ -307,7 +310,7 @@ Figure~\ref{fig:fig_vel_medium} presents the results on instances with 5 obstacl
 
 In Figure~\ref{fig:fig_vel_small} the results on instances with 25 obstacles with size 0.1 meter are presented.
 
-\begin{figure}[thb]
+\begin{figure}[thpb]
    \myfloatalign
     \tiny
           \centering
@@ -331,7 +334,7 @@ In Figure~\ref{fig:fig_vel_small} the results on instances with 25 obstacles wit
      \label{fig:fig_vel_big}
 \end{figure}
 
-\begin{figure}[thb]
+\begin{figure}[thpb]
    \myfloatalign
     \tiny
           \centering
@@ -355,7 +358,7 @@ In Figure~\ref{fig:fig_vel_small} the results on instances with 25 obstacles wit
      \label{fig:fig_vel_medium}
 \end{figure} 
 
-\begin{figure}[thb]
+\begin{figure}[thpb]
    \myfloatalign
     \tiny
           \centering
@@ -382,9 +385,13 @@ In Figure~\ref{fig:fig_vel_small} the results on instances with 25 obstacles wit
 All meta-heuristic algorithms outperform the Brute Force generate and test method on all tested instances, regardless of the differences in the velocity bounds.
 It can be observed that the small instances with many obstacles provide the most difficulties for the proposed methods.
 This is increased by using a larger velocity space.
-While increasing the velocity windows clearly has a obvious negative effect on the performance of the brute force method, the meta-heuristic algorithms soften this influence to a large degree. 
+While increasing the velocity windows clearly has an obvious negative effect on the performance of both the brute force and the meta-heuristic methods, the meta-heuristic algorithms soften this influence to a large degree. 
 
-\subsection{Simulated environment and robot}
+\subsection{Results using simulated environments}
+This set of experiments are conducted using the simulation software for the artificial and office environment. 
+All of these tests are performed on an Intel Core2 Quad CPU with 2.66GHz and 8 GB RAM.
+
+\subsubsection{Simulated robot in artificial environment}
 The results of the simulation of a robot in an artificial building is presented in Figure~\ref{fig:fig_simu}. 
  
 \begin{figure}[thpb]
@@ -408,7 +415,7 @@ Immediately after a solution is found, the VNS search algorithm searches for the
 
 For both local planning methods, the meta-heuristic trajectory selection significantly outperforms the original methods.
 
-\subsection{Summary}
+\section{Summary}
 As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
 So it is no surprise that looking at all the results, there is no clear winner among the algorithms, but Variable Neighborhood search with Tabu List and Best, or First Improvement heuristic seem to yields the best and most stable overall performance. 
 
@@ -419,7 +426,7 @@ After analysis of the results with the example python planner, the VNS approach 
 
 The tests conducted with a simulation software show that the previous results carry over to a real navigation scenario. Extensions to the DWA and Trajectory Roll-out planner within the navigation stack of ROS using the VNS algorithm outperform the unaltered versions significantly.
 
-\subsection{Implementation Details}
+\section{Implementation Details}
 The example planner was implemented using \emph{python} version $2.7$ (available at \url{http://www.python.com}). This allows for a fast prototype implementation of a local planner without the overhead and interruption of other parts of full planning systems.
 Hence the optimization algorithms could be evaluated focusing on the  specific trajectory selection part. 
 
