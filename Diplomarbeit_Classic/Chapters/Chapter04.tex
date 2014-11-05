@@ -476,7 +476,7 @@ In obstacle avoidance the opposite may be more efficient. If an obstacle is enco
 The Tabu list is used by the other meta-heuristic algorithms during the Local Search.
 \item[Iterated Local Search (ILS)]\hfill \\
 The main structure of this algorithm was already shown in Section~\ref{ilsalgo}.
-The algorithm searches iteratively a fixed 4,8, and 16-neighborhood with Best Improvement heuristic for the Local Search.
+The algorithm searches iteratively a fixed neighborhood (eg. 4-, or 8-connected neighborhood) with Best Improvement heuristic for the Local Search.
 
 Since the solution vector is only 2-dimensional, there is no need for complicated perturbation schemes. 
 It is possible to either randomly generate a new linear velocity, a new angular velocity or both. 
@@ -496,7 +496,7 @@ If \emph{shaking} does not yield a solution, because the whole neighborhood is t
 An ordering of neighborhoods according to their size yields the neighborhood structures:
 \begin{itemize}
  \item $N_0(x)=$ 4-connected
- \item $N_1(x)=$ 8-neighborhood
+ \item $N_1(x)=$ 8-connected
  \item $\dots$
  \item $N_k(x)=$ k-steps reachable neighborhood.
 \end{itemize}
@@ -506,7 +506,7 @@ $N_0 \subseteq N_1 \subseteq \dots \subseteq N_k$
 
 In theory the union of all neighborhood is larger or equal the whole solution space of velocity tuples.
 Unfortunately large neighborhoods are very costly to evaluate. 
-Therefore the neighborhood structure is bounded above by a parameter $k_{max}$ which was fixed to 8 after empirical evaluations. 
+Therefore the neighborhood structure can be bounded above by a parameter $k_{max}$.
 If no improvement is made up to the $N_{k_{max}}$ neighborhood, a new initial solution is generated at random and the search starts up again.
 
 Like the aforementioned ILS algorithm the VNS algorithm can use the same \emph{memory structures} during the search.
