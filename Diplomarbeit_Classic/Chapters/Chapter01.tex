@@ -236,11 +236,22 @@ All of these examples show that navigation plays an essential role in mobile rob
 \section{Related Work}\label{sec:relwork}
 Similar approaches using meta-heuristics are mostly present in the field of global planning. Especially population based meta-heuristic algorithms are used to tackle planning problems for single and multiple robots.
 
-In \cite{zhou2010improvedantcolony} an ant colony optimization (ACO) algorithm is used to find global minimal paths for soccer robots. The algorithm uses a combination of cellular automata and a special designed pheromone model to find an initial global path. In a second step the retrieved path is smoothed and can be used to guide a robot.
+In \cite{zhou2010improvedantcolony} an ant colony optimization (ACO) algorithm is used to find global minimal paths for soccer robots. 
+The algorithm uses a combination of cellular automata and a special designed pheromone model to find an initial global path. 
+In a second step the retrieved path is smoothed and can be used to guide a robot.
 
-In \cite{buniyamin2011robotantcolony} the performance of finding optimal shortest global paths by applying an ACO algorithm is documented. The proposed method uses a special heuristic to set the moving directions of the ants in the system based on shortest distance between nodes in the search graph.  
+In \cite{buniyamin2011robotantcolony} the performance of finding optimal shortest global paths by applying an ACO algorithm is documented. 
+The proposed method uses a special heuristic to set the moving directions of the ants in the system based on shortest distance between nodes in the search graph.  
+
+A combination of a local planner based on artificial potential field method and a global planner based on ACO is presented in \cite{mei2006hybrid}. 
+Here the pherhormon traces of the ACO is used to prevent local minima in the local planning step.
+
+An early apporach of using single solution based meta-heuristics in the context of local planning is presented in \cite{park2001obstacle}.
+Here simulated annealing was applied to avoid the local planner of getting trapped in local minima.
 
 
+
+The method proposed in this work differs by using single solution based meta-heuristics strategies on local path planning only.
 
 \section{Goal of Thesis and Scientific Contribution}\label{sec:goal}
 The goal of this thesis is to provide an extension to local planning systems for mobile robots based on trajectory generation and parts of this work were presented at the Austrian Robotics Workshop 2014 \cite{myself}. 
