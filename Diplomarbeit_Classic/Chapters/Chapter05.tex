@@ -2,7 +2,7 @@
 \chapter{Evaluation}\label{ch:eval}
 To evaluate the proposed method two classes of experiments are carried out. In a first step an example planner is implemented which mimics the local planning step and provides an easy way to test the trajectory evaluation separated from the rest of a conventional planning system.
 
-With the gained data the algorithms are improved and used to extend existing local planner. A fully simulated environment and robotic model using a sophisticated physic engine together with a complete robot navigation system is used to compare the original implementation of the local planner with our approach.
+With the gained data the algorithms are improved and used to extend existing local planner. A fully simulated environment and robotic model using a sophisticated physic engine together with a complete robot navigation system is used to compare the original implementation of the local planner with the meta-heuristic approach.
  
 \section{Experiments with Sample Planner}
 The trajectory sampling and selection of a common DWA approach are implemented in python minimizing a simpler cost function $f_c(v,w)$ (cf. Equation~\ref{eq:simplecost}), where $f_g(v,w)$ is the distance of the center of the robot in the end position to a predefined goal position, and $f_o(v,w)$ is the maximal distance to an obstacle on the trajectory path.

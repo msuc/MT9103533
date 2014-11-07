@@ -232,6 +232,7 @@ The biggest events are organized by FIRA\footnote{Federation of International Ro
 \end{description}
 
 All of these examples show that navigation plays an essential role in mobile robotics. Excellent planning algorithms are needed to enable a wide area of applications and allow autonomous and semi-autonomous machines to safely and economically move through in- and outdoor environments.
+In addition they have to cope with uncertainties induced by sensor noise, the presents of dynamic obstacles and the limits of computational power.
 
 \section{Related Work}\label{sec:relwork}
 Similar approaches using meta-heuristics are mostly present in the field of global planning. Especially population based meta-heuristic algorithms are used to tackle planning problems for single and multiple robots.
@@ -256,7 +257,9 @@ Based on tabu search a sensor based navigation system for mobile robots is prese
 This local planning method utilizes different memory structures to avoid cylcing back to already visited regions of the map. 
 To escape local minima it provides an escaping mechanism by randomly approaching unvisited areas.
 
-The method proposed in this work differs by using single solution based meta-heuristics strategies on local path planning only.
+The method proposed in this work differs from these works by analysing and using single solution based meta-heuristics strategies for local path planning only. 
+In addition to the memory structures of tabu search, another contribution is the use of algorithms based on Iterated Local Search (ILS) and Variable Neighborhood Search (VNS). 
+These single solution based meta-heuristics are the core strategies to increase the efficiency of a local planner which uses trajectory generation methods like the Dynamic Window Approach (DWA) to find optimal motor controls for the robot.
 
 \section{Goal of Thesis and Scientific Contribution}\label{sec:goal}
 The goal of this thesis is to provide an extension to local planning systems for mobile robots based on trajectory generation and parts of this work were presented at the Austrian Robotics Workshop 2014 \cite{myself}. 
