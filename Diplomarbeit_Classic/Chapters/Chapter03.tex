@@ -190,6 +190,9 @@ In this method the obstacles are not approximated by circles, instead small line
 The robot is still approximated as a circle.
 The original method does not use a global plan to guide the robot, so without further changes it is subject to get captured in local minima.
 
+The close relationship of the DWA to Model Predictive Control (MPC) has been shown in \cite{ogren2005convergent}. 
+In this paper the DWA is reformulated as a problem of MPC which together with a navigation function has the proven property to converge to a global optimal solution.
+
 Other applications of this approach in recent planning systems adapt the corresponding cost function.
 %give some recent papers about dwa in developments%
 The excellent \texttt{move\_base}\footnote{move\_base planning framework: \url{http://wiki.ros.org/move_base}} motion planning framework introduced in \cite{DBLP:conf/icra/Marder-EppsteinBFGK10} implements within the navigation stack of Robot Operating System (ROS) a local planner which uses a global plan as a guide, and uses a polygon to model the robot outline.
