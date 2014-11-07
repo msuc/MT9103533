@@ -4,7 +4,8 @@
 This thesis proposes an approach to enhance certain types of local planning systems.
 Examples of such local planners are the aforementioned Dynamic Window Approach and Trajectory Roll-out planner, which were introduced in Section~\ref{sec:dwa}.
 
-The idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation. We introduce trajectory selection extensions using a combination of meta-heuristic algorithms.
+The idea is to apply well established meta-heuristic search algorithms to find good trajectories given a sample of different applicable velocities, a robotic motion model and a given time period for simulation.
+This work introduces trajectory selection extensions using a combination of meta-heuristic algorithms.
 
 \begin{itemize}
 \item{\bf{ILS-Tabu:}}  Based on Iterated Local Search and the use of a simple memory
@@ -19,9 +20,11 @@ The proposed methods are tested and refined and implemented into a robotic navig
 \item{\bf{VNS-DWA:}} Refined VNSB-Tabu with short term memory for DWA planner
 \end{itemize}
 
-The next section provides background information of meta-heuristic search. Following well known classifications of meta-heuristics (see \cite{blum2003metaheuristics}, \cite{birattari2001classification} ) we proceed by introducing \emph{single solution based} meta heuristic, which are the main source for our proposed approach. 
+The next section provides background information of meta-heuristic search. 
+Following well known classifications of meta-heuristics (see \cite{blum2003metaheuristics}, \cite{birattari2001classification} ) an introduction of \emph{single solution based} meta heuristics is given, which are the main source for the proposed approach. 
 
-We conclude this chapter by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process and provide relevant information concerning the local planners we took into consideration. 
+This chapter is then concluded by a detailed description about how meta-heuristics are used to extend local planners in the trajectory selection process. 
+Furthermore all relevant information concerning the local planners is provided. 
 
 \section{Meta-Heuristic Search}\label{sec:meta}
 The family of meta-heuristic algorithms is known to be successful in solving optimization problems, and are heavily used to solve hard problems whether they are  \emph{discrete} (Combinatorial Problems: e.g. Traveling Salesman Problem (TSP), MAX-Sat problem, Nurse Rostering problems (NRP), Classical Vehicle Routing Problem (CVRP),...), or \emph{real-valued} (Continuous Optimization Problems: e.g. Pooling problem, Continues Min-Max problem,...).
@@ -58,7 +61,7 @@ A neighborhood structure is a function $N:S\rightarrow 2^S$ that assigns to ever
 Defining the neighborhood function has an important influence on the good performance of many meta-heuristic algorithms. 
 A neighborhood may be induced from metric functions introduced into $S$ given some notion of nearness within a given starting point. 
 
-The steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution (see \cite{gendreau2003tabusearch}).
+The steps from one local solution to another local solution within a neighborhood is called a \emph{move}. Neighborhoods can also be induced by the set of applicable moves given a current solution \cite{gendreau2003tabusearch}.
 
 Minimal solutions within a given neighborhood structure are defined as \emph{local} minimal solutions.
 \begin{definition}
@@ -146,9 +149,9 @@ The most frequently used selection functions are \emph{Best Improvement}(or stee
 Another possibility is to choose a neighbor at random, or choose the best neighbor among a random sample taken from the current neighborhood. These strategies could be used if the number of neighbors is very large, or their evaluation is computational expensive.
 
 \subsection{Tabu Search} \label{sec:tabu}
-An often successful meta-heuristic strategy is Tabu Search (see \cite{glover1988tabu}), which uses memory structures called \emph{tabu lists} to guide the search process.
+An often successful meta-heuristic strategy is Tabu Search \cite{glover1988tabu}, which uses memory structures called \emph{tabu lists} to guide the search process.
 
-The memory keeps track of complete solutions (\emph{explicit} memory), moves, partial solutions, or other solution attributes (\emph{attributive} memory), which are used to prohibit moves during the exploration of the search space for a given amount of time - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched (see~\cite{glover1997tabu})}. In Algorithm~\ref{tabualgo} the basic form of this approach is presented. 
+The memory keeps track of complete solutions (\emph{explicit} memory), moves, partial solutions, or other solution attributes (\emph{attributive} memory), which are used to prohibit moves during the exploration of the search space for a given amount of time - they are \emph{tabu}\footnote{The word tabu (or taboo) stems from an Polynesian language and indicates things which may not be touched \cite{glover1997tabu}}. In Algorithm~\ref{tabualgo} the basic form of this approach is presented. 
 
 \begin{algorithm}
 \caption{Tabu Search}
@@ -183,7 +186,7 @@ Recording attributes or solutions which lead to, or are common to good solutions
 Recording information of attributes or solution considering the impact of solution quality and structure.
 \end{description}
 
-According to the \emph{short term memory} analogy of the human memory, tabu lists can be furthermore classified in \emph{intermediate term memory}, and \emph{long term memory} strategies (see~\cite{gendreau2003tabusearch}).
+According to the \emph{short term memory} analogy of the human memory, tabu lists can be furthermore classified in \emph{intermediate term memory}, and \emph{long term memory} strategies \cite{gendreau2003tabusearch}.
 \begin{description}
 \item[short term memory]\hfill \\
 Used for \emph{diversification} of the search. Keep track of a small amount of recent moves, thus avoid cycling back to recent solutions. 
@@ -194,7 +197,7 @@ Used for \emph{diversification} of the search. For example implementing a freque
 \end{description}
 
 An important role in controlling the \emph{diversification} of the search is the length of tabu lists (\emph{tabu tenure}).  
-As a general rule the longer the tabu list the higher the diversification effect, since preventing a larger number of candidate solutions in a neighborhood drastically changes the solution landscape (see \cite{blum2003metaheuristics}). 
+As a general rule the longer the tabu list the higher the diversification effect, since preventing a larger number of candidate solutions in a neighborhood drastically changes the solution landscape \cite{blum2003metaheuristics}. 
 
 Restricting the tabu lists length is usually achieved by implementing it as cyclic lists, and deleting e.g. the oldest item as soon as a new item becomes tabu. 
 The tabu tenure can both be fixed or may be changed during the search.
@@ -336,7 +339,7 @@ Altering the cost function is based on penalizing the presence of \emph{solution
 The effect of the \emph{penalty parameters} on the cost function is in addition balanced via a \emph{regularization} parameter.  
 
 \subsection{Simulated Annealing}
-We conclude the presentation of single solution based meta-heuristics with Simulated Annealing (SA), which is one of the first algorithms considered a meta-heuristic. 
+Simulated Annealing (SA), which is one of the first algorithms considered a meta-heuristic, concludes this presentation of single solution based meta-heuristics. 
 
 It was introduced in \cite{Kirkpatrick83SimulatedAnnealing}, and provides an explicit \emph{diversification} mechanism to avoid getting trapped in local minimal solutions. 
 This is achieved by allowing moves to worse solutions during a local search with a certain probability (metropolis criterion, see~\ref{eq:metropolis}).
@@ -408,9 +411,9 @@ Looking at the high number of parameters used for configuring current navigation
 Hence introducing lots of new parameters does not make it easier to find suitable configurations.
 Meta-heuristics are well suited for this task because they use only few parameters to achieve good performance.  
 
-In order to use meta-heuristics we need to formulate the local planning problem according to the definitions given in Section~\ref{sec:meta}.
+In order to use meta-heuristics the local planning problem has to be formulated according to the definitions given in Section~\ref{sec:meta}.
 
-Since we restrict the problem to non-holonomic robots moving on 2D-planes, the \emph{input variables} are all tuples of forward and angular velocities $(v,w)$ the robot is capable.
+Since this work deals with the navigation of non-holonomic robots moving on a 2D-plane workspace, the \emph{input variables} are all tuples of forward and angular velocities $(v,w)$ the robot is capable.
 The \emph{domain} of the variables is a discrete set of the real valued search space induced by using a fixed stepping size and selecting a specific amount of trajectories.
  
 Forward and angular velocities $(v,w)$ are furthermore \emph{constrained} within given limits $v_{min} \leq v \leq v_{max}$ and $w_{min} \leq w \leq w_{max}$.
@@ -451,7 +454,7 @@ This process continues until the whole search space is the neighborhood. Figure~
 
 Using \emph{Local Search} (see Section~\ref{sec:ls}) the neighborhood is either exhaustively searched for the best solution using Best-Improvement heuristic (see Section~\ref{bestimprov}) or stopped after finding the first improving solution using First-Improvement heuristic (see Section~\ref{firstimprov}).
 
-Next we list the meta-heuristic algorithms used in our approach.
+The following list includes the meta-heuristic algorithms used for the proposed approach.
 
 \begin{description}
 \item[Tabu List]\hfill \\
