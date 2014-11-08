@@ -4,7 +4,7 @@ To evaluate the proposed method two classes of experiments are carried out. In a
 
 With the gained data the algorithms are improved and used to extend existing local planner. A fully simulated environment and robotic model using a sophisticated physic engine together with a complete robot navigation system is used to compare the original implementation of the local planner with the meta-heuristic approach.
  
-\section{Experiments with Sample Planner}
+\section{Experiments with sample planner}
 The trajectory sampling and selection of a common DWA approach are implemented in python minimizing a simpler cost function $f_c(v,w)$ (cf. Equation~\ref{eq:simplecost}), where $f_g(v,w)$ is the distance of the center of the robot in the end position to a predefined goal position, and $f_o(v,w)$ is the maximal distance to an obstacle on the trajectory path.
 
 \begin{equation}
@@ -99,7 +99,7 @@ The following list shows the tested algorithm:
 
 \section{Experiments extending existing local planner}
 To extend an existing local planner the navigation system implemented in the ROS framework is used, which provides a variety of different planning methods. 
-The planning system choosen for testing comes ready to use in the implementation of the navigation stack of the ROS framework, which was introduced and implemented by Marder-Eppstein (see \cite{DBLP:conf/icra/Marder-EppsteinBFGK10}).
+The planning system chosen for testing comes ready to use in the implementation of the navigation stack of the ROS framework, which was introduced and implemented by Marder-Eppstein (see \cite{DBLP:conf/icra/Marder-EppsteinBFGK10}).
 The local planning system consists of two planners based on \emph{DWA} implementation and \emph{Trajectory Roll-out} (see Section~\ref{sec:dwa}).
 
 To simulate the environment and the robot the simulation framework Gazebo is used, which provides a robust physical engine and is one of the most popular simulation engines in the field of mobile robotics. 
@@ -120,7 +120,7 @@ In Figure~\ref{fig:gazebo_v4r} the 3D-model, which is a simple artificial buildi
        {  
            \fbox{\includegraphics[width=0.85\textwidth]{figures/fig_rviz_v4r.png}}
        }        
-       \caption[Simulation: artificial environment]{Figure (a) shows the 3D model used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
+       \caption[Simulation: artificial environment]{Figure (a) shows the 3D model of an artificial building used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
       \label{fig:gazebo_v4r}
    \end{figure}
 
@@ -140,9 +140,24 @@ In Figure~\ref{fig:gazebo_gh25} the second 3D-model used for testing is shown. B
        {  
            \fbox{\includegraphics[width=\textwidth]{figures/fig_gh25_rviz.png}}
        }        
-       \caption[Simulation: office environment]{Figure (a) shows the 3D model used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
+       \caption[Simulation: office environment]{Figure (a) shows the 3D model of an office environment used for the simulating the robot in the simulation engine. Figure (b) depicts planning information used during the experiments.}
       \label{fig:gazebo_gh25}
    \end{figure}
+
+To compare the meta-heuristic approach with the unaltered versions of the ROS-planners, a simulated robot has to fulfill a simple navigation task within the provided environments.
+A route is provided by marker points which have to be approached one by one until a round trip is completed.
+To account for the probability aspect of the meta-heuristic implementations several round trips have to be accomplished until the experiments stops.
+
+At each call of the local planner first the original brute force evaluation of the trajectories is conducted and the best score together with the time needed to find the best trajectory is recorded.
+Immediately after a solution is found, the VNS search algorithm searches for the same exact best score.
+Again the performance time until completion of the algorithm is recorded.
+The performance time of the original and the altered version of the local planner are used for  comparing the different algorithms. 
+
+The following list shows the tested algorithm:
+\begin{itemize}
+\item{\bf{VNS-ROL:}} This implementation uses Variable Neighborhood Search with Best Improvement together with the Trajectory Roll-out planner.
+\item{\bf{VNS-DWA:}} This implementation uses Variable Neighborhood Search with Best Improvement together with the Dynamic Window Approach planner. 
+\end{itemize}
 
 \section{Results}\label{sec:testresults}
 
@@ -172,7 +187,7 @@ Figure~\ref{fig:fig_boxplot} shows a commmon boxplot.
       \label{fig:fig_boxplot}
    \end{figure}
 
-\subsection{Results using the sample planner}
+\subsection{Sample planner}
 In this set of experiments the algorithms were tested using the sample planner and the artificial sensor map instances. 
 These tests were performed on a 2.4 GHz, Intel Core 2 Duo processor using 4 GB RAM. 
 
@@ -387,11 +402,13 @@ It can be observed that the small instances with many obstacles provide the most
 This is increased by using a larger velocity space.
 While increasing the velocity windows clearly has an obvious negative effect on the performance of both the brute force and the meta-heuristic methods, the meta-heuristic algorithms soften this influence to a large degree. 
 
-\subsection{Results using simulated environments}
-This set of experiments are conducted using the simulation software for the artificial and office environment. 
+\subsection{Existing local planner}
+This set of experiments are conducted using the simulation software Gazebo for the artificial and office environment. 
 All of these tests are performed on an Intel Core2 Quad CPU with 2.66GHz and 8 GB RAM.
 
-\subsubsection{Simulated robot in artificial environment}
+\subsubsection{VNS and Trajectory Roll-out planner}
+The Trajectory Roll-out planner variant of the ROS-navigation stack implementation was altered to use the VNS approach and compared to the unaltered version in all of the following results.
+
 The results of the simulation of a robot in an artificial building is presented in Figure~\ref{fig:fig_simu}. 
  
 \begin{figure}[thpb]
@@ -408,12 +425,10 @@ The results of the simulation of a robot in an artificial building is presented 
       \label{fig:fig_simu}
 \end{figure}
 
-The robot has to follow 4 landmarks yielding a round trip through the corridors of the building.
-The experiment is finished after 15 round trips which result in approx. 6000 calls to the local planner. 
-For each call to the local planner the time and the control values found by the original methods (DWA or Trajectory Roll-out) are recorded. 
-Immediately after a solution is found, the VNS search algorithm searches for the same exact control values and the search times can be compared. 
-
 For both local planning methods, the meta-heuristic trajectory selection significantly outperforms the original methods.
+
+\subsubsection{VNS and DWA planner}
+This section contains the results of the experiments with the DWA variant of the ROS local planner. 
 
 \section{Summary}
 As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
