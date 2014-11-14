@@ -441,17 +441,14 @@ The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL a
      \label{fig:fig_logo_rol}
 \end{figure} 
 
-Using the short term memory structure did not have a significant performance increase, although less outlieres and slightly smaller variance of the measurements is observable.  
+Using the short term memory structure did have a small but not significant performance increase, although less outlieres and slightly smaller variance of the measurements is observable.  
  
-
-
-
 \subsubsection{VNS and DWA planner}
 This section contains the results of the experiments with the DWA variant of the ROS local planner. 
 
 \section{Summary}
 As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
-So it is no surprise that looking at all the results, there is no clear winner among the algorithms, but Variable Neighborhood search with Tabu List and Best, or First Improvement heuristic seem to yields the best and most stable overall performance. 
+So it is no surprise that looking at all the results, there is no clear winner among the algorithms, but Variable Neighborhood search with tabu list and Best, or First Improvement heuristic seem to yields the best and most stable overall performance. 
 
 In general the run time of the python implementation used for the example planner is not very efficient compared to tuned C++ implementations. 
 Therefore the absolute numbers of the run time evaluations should be handled with care.
