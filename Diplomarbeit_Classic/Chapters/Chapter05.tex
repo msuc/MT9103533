@@ -407,25 +407,44 @@ This set of experiments are conducted using the simulation software Gazebo for t
 All of these tests are performed on an Intel Core2 Quad CPU with 2.66GHz and 8 GB RAM.
 
 \subsubsection{VNS and Trajectory Roll-out planner}
-The Trajectory Roll-out planner variant of the ROS-navigation stack implementation was altered to use the VNS approach and compared to the unaltered version in all of the following results.
+The Trajectory Roll-out planner variant of the ROS-navigation stack implementation was altered to use the VNS approach (VNS-ROL) and compared to the unaltered version in all of the following results.
 
-The results of the simulation of a robot in an artificial building is presented in Figure~\ref{fig:fig_simu}. 
- 
+The first experiment was executed using only one tabu list which holds all visited solutions. 
+The robot was tested with 300 trajectories in the logo environment and has to perform 15 roundtrips.
+The results in figure~\ref{fig:fig_logo_rol_ori} show that the VNS-ROL algorithm significally outperforms the orginal approach. 
+
+In a second experiment the experiment time was extended to 80 roundtrips in the logo environment.
+Again the local planner uses 300 trajectories.
+This time both memory structures were used with a tabu tenure of 7.
+The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL algorithm significally outperforms the orginal approach. 
+
 \begin{figure}[thpb]
-     \tiny
-      \centering
-      \myfloatalign
-      \captionsetup[subfigure]{labelformat=empty} 
-      \subfloat[]
-      {  
-        \def\svgwidth{0.75\textwidth}
-        \includesvg{figures/simu}
-      }      
-      \caption[Experiment: Robot simulation]{Results from a robot simulation of making 15 roundtrips in an artificial building. The original methods are based on DWA and Trajectory Rollout, which are compared to the result using those planners with the VNS trajectory selection method.}
-      \label{fig:fig_simu}
-\end{figure}
+   \myfloatalign
+    \tiny
+    \centering
+   %\captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[1-tabu] 
+    {  
+       \label{fig:fig_logo_rol_ori}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_logo_rol_ori}
+    }
+    \subfloat[2-tabu]    
+    {  
+       \label{fig::fig_logo_rol2tabu}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_logo_rol_2tabu}
+    }
 
-For both local planning methods, the meta-heuristic trajectory selection significantly outperforms the original methods.
+    \caption[Experiment: VNS-ROL tabu lists]{These figures show the result of using the VNS-ROL algorithm in the logo environment.
+    The results of 15 roundtrips with one tabu list is shown in (a).  Figure (b) shows the result of 80 roundtrips using an additional tabu list with tenure 7.}  
+     \label{fig:fig_logo_rol}
+\end{figure} 
+
+Using the short term memory structure did not have a significant performance increase, although less outlieres and slightly smaller variance of the measurements is observable.  
+ 
+
+
 
 \subsubsection{VNS and DWA planner}
 This section contains the results of the experiments with the DWA variant of the ROS local planner. 
