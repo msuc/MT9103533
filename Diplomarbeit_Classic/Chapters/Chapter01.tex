@@ -50,7 +50,7 @@ Navigation competence is essential for a broad spectrum of application domains w
 \begin{description}
 \item[Self driving cars]\hfill \\
 Self driving cars (see Figure~\ref{fig:fig_auto}) like Stanley \cite{stanley} which won the 2005 DARPA (Defense Advanced Research Projects Agency of the United States) Grand Challenge and the Google car \cite{guizzo2011google} are two examples which illustrate the enormous potential of autonomous vehicles.
-While the former is confronted with rough terrain and manoeuvrs at high speeds, cars in urban traffic have to be prepared for other vehicles, pedestrians and have to incorporate traffic rules into the navigation task. 
+While the former is confronted with rough terrain and maneuvers at high speeds, cars in urban traffic have to be prepared for other vehicles, pedestrians and have to incorporate traffic rules into the navigation task. 
 
 \begin{figure}[thpb]
 	  \myfloatalign
@@ -248,16 +248,16 @@ A combination of a local planner based on artificial potential field method and 
 Here the pherhormon traces of the ACO is used to prevent local minima in the local planning step.
 
 Several approaches using genetic programming are presented in \cite{manikas2007genetic} where solutions to planning problems for autonomous navigation are encoded as chromosomes. 
-According to a fitness function the best chromosomes are choosen to create new solutions via cross over and mutation operations. 
+According to a fitness function the best chromosomes are chosen to create new solutions via cross over and mutation operations. 
 
 An early apporach of using single solution based meta-heuristics in the context of local planning is presented in \cite{park2001obstacle}.
 Here simulated annealing was applied to avoid the local planner of getting trapped in local minima.
 
 Based on tabu search a sensor based navigation system for mobile robots is presented in \cite{masehian2008sensor}.
-This local planning method utilizes different memory structures to avoid cylcing back to already visited regions of the map. 
+This local planning method utilizes different memory structures to avoid cycling back to already visited regions of the map. 
 To escape local minima it provides an escaping mechanism by randomly approaching unvisited areas.
 
-The method proposed in this work differs from these works by analysing and using single solution based meta-heuristics strategies for local path planning only. 
+The method proposed in this work differs from these works by analyzing and using single solution based meta-heuristics strategies for local path planning only. 
 In addition to the memory structures of tabu search, another contribution is the use of algorithms based on Iterated Local Search (ILS) and Variable Neighborhood Search (VNS). 
 These single solution based meta-heuristics are the core strategies to increase the efficiency of a local planner which uses trajectory generation methods like the Dynamic Window Approach (DWA) to find optimal motor controls for the robot.
 

@@ -226,7 +226,7 @@ A small number of trajectories benefits smaller sized neighborhoods, whereas inc
 \subsubsection{Influence of trajectory size by specific instances}
 The following tests include the VNSF, VNSB and only one ILS4 algorithm for comparison. 
 The algorithms are executed with specific world instances, and repeated 50 times. 
-The results in Figure~\ref{fig:fig_special_240} show the application of the algorithm using 240 trajectories. Again the all tested algorithms significantly outperform the Brute Force method. 
+The results in Figure~\ref{fig:fig_special_240} show the application of the algorithm using 240 trajectories. Again  all tested algorithms significantly outperform the Brute Force method. 
 
 \begin{figure}[thpb]
    \myfloatalign
@@ -410,11 +410,11 @@ All of these tests are performed on an Intel Core2 Quad CPU with 2.66GHz and 8 G
 The Trajectory Roll-out planner variant of the ROS-navigation stack implementation was altered to use the VNS approach (VNS-ROL) and compared to the unaltered version in all of the following results.
 
 The first experiment was executed using only one tabu list which holds all visited solutions. 
-The robot was tested with 300 trajectories in the logo environment and has to perform 15 roundtrips.
+The robot was tested with 300 trajectories in the logo environment and had to perform 15 roundtrips.
 The results in figure~\ref{fig:fig_logo_rol_ori} show that the VNS-ROL algorithm significally outperforms the orginal approach. 
 
 In a second experiment the experiment time was extended to 80 roundtrips in the logo environment.
-Again the local planner uses 300 trajectories.
+Again the local planner used 300 trajectories.
 This time both memory structures were used with a tabu tenure of 7.
 The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL algorithm significally outperforms the orginal approach. 
 
@@ -453,6 +453,10 @@ The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL a
 
 Using the short term memory structure did have a small but not significant performance increase, although less outliers and slightly smaller variance of the measurements is observable.  
 
+The next four experiments show the effects of increasing the number of trajectory samples and the influence of the tabu tenure.
+This time the robot had to travel 40 roundtrips in the office environment. The planners are tested with 300 and 600 trajectories with tabu tenure set to 10 and 100.
+The results are shown in figure figure~\ref{fig:fig_gh25_rol}.
+ 
 \begin{figure}[thpb]
    \myfloatalign
     \tiny
@@ -496,8 +500,11 @@ Using the short term memory structure did have a small but not significant perfo
 
 
     \caption[Experiment: VNS-ROL office]{These figures show the result of using the VNS-ROL algorithm in the office environment. In each experiment the robot has to drive 40 roundtrips in the building. Figure (a) shows the result using 300 trajectory samples with tabu tenure 10 while Figure (b) uses a tenure of 100. Figure (c) shows the result of 600 trajectories with tabu tenure 10 and Figure (d) a tenure of 100.}  
-     \label{fig:fig_logo_rol}
+     \label{fig:fig_gh25_rol}
 \end{figure} 
+
+As in the experiments with the sample planner, the larger trajectory size increased the performance difference between the original brute-force method and the VNS approach.
+Increasing the size of the tabu tenure did have a negative effect on the performance, showing that a small tenure is not only enough to avoid cycling but is also faster due to the smaller lookup time in a shorter list.
  
 \subsubsection{VNS and DWA planner}
 This section contains the results of the experiments with the DWA variant of the ROS local planner. 
