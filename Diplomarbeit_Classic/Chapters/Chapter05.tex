@@ -411,12 +411,12 @@ The Trajectory Roll-out planner variant of the ROS-navigation stack implementati
 
 The first experiment was executed using only one tabu list which holds all visited solutions. 
 The robot was tested with 300 trajectories in the logo environment and had to perform 15 roundtrips.
-The results in figure~\ref{fig:fig_logo_rol_ori} show that the VNS-ROL algorithm significally outperforms the orginal approach. 
+The results in figure~\ref{fig:fig_logo_rol_ori} show that the VNS-ROL algorithm significantly outperforms the original approach. 
 
 In a second experiment the experiment time was extended to 80 roundtrips in the logo environment.
 Again the local planner used 300 trajectories.
 This time both memory structures were used with a tabu tenure of 7.
-The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL algorithm significally outperforms the orginal approach. 
+The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL algorithm significantly outperforms the original approach. 
 
 \begin{figure}[thpb]
    \myfloatalign
@@ -507,7 +507,105 @@ As in the experiments with the sample planner, the larger trajectory size increa
 Increasing the size of the tabu tenure did have a negative effect on the performance, showing that a small tenure is not only enough to avoid cycling but is also faster due to the smaller lookup time in a shorter list.
  
 \subsubsection{VNS and DWA planner}
-This section contains the results of the experiments with the DWA variant of the ROS local planner. 
+This section contains the results of the experiments with the DWA variant of the ROS local planner and the VNS approach (VNS-DWA).
+
+Starting with 15 roundtrips using 300 trajectories in the logo environment the meta-heuristic algorithm shows similar good performance as the  VNS-ROL algorithm. 
+
+The long run experiment with 80 roundtrips revealed a problem for the VNS-DWA approach with 2 tabu lists, which was not detected during the tests with the Rollout planner.
+In some rare cases the meta-heuristic approach did use exceptional long time to find the best solution, leading to instability of the system.
+Even extending the tabu tenure to half of the solution size did not solve this problem.
+
+Through further analysis the problem was identified to occur only when the robot approached a milestone in the roundtrip with very small velocity.
+Since the robot did barely move at all the corresponding cost function had the same value for most velocity tuples, providing no usable gradient for guiding the local search. 
+
+In order to avoid this situation the VNS-DWA algorithm was altered to use the brute force method whenever the velocity of the robot drops beyond a predefined very small threshold value.
+
+The result of these experiments are shown in figure~\ref{fig:fig_logo_dwa}
+\begin{figure}[thpb]
+   \myfloatalign
+    \tiny
+    \centering
+   %\captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[1-tabu] 
+    {  
+       \label{fig:fig_logo_dwa_ori}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_logo_dwa_ori}
+    }
+    \subfloat[2-tabu]    
+    {  
+       \label{fig::fig_logo_dwa2tabu}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_logo_dwa_2tabu}
+    }
+    \\
+    {
+    \captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[][] 
+    {  
+       \footnotesize
+       \def\svgwidth{0.2\textwidth}
+       \includesvg{figures/legend_dwa}
+    }
+    }
+
+    \caption[Experiment: VNS-DWA logo]{These figures show the result of using the VNS-DWA algorithm in the logo environment.
+    The results of 15 roundtrips with one tabu list is shown in (a).  Figure (b) shows the result of 80 roundtrips using an additional tabu list with tenure 7.}  
+     \label{fig:fig_logo_dwa}
+\end{figure} 
+
+
+For the next experiments the robot had to travel 40 roundtrips in the office environment. 
+The planners are tested with 300 and 600 trajectories with tabu tenure set to 10 and 100.
+The results are shown in figure figure~\ref{fig:fig_gh25_dwa}.
+ 
+\begin{figure}[thpb]
+   \myfloatalign
+    \tiny
+    \centering
+    
+    \subfloat[][trajectories=300, tenure=10] 
+    {  
+       \label{fig:fig_gh25_dwa_2tabu_40_10_30_nb6_10}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_dwa_2tabu_40_10_30_nb6_10}
+    }
+    \subfloat[][trajectories=300, tenure=100]    
+    {  
+       \label{fig::fig_gh25_dwa_2tabu_40_10_30_nb6_100}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_dwa_2tabu_40_10_30_nb6_100}
+    }
+    \\
+    \subfloat[][trajectories=600, tenure=10] 
+    {  
+       \label{fig:fig_gh25_dwa_2tabu_40_15_40_nb6_10}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_dwa_2tabu_40_15_40_nb6_10}
+    }
+    \subfloat[][trajectories=600, tenure=100]    
+    {  
+       \label{fig::fig_gh25_dwa_2tabu_40_15_40_nb6_100}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_dwa_2tabu_40_15_40_nb6_100}
+    }
+    \\
+    {
+    \captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[][] 
+    {  
+       \footnotesize
+       \def\svgwidth{0.2\textwidth}
+       \includesvg{figures/legend_dwa}
+    }
+    }
+
+
+    \caption[Experiment: VNS-DWA office]{These figures show the result of using the VNS-DWA algorithm in the office environment. In each experiment the robot has to drive 40 roundtrips in the building. Figure (a) shows the result using 300 trajectory samples with tabu tenure 10 while Figure (b) uses a tenure of 100. Figure (c) shows the result of 600 trajectories with tabu tenure 10 and Figure (d) a tenure of 100.}  
+     \label{fig:fig_gh25_dwa}
+\end{figure} 
+
+The VNS-DWA algorithm outperformed the original approach in all experiments.
 
 \section{Summary}
 As it is the case for nearly all optimization problems, the No Free Lunch theorems \cite{wolpert1997no} apply also to the local planning domain. 
