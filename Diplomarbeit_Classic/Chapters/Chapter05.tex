@@ -435,13 +435,69 @@ The results in figure~\ref{fig::fig_logo_rol2tabu} show again that the VNS-ROL a
        \def\svgwidth{0.5\textwidth}
        \includesvg{figures/fig_logo_rol_2tabu}
     }
+    \\
+    {
+    \captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[][] 
+    {  
+       \footnotesize
+       \def\svgwidth{0.2\textwidth}
+       \includesvg{figures/legend_rol}
+    }
+    }
 
-    \caption[Experiment: VNS-ROL tabu lists]{These figures show the result of using the VNS-ROL algorithm in the logo environment.
+    \caption[Experiment: VNS-ROL logo]{These figures show the result of using the VNS-ROL algorithm in the logo environment.
     The results of 15 roundtrips with one tabu list is shown in (a).  Figure (b) shows the result of 80 roundtrips using an additional tabu list with tenure 7.}  
      \label{fig:fig_logo_rol}
 \end{figure} 
 
 Using the short term memory structure did have a small but not significant performance increase, although less outliers and slightly smaller variance of the measurements is observable.  
+
+\begin{figure}[thpb]
+   \myfloatalign
+    \tiny
+    \centering
+    
+    \subfloat[][trajectories=300, tenure=10] 
+    {  
+       \label{fig:fig_gh25_rol_2tabu_40_10_30_nb6_10}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_rol_2tabu_40_10_30_nb6_10}
+    }
+    \subfloat[][trajectories=300, tenure=100]    
+    {  
+       \label{fig::fig_gh25_rol_2tabu_40_10_30_nb6_100}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_rol_2tabu_40_10_30_nb6_100}
+    }
+    \\
+    \subfloat[][trajectories=600, tenure=10] 
+    {  
+       \label{fig:fig_gh25_rol_2tabu_40_15_40_nb6_10}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_rol_2tabu_40_15_40_nb6_10}
+    }
+    \subfloat[][trajectories=600, tenure=100]    
+    {  
+       \label{fig::fig_gh25_rol_2tabu_40_15_40_nb6_100}
+       \def\svgwidth{0.5\textwidth}
+       \includesvg{figures/fig_gh25_rol_2tabu_40_15_40_nb6_100}
+    }
+    \\
+    {
+    \captionsetup[subfigure]{labelformat=empty} 
+    \subfloat[][] 
+    {  
+       \footnotesize
+       \def\svgwidth{0.2\textwidth}
+       \includesvg{figures/legend_rol}
+    }
+    }
+
+
+    \caption[Experiment: VNS-ROL office]{These figures show the result of using the VNS-ROL algorithm in the office environment. In each experiment the robot has to drive 40 roundtrips in the building. Figure (a) shows the result using 300 trajectory samples with tabu tenure 10 while Figure (b) uses a tenure of 100. Figure (c) shows the result of 600 trajectories with tabu tenure 10 and Figure (d) a tenure of 100.}  
+     \label{fig:fig_logo_rol}
+\end{figure} 
  
 \subsubsection{VNS and DWA planner}
 This section contains the results of the experiments with the DWA variant of the ROS local planner. 
