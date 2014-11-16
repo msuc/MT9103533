@@ -9,11 +9,22 @@
 \let\cleardoublepage\relax
 
 \chapter*{Abstract}
-Short summary of the contents in English\dots
+Navigation is a crucial task for mobile robots driving through dynamic environments.
+Besides the difficulties involved in finding a way from a starting to some goal location, the problem gets even more difficult if unknown objects, dynamics of the robotic vehicle and uncertainties from sensor readings have to be taken into account.
+
+To guarantee a safe passage common approaches divide the navigation task into two parts - global and local planning.
+A global planner finds an initial path to the desired goal location based on a previous obtained map. The retrieved path is used as a guide for a local path planning component.
+This local path planner uses local information obtained through recent sensor readings and applies obstacle avoidance strategies to safely and efficiently follow the guide as precise as possible. 
+
+Very effective local planning methods like the Dynamic Window Approach (DWA) or Trajectory Roll-out are based on generating and weighting trajectories.
+The best trajectory yields the optimal motor controls.
+The goal of this thesis is to analyze these approaches and improve the performance of local planners by applying well known meta-heuristic search strategies. 
+
+
+
 
 
 \vfill
-
 \newpage
 
 \pdfbookmark[1]{Zusammenfassung}{Zusammenfassung}
