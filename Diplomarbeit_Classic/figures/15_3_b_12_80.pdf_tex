@@ -60,9 +60,5 @@
     \put(0.02848637,0.54515092){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$7.0$}}}%
     \put(0.02848637,0.622466){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$8.0$}}}%
     \put(0.02860668,0.08181882){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{$1.0$}}}%
-    \put(0.65117785,0.64145667){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{ILS4}}}%
-    \put(0.65719893,0.57928497){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{VNSF}}}%
-    \put(0.65719893,0.51565536){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{VNSB}}}%
-    \put(0.65117785,0.45864676){\color[rgb]{0,0,0}\makebox(0,0)[lb]{\smash{Brute Force}}}%
   \end{picture}%
 \endgroup%
