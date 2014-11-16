@@ -176,13 +176,8 @@ Figure~\ref{fig:fig_boxplot} shows a commmon boxplot.
 \begin{figure}[thpb]
      \footnotesize
       \centering
-      \myfloatalign
-      \setlength\fboxsep{0pt}
-      \setlength\fboxrule{0.5pt}
-       \subfloat[]
-       {  
-           \fbox{\includegraphics[width=\textwidth]{figures/fig_box-and-whisker-plot.png}}
-       }        
+       \def\svgwidth{\textwidth}
+       \includesvg{figures/fig_boxplot}        
        \caption{A classical boxplot diagram.}
       \label{fig:fig_boxplot}
    \end{figure}
