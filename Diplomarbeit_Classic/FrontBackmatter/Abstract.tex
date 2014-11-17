@@ -16,13 +16,14 @@ To guarantee a safe passage common approaches divide the navigation task into tw
 A global planner finds an initial path to the desired goal location based on a previous obtained map. The retrieved path is used as a guide for a local path planning component.
 This local path planner uses local information obtained through recent sensor readings and applies obstacle avoidance strategies to safely and efficiently follow the guide as precise as possible. 
 
-Very effective local planning methods like the Dynamic Window Approach (DWA) or Trajectory Roll-out are based on generating and weighting trajectories.
-The best trajectory yields the optimal motor controls.
+Very effective local planning methods like the \ac{DWA} or Trajectory Roll-out are based on sampling the control space of the robot. For a short amount of time the application of these controls are simulated generating corresponding trajectories.
+By using appropriate cost functions the resulting trajectories are weighted and the best one yields the optimal target values for the motor controller.
 
-The goal of this thesis is to analyze these approaches and improve the performance of local planners by applying well known meta-heuristic search strategies. 
+The goal of this thesis is to analyze these approaches and improve the performance of local planners by applying well known meta-heuristic search strategies in the trajectory selection process.
 
+For this purpose an introduction to local planning and obstacle avoidance methods is presented,  followed by discussing applicable single solution based meta-heuristics. 
 
-
+Approaches based on \ac{ILS}, \ac{VNS} and Tabu Search are implemented and tested using a sample planner based on \ac{DWA}. 
 
 
 \vfill
