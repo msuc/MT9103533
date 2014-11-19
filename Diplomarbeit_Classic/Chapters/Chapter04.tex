@@ -111,8 +111,7 @@ The simple local search (LS) (cf. Algorithm~\ref{localsearchalgo}) finds a local
 Starting from an initial solution it iteratively selects elements from the neighborhood which improve the current solution. 
 The search stops at a local minimal solution if there are no improving solutions which can be selected.
 
-The most frequently used selection functions are \emph{Best Improvement}(or steepest descent) (cf. Algorithm~\ref{bestimprov}), which exhaustively looks at each neighbor to select the best solution, and \emph{First Improvement} (or first descent) (cf. Algorithm~\ref{firstimprov}), which looks at the neighbors in a specific order and returns as soon as a better neighbor is found. 
-
+A frequently used selection functions is \emph{Best Improvement}(or steepest descent) (cf. Algorithm~\ref{bestimprov}), which exhaustively looks at each neighbor to select the best solution.
 \begin{algorithm}
 \caption{Best Improvement}
 \label{bestimprov}
@@ -131,6 +130,8 @@ The most frequently used selection functions are \emph{Best Improvement}(or stee
 \end{algorithmic}
 \end{algorithm}
 
+Another popular selection function is \emph{First Improvement} (or first descent) (cf. Algorithm~\ref{firstimprov}), which looks at the neighbors in a specific order and returns as soon as a better neighbor is found. 
+
 \begin{algorithm}
 \caption{First Improvement}
 \label{firstimprov}
@@ -146,7 +147,7 @@ The most frequently used selection functions are \emph{Best Improvement}(or stee
 \end{algorithmic}
 \end{algorithm}
 
-Another possibility is to choose a neighbor at random, or choose the best neighbor among a random sample taken from the current neighborhood. These strategies could be used if the number of neighbors is very large, or their evaluation is computational expensive.
+For selecting the next suitable neighbor it is also possible to choose a neighbor at random, or choose the best neighbor among a random sample taken from the current neighborhood. These strategies could be used if the number of neighbors is very large, or their evaluation is computational expensive.
 
 \subsection{Tabu Search} \label{sec:tabu}
 An often successful meta-heuristic strategy is Tabu Search \cite{glover1988tabu}, which uses memory structures called \emph{tabu lists} to guide the search process.
