@@ -23,7 +23,7 @@ By using appropriate cost functions the resulting trajectories are weighted and 
 
 The goal of this thesis is to analyze these approaches and improve the performance of local planners by applying well known meta-heuristic search strategies in the trajectory selection process.
 
-For this purpose an introduction to local planning and obstacle avoidance methods is presented, followed by discussing applicable single solution based meta-heuristics. 
+For this purpose an introduction to local planning and obstacle avoidance methods is presented, followed by a discussion of applicable single solution based meta-heuristics. 
 
 %Approaches based on \ac{ILS}, \ac{VNS} and Tabu Search are implemented and tested using a sample planner based on \ac{DWA}.
 Approaches based on Iterated Local Search (ILS), Variable Neighborhood Search (VNS) and Tabu Search are implemented and tested using a sample planner based on DWA. 
@@ -39,28 +39,27 @@ The altered planner outperform the original implementations on all tested instan
 
 \pdfbookmark[1]{Zusammenfassung}{Zusammenfassung}
 \chapter*{Zusammenfassung}
-Navigation ist eine wesentliche Funktion f\"ur mobile Roboter, die sich in einer dynamisch ver\"anderbaren Umgebung bewegen. 
-Neben der Schwierigkeit einen Weg von einem Startpunkt zu einem Zielpunkt zu finden, erh\"ohen sich die Anforderungen an die Planung sobald unbekannte Objekte, die Fahrdynamik des Roboters und Messunsicherheiten der Sensoren ber\"ucksichtigt werden m\"ussen. 
+Die F\"ahigkeit in dynamischen Umgebungen zu navigieren ist eine wesentliche Funktion f\"ur mobile Roboter. Neben der Schwierigkeit einen Weg von einem Startpunkt zu einem Zielpunkt zu finden, erh\"ohen sich die Anforderungen an die Planung wenn Hindernisse und Messunsicherheiten vom Roboter w\"ahrend der Navigtion ber\"ucksichtigt werden m\"ussen. 
 
-Um eine sichere Passage zu garantieren, wird die Navigation \"ublicherweise in zwei Schritte aufgeteilt - globale und lokale Planung. 
+Um eine sichere Fahrt zu garantieren, wird die Navigation \"ublicherweise in zwei Schritte aufgeteilt - globale und lokale Planung. 
 Ein globaler Planer findet anhand einer vorher erstellten Karte einen ersten Weg zum gew\"unschten Ziel. 
 Der gefundene Weg fungiert dann als Orientierungshilfe f\"ur eine lokale Wegplanungskomponente. 
 Der lokale Planer verwendet unter Ber\"ucksichtigung der aktuellsten Sensormessungen sogenannte lokale Informationen und Strategien zur Kollisionsvermeidung um sicher und effizient der Orientierungshilfe so exakt wie m\"oglich zu folgen. 
 
 Sehr effektive lokale Planungsmethoden wie Dynamic Window Approach (DWA) oder Trajectory Roll-out basieren auf einem Sampling des Controlspace des Roboters. 
 F\"ur einen kurzen Zeitraum wird die Applikation von Steuerwerten simuliert und die resultierenden Trajektorien generiert.  
-Mithilfe geeigneter Kostenfunktionen werden die Trajektorien gewichtet und die Steuerwerte der besten Trajektorie werden and die Motorsteuerung weitergeleitet.
+Mithilfe einer geeigneten Kostenfunktion werden die Trajektorien gewichtet und die Steuerwerte der besten Trajektorie werden and die Motorsteuerung weitergeleitet.
 
 Das Ziel der vorliegenden Arbeit ist eine Analyse und eine Verbesserung der Leistung von lokalen Planern durch Einsatz bekannter metaheuristischer Suchstrategien bei der Selektion der Trajektorien.
 
-Zu diesem Zweck wird eine Einf\"uhrung zu lokalen Planungsmethoden und Methoden der Kollisionsvermeidung pr\"asentiert, gefolgt von einer Diskussion zu \glqq single solution based\grqq  Metaheuristiken. 
-Ans\"atze basierend auf Iterated Local Search (ILS), Variable Neighborhood Search (VNS) und Tabu Search werden implementiert und mit einem auf DWA basierenden einfachen Planer getestet. 
+Zu diesem Zweck wird eine Einf\"uhrung zu lokalen Planungsmethoden und Methoden der Kollisionsvermeidung pr\"asentiert, gefolgt von einer Diskussion zu \glqq single solution based \grqq{} Metaheuristiken. 
+Die pr\"asentierten Ans\"atze basierend auf Iterated Local Search (ILS), Variable Neighborhood Search (VNS) und Tabu Search werden implementiert und mit einem auf DWA basierenden einfachen Planer getestet. 
 Diese Algorithmen werden anhand zuf\"allig erzeugter Sensorkarten analysiert und ausgewertet. 
-Die Resultate dokumentieren eine signifikante Steigerung der Leistung verglichen mit der Brute-Force-Methode, die \"ublicherweise bei dieser Art lokaler Planung verwendet wird.
+Die Resultate dokumentieren eine signifikante Verbesserung der Leistung verglichen mit der Brute-Force-Methode, die \"ublicherweise bei dieser Art lokaler Planung verwendet wird.
 
 Mit dem durch diese Untersuchungen erworbenen Wissen wird der VNS Ansatz gew\"ahlt um den Selektionsprozess in einer existierenden Implementierung von lokalen Planern innerhalb des Robot Operating Systems (ROS) zu ersetzen. 
-Zwei Algorithmen basierend auf Trajectory roll-out (VNS-ROL) und DWA (VNS-DWA) werden entwickelt und mit einer modernen Simulationssoftware evaluiert. 
-Die Leistung der adaptierten Planer \"ubertrifft dabei die \"ursprünglichen Implementierungen in allen getesteten Szenarien. 
+Zwei Algorithmen basierend auf Trajectory roll-out (VNS-ROL) und DWA (VNS-DWA) werden entwickelt und mit einer modernen Simulationsoftware evaluiert. 
+Die Leistung der adaptierten Planer \"ubertrifft dabei die urspr\"unglichen Implementierungen in allen getesteten Szenarien. 
 
 \endgroup			
 
