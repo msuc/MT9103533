@@ -16,26 +16,31 @@ To guarantee a safe passage common approaches divide the navigation task into tw
 A global planner finds an initial path to the desired goal location based on a previous obtained map. The retrieved path is used as a guide for a local path planning component.
 This local path planner uses so called local information obtained through recent sensor readings and applies obstacle avoidance strategies to safely and efficiently follow the guide as precise as possible. 
 
-Very effective local planning methods like the \ac{DWA} or Trajectory Roll-out are based on sampling the control space of the robot. For a short amount of time the application of these controls is simulated generating corresponding trajectories.
+%Very effective local planning methods like the \ac{DWA} or Trajectory Roll-out are based on sampling the control space of the robot.
+Very effective local planning methods like the Dynamic Window Approach (DWA) or Trajectory Roll-out are based on sampling the control space of the robot. 
+For a short amount of time the application of these controls is simulated generating corresponding trajectories.
 By using appropriate cost functions the resulting trajectories are weighted and the best one yields the optimal target values for the motor controller.
 
 The goal of this thesis is to analyze these approaches and improve the performance of local planners by applying well known meta-heuristic search strategies in the trajectory selection process.
 
 For this purpose an introduction to local planning and obstacle avoidance methods is presented, followed by discussing applicable single solution based meta-heuristics. 
 
-Approaches based on \ac{ILS}, \ac{VNS} and Tabu Search are implemented and tested using a sample planner based on \ac{DWA}. These algorithms are analyzed and evaluated using random created instances of sensor maps. Results are documenting a significant increase in performance compared to the brute force evaluation commonly used in local planner. 
+%Approaches based on \ac{ILS}, \ac{VNS} and Tabu Search are implemented and tested using a sample planner based on \ac{DWA}.
+Approaches based on Iterated Local Search (ILS), Variable Neighborhood Search (VNS) and Tabu Search are implemented and tested using a sample planner based on DWA. 
+These algorithms are analyzed and evaluated using random created instances of sensor maps. Results are documenting a significant increase in performance compared to the brute force evaluation commonly used in local planner. 
 
-With the gained knowledge of these tests the \ac{VNS} approach is selected to substitute the selection process in a popular implementation of a local planner within \ac{ROS}. 
-Two algorithms based on trajectory Roll-out (VNS-ROL) and \ac{DWA} (VNS-DWA) are developed and  evaluated using a sophisticated simulation engine. 
-The altered planner outperformed the original implementation on all tested instances.
-
+%With the gained knowledge of these tests the \ac{VNS} approach is selected to substitute the selection process in a popular implementation of a local planner within \ac{ROS}.
+With the gained knowledge of these tests the (VNS) approach is selected to substitute the selection process in a popular implementation of local planner within the Robot Operating System (ROS). 
+%Two algorithms based on trajectory Roll-out (VNS-ROL) and \ac{DWA} (VNS-DWA) are developed and  evaluated using a sophisticated simulation engine.
+Two algorithms based on trajectory Roll-out (VNS-ROL) and DWA (VNS-DWA) are developed and evaluated using a sophisticated simulation engine. 
+The altered planner outperform the original implementations on all tested instances.
 \vfill
 \newpage
 
 \pdfbookmark[1]{Zusammenfassung}{Zusammenfassung}
 \chapter*{Zusammenfassung}
 Navigation ist eine wesentliche Funktion f\"ur mobile Roboter, die sich in einer dynamisch ver\"anderbaren Umgebung bewegen. 
-Neben der Schwierigkeit einen Weg von einem Startpunkt zu einem Zielpunkt zu finden, erh\"oht sich die Komplexit\"at sobald unbekannte Objekte, die Fahrdynamik des Roboters und Messunsicherheiten der Sensoren ber\"ucksichtigt werden m\"ussen. 
+Neben der Schwierigkeit einen Weg von einem Startpunkt zu einem Zielpunkt zu finden, erh\"ohen sich die Anforderungen an die Planung sobald unbekannte Objekte, die Fahrdynamik des Roboters und Messunsicherheiten der Sensoren ber\"ucksichtigt werden m\"ussen. 
 
 Um eine sichere Passage zu garantieren, wird die Navigation \"ublicherweise in zwei Schritte aufgeteilt - globale und lokale Planung. 
 Ein globaler Planer findet anhand einer vorher erstellten Karte einen ersten Weg zum gew\"unschten Ziel. 
@@ -53,9 +58,9 @@ Ans\"atze basierend auf Iterated Local Search (ILS), Variable Neighborhood Searc
 Diese Algorithmen werden anhand zuf\"allig erzeugter Sensorkarten analysiert und ausgewertet. 
 Die Resultate dokumentieren eine signifikante Steigerung der Leistung verglichen mit der Brute-Force-Methode, die \"ublicherweise bei dieser Art lokaler Planung verwendet wird.
 
-Mit dem durch diese Untersuchungen erworbenen Wissen wird der VNS Ansatz gew\"ahlt um den Selektionsprozess in einer existierenden Implementierung eines lokalen Planers innerhalb des Robot Operating Systems (ROS) zu ersetzen. 
+Mit dem durch diese Untersuchungen erworbenen Wissen wird der VNS Ansatz gew\"ahlt um den Selektionsprozess in einer existierenden Implementierung von lokalen Planern innerhalb des Robot Operating Systems (ROS) zu ersetzen. 
 Zwei Algorithmen basierend auf Trajectory roll-out (VNS-ROL) und DWA (VNS-DWA) werden entwickelt und mit einer modernen Simulationssoftware evaluiert. 
-Die Leistung des ver\"anderte Planer \"ubertrifft dabei die originale Implementierung in allen getesteten Szenarien. 
+Die Leistung der adaptierten Planer \"ubertrifft dabei die \"ursprünglichen Implementierungen in allen getesteten Szenarien. 
 
 \endgroup			
 
