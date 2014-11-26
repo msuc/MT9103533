@@ -1,0 +1,622 @@
+% This file was created with JabRef 2.4.1.
+% Encoding: Cp1252
+
+@BOOK{LaValle2006,
+  title = {Planning Algorithms},
+  publisher = {Cambridge University Press},
+  year = {2006},
+  author = {S. M. LaValle},
+  address = {Cambridge, U.K.},
+  note = {Available at http://planning.cs.uiuc.edu/},
+  isbn = {0521862051},
+  owner = {Markus Bader},
+  timestamp = {2014.03.11}
+}
+
+@article{kiva,
+  title={Three engineers, hundreds of robots, one warehouse},
+  author={Guizzo, Erico},
+  journal={Spectrum, IEEE},
+  volume={45},
+  number={7},
+  pages={26--34},
+  year={2008},
+  publisher={IEEE}
+}
+
+@article{TsangVoudouris1997gls,
+  author    = {Edward P. K. Tsang and
+               Christos Voudouris},
+  title     = {Fast local search and guided local search and their application
+               to British Telecom's workforce scheduling problem},
+  journal   = {Oper. Res. Lett.},
+  volume    = {20},
+  number    = {3},
+  year      = {1997},
+  pages     = {119-127},
+  ee        = {http://dx.doi.org/10.1016/S0167-6377(96)00042-9},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@article{TsangVoudouris1999gls,
+  author    = {Christos Voudouris and
+               Edward P. K. Tsang},
+  title     = {Guided local search and its application to the traveling
+               salesman problem},
+  journal   = {European Journal of Operational Research},
+  volume    = {113},
+  number    = {2},
+  year      = {1999},
+  pages     = {469-499},
+  ee        = {http://dx.doi.org/10.1016/S0377-2217(98)00099-X},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@ARTICLE{stanley,
+  AUTHOR	= {S. Thrun and M. Montemerlo and H. Dahlkamp and D. Stavens and 
+                   A. Aron and J. Diebel and P. Fong and J. Gale and M. 
+                   Halpenny and G. Hoffmann and K. Lau and C. Oakley and 
+                   M. Palatucci and V. Pratt and P. Stang  and S. Strohband 
+                   and C. Dupont and L.-E. Jendrossek and C. Koelen and 
+                   C. Markey and C. Rummel and J. van Niekerk and E. Jensen 
+                   and P. Alessandrini and G. Bradski and B. Davies and 
+                   S. Ettinger and A. Kaehler and A. Nefian and P. Mahoney},
+  TITLE		= {Winning the DARPA Grand Challenge},
+  JOURNAL	= {Journal of Field Robotics},
+  YEAR		= {2006},
+  NOTE          = {accepted for publication}
+}
+
+@inproceedings{conf/icra/SederP07,
+  added-at = {2007-06-20T00:00:00.000+0200},
+  author = {Seder, Marija and Petrovic, Ivan},
+  biburl = {http://www.bibsonomy.org/bibtex/224d341635bf57fae78136b9bd307fa14/dblp},
+  booktitle = {ICRA},
+  crossref = {DBLP:conf/icra/2007},
+  date = {2007-06-20},
+  description = {dblp},
+  ee = {http://dx.doi.org/10.1109/ROBOT.2007.363613},
+  interhash = {3c39280ea5ff5f502abd44608a3592f5},
+  intrahash = {24d341635bf57fae78136b9bd307fa14},
+  keywords = {dblp},
+  pages = {1986-1991},
+  publisher = {IEEE},
+  timestamp = {2007-06-20T00:00:00.000+0200},
+  title = {Dynamic window based approach to mobile robot motion control in the presence of moving obstacles.},
+  url = {http://dblp.uni-trier.de/db/conf/icra/icra2007.html#SederP07},
+  year = 2007
+}
+
+@proceedings{DBLP:conf/icra/2007,
+  title     = {2007 IEEE International Conference on Robotics and Automation,
+               ICRA 2007, 10-14 April 2007, Roma, Italy},
+  booktitle = {ICRA},
+  publisher = {IEEE},
+  year      = {2007},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@article{feo1995grasp,
+  title={Greedy randomized adaptive search procedures},
+  author={Feo, Thomas A and Resende, Mauricio GC},
+  journal={Journal of global optimization},
+  volume={6},
+  number={2},
+  pages={109--133},
+  year={1995},
+  publisher={Springer}
+}
+
+@ARTICLE{Kirkpatrick83SimulatedAnnealing,
+    author = {S. Kirkpatrick and C. D. Gelatt and M. P. Vecchi},
+    title = {Optimization by simulated annealing},
+    journal = {Science},
+    year = {1983},
+    volume = {220},
+    pages = {671--680}
+}
+
+@article{glover1988tabu,
+ author = {Glover, Fred},
+ title = {Future Paths for Integer Programming and Links to Artificial Intelligence},
+ journal = {Comput. Oper. Res.},
+ issue_date = {May 1986},
+ volume = {13},
+ number = {5},
+ month = may,
+ year = {1986},
+ issn = {0305-0548},
+ pages = {533--549},
+ numpages = {17},
+ url = {http://dx.doi.org/10.1016/0305-0548(86)90048-1},
+ doi = {10.1016/0305-0548(86)90048-1},
+ acmid = {15311},
+ publisher = {Elsevier Science Ltd.},
+ address = {Oxford, UK, UK}
+}
+
+@book{glover1997tabu,
+ author = {Glover, Fred and Laguna, Manuel},
+ title = {Tabu Search},
+ year = {1997},
+ isbn = {079239965X},
+ publisher = {Kluwer Academic Publishers},
+ address = {Norwell, MA, USA},
+} 
+
+@book{glover1999tabu,
+  title={Tabu search},
+  author={Glover, Fred and Laguna, Manuel},
+  year={1999},
+  publisher={Springer}
+}
+
+@article{VNS,
+  title={Variable neighbourhood search: methods and applications},
+  author={Hansen, Pierre and Mladenovi{\'c}, Nenad and P{\'e}rez, Jos{\'e} A Moreno},
+  journal={Annals of Operations Research},
+  volume={175},
+  number={1},
+  pages={367--407},
+  year={2010},
+  publisher={Springer}
+}
+
+@article{lourencco2001iterated,
+  title={Iterated local search},
+  author={Louren{\c{c}}o, Helena R and Martin, Olivier C and Stutzle, Thomas},
+  journal={arXiv preprint math/0102188},
+  year={2001}
+}
+
+@INPROCEEDINGS{gerkey08planning,
+    author={Brian P. Gerkey and Kurt Konolige},
+    title={Planning and control in unstructured terrain},
+    booktitle={In Workshop on Path Planning on Costmaps, Proceedings of the IEEE International Conference on Robotics and Automation (ICRA},
+    year = {2008}
+}
+
+@inproceedings{kiss2012advanced,
+  title={Advanced dynamic window based navigation approach using model predictive control},
+  author={Kiss, Domokos and Tevesz, G{\'a}bor},
+  booktitle={Methods and Models in Automation and Robotics (MMAR), 2012 17th International Conference on},
+  pages={148--153},
+  year={2012},
+  organization={IEEE}
+}
+
+@ARTICLE{DWA1997,
+author={Fox, D. and Burgard, W. and Thrun, S.},
+journal={Robotics Automation Magazine, IEEE},
+title={The dynamic window approach to collision avoidance},
+year={1997},
+month={Mar},
+volume={4},
+number={1},
+pages={23-33},
+keywords={mobile robots;position control;synchros;0.95 m/s;RHINO;collision avoidance;dynamic window approach;mobile robots;motion dynamics;synchro-drives;Acceleration;Collision avoidance;Humans;Mobile robots;Motion control;Motion planning;Orbital robotics;Robot control;Robot sensing systems;Robotics and automation},
+doi={10.1109/100.580977},
+ISSN={1070-9932},}
+
+@article{DBLP:journals/tssc/HartNR68/Astar,
+  author    = {Peter E. Hart and
+               Nils J. Nilsson and
+               Bertram Raphael},
+  title     = {A Formal Basis for the Heuristic Determination of Minimum
+               Cost Paths},
+  journal   = {IEEE Trans. Systems Science and Cybernetics},
+  volume    = {4},
+  number    = {2},
+  year      = {1968},
+  pages     = {100-107},
+  ee        = {http://dx.doi.org/10.1109/TSSC.1968.300136},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@article{dijkstra1959note,
+  title={A note on two problems in connexion with graphs},
+  author={Dijkstra, Edsger W},
+  journal={Numerische {M}athematik},
+  volume={1},
+  number={1},
+  pages={269--271},
+  year={1959},
+  publisher={Springer}
+}
+
+@article{bresenham1965algorithm,
+  title={Algorithm for computer control of a digital plotter},
+  author={Bresenham, Jack E},
+  journal={IBM Systems journal},
+  volume={4},
+  number={1},
+  pages={25--30},
+  year={1965},
+  publisher={IBM Corp.}
+}
+
+@inproceedings{DBLP:conf/icra/Marder-EppsteinBFGK10,
+  author    = {Eitan Marder-Eppstein and
+               Eric Berger and
+               Tully Foote and
+               Brian P. Gerkey and
+               Kurt Konolige},
+  title     = {The Office Marathon: Robust navigation in an indoor office
+               environment},
+  booktitle = {ICRA},
+  year      = {2010},
+  pages     = {300-307},
+  ee        = {http://dx.doi.org/10.1109/ROBOT.2010.5509725},
+  crossref  = {DBLP:conf/icra/2010},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@proceedings{DBLP:conf/icra/2010,
+  title     = {IEEE International Conference on Robotics and Automation,
+               ICRA 2010, Anchorage, Alaska, USA, 3-7 May 2010},
+  booktitle = {ICRA},
+  publisher = {IEEE},
+  year      = {2010},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@article{wolpert1997no,
+  title={No free lunch theorems for optimization},
+  author={Wolpert, David H and Macready, William G},
+  journal={Evolutionary Computation, IEEE Transactions on},
+  volume={1},
+  number={1},
+  pages={67--82},
+  year={1997},
+  publisher={IEEE}
+}
+
+@inproceedings{simmons1996curvature,
+  title={The curvature-velocity method for local obstacle avoidance},
+  author={Simmons, Reid},
+  booktitle={Robotics and Automation, 1996. Proceedings., 1996 IEEE International Conference on},
+  volume={4},
+  pages={3375--3382},
+  year={1996},
+  organization={IEEE}
+}
+
+@article{blum2003metaheuristics,
+  title={Metaheuristics in combinatorial optimization: Overview and conceptual comparison},
+  author={Blum, Christian and Roli, Andrea},
+  journal={ACM Computing Surveys (CSUR)},
+  volume={35},
+  number={3},
+  pages={268--308},
+  year={2003},
+  publisher={ACM}
+}
+
+@article{birattari2001classification,
+  title={Classification of Metaheuristics and Design of Experiments for the Analysis of Components Tech. Rep. AIDA-01-05},
+  author={Birattari, Mauro and Paquete, Luis and Strutzle, Thomas and Varrentrapp, Klaus},
+  year={2001}
+}
+
+@incollection{gendreau2003tabusearch,
+  year={2003},
+  isbn={978-1-4020-7263-5},
+  booktitle={Handbook of Metaheuristics},
+  volume={57},
+  series={International Series in Operations Research \& Management Science},
+  editor={Glover, Fred and Kochenberger, GaryA.},
+  doi={10.1007/0-306-48056-5_2},
+  title={An Introduction to Tabu Search},
+  url={http://dx.doi.org/10.1007/0-306-48056-5_2},
+  publisher={Springer US},
+  author={Gendreau, Michel},
+  pages={37-54},
+  language={English}
+}
+
+@INPROCEEDINGS{mateos2013inpipe,
+  author = {Luis A. Mateos and Markus Vincze},
+  title = {In-pipe Robot with Capability of Self Stabilization and Accurate Pipe Surface Cleaning},
+  booktitle = {Proceedings of the IEEE International Conference on Automation Science and Engineering 2013},
+  year = {2013},
+  owner = {ja},
+  timestamp = {2013.08.28}
+}
+
+@INCOLLECTION{PavoneAcikmese2014rover,
+  author = {{M}arco {P}avone and {B}e\c{c}het {A}\c{c}ikme\c{s}e and {I}ssa {N}esnas and {J}oseph {A}. {S}tarek},
+  title = {{S}pacecraft {A}utonomy {C}hallenges for {N}ext {G}eneration {S}pace {M}issions},
+  booktitle = {{S}pringer {L}ecture {N}otes in {C}ontrol and {I}nformation {S}ciences},
+  year = {2014},
+  note = {Submitted}
+}
+
+@INPROCEEDINGS{Allister2012rover, 
+author={McAllister, R. and Peynot, T. and Fitch, R. and Sukkarieh, S.}, 
+booktitle={Intelligent Robots and Systems (IROS), 2012 IEEE/RSJ International Conference on}, 
+title={Motion planning and stochastic control with experimental validation on a planetary rover}, 
+year={2012}, 
+month={Oct}, 
+pages={4716-4723}, 
+doi={10.1109/IROS.2012.6386229}, 
+ISSN={2153-0858},
+}
+
+@article{guizzo2011google,
+  title={How googles self-driving car works},
+  author={Guizzo, Erico},
+  journal={IEEE Spectrum Online, October},
+  volume={18},
+  year={2011},
+}
+
+@inproceedings{ Schuetz2014,
+	author = "Schuetz, C. and Baur, J. and Pfaff, J. and Buschmann, T. and Ulbrich, H.", 
+	title = "Multipurpose Redundant Manipulators for Agricultural Tasks",
+	booktitle = "Proceedings of the Austrian Robotics Workshop 2014, Linz, Austria",
+	year = "2014",
+	month = "May",
+}
+
+@inproceedings{ myself,
+	author = "Suchi, M. and Bader, M. and Vincze, M.", 
+	title = "Meta-Heuristic search strategies for Local Path-Planning to find collision free trajectories",
+	booktitle = "Proceedings of the Austrian Robotics Workshop 2014, Linz, Austria",
+	year = "2014",
+	month = "May",
+}
+
+
+@phdthesis{philippsen:2004:phd,
+	author = {Roland Philippsen},
+	title = {Motion Planning and Obstacle Avoidance for Mobile Robots in Highly Cluttered Dynamic Environments},
+	school = {Ecole Polytechnique F\'ed\'erale de Lausanne},
+	note = {Th\`ese sciences EPFL no 3146 (2004), Facult\'e des sciences et techniques de l'ing\'enieur {STI}, Section de microtechnique, Institut d'ing\'enierie des syst\`emes},
+	year = {2004}
+}
+
+@INPROCEEDINGS{fischinger2013hobbit,
+  author = {David Fischinger and Peter Einramhof and Walter Wohlkinger and K.Papoutsakis and P. Mayer and P. Panek and T. Koertner and S. Hoffmann and A. Argyros and Markus Vincze and Astrid Weiss and C. Gisinger},
+  title = {Hobbit - The Mutual Care Robot},
+  booktitle = {Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS 2013)},
+  year = {2013},
+  owner = {ja},
+  timestamp = {2013.10.09},
+}
+
+@TECHREPORT{2014:hector_rescue_tdp,
+  author = {Stefan Kohlbrecher and Johannes Meyer and Thorsten Graber and Karen Petersen and Oskar von Stryk and Uwe Klingauf},
+  title = {RoboCupRescue 2014 - Robot League Team Hector Darmstadt (Germany)},
+  year = {2014},
+  institution = {Technische Universit\"at Darmstadt},
+  pdf = {2014_tdp_hector.pdf},
+}
+
+@article{ROB:4520696,
+author = {Engelberger,Joseph F.},
+title = {Health-care robotics goes commercial: the HelpMate experience},
+journal = {Robotica},
+volume = {11},
+issue = {06},
+month = {11},
+year = {1993},
+issn = {1469-8668},
+pages = {517--523},
+numpages = {7},
+doi = {10.1017/S0263574700019354},
+url = {http://journals.cambridge.org/article_S0263574700019354},
+}
+
+@INPROCEEDINGS{zagler2014roboter,
+  author = {W.L. Zagler and P. Mayer and P. Panek and M. Vincze and A. Weiss
+	and M. Bajones and P. Puente and A. Huber and L. Lammer and D. Fischinger},
+  title = {{Roboter-Unterst\"utzung zu Hause - Das Projekt HOBBIT}},
+  booktitle = {Proceedings of the 7th Deutscher AAL-Kongress, Berlin, ISBN: 978-3-8007-3574-7.},
+  year = {2014},
+  owner = {ja},
+  timestamp = {2014.03.25}
+}
+
+@inproceedings{ko1998lane,
+  title={The lane-curvature method for local obstacle avoidance},
+  author={Ko, Nak Yong and Simmons, Reid G},
+  booktitle={Intelligent Robots and Systems, 1998. Proceedings., 1998 IEEE/RSJ International Conference on},
+  volume={3},
+  pages={1615--1621},
+  year={1998},
+  organization={IEEE}
+}
+
+@inproceedings{minguez2004divide,
+  title={A" divide and conquer" strategy based on situations to achieve reactive collision avoidance in troublesome scenarios},
+  author={Minguez, Javier and Osuna, Javier and Montano, Luis},
+  booktitle={Robotics and Automation, 2004. Proceedings. ICRA'04. 2004 IEEE International Conference on},
+  volume={4},
+  pages={3855--3862},
+  year={2004},
+  organization={IEEE}
+}
+
+@article{minguez2004nearness,
+  title={Nearness diagram ({ND}) navigation: collision avoidance in troublesome scenarios},
+  author={Minguez, Javier and Montano, Luis},
+  journal={Robotics and Automation, IEEE Transactions on},
+  volume={20},
+  number={1},
+  pages={45--59},
+  year={2004},
+  publisher={IEEE}
+}
+
+@article{borenstein1991vector,
+  title={The vector field histogram-fast obstacle avoidance for mobile robots},
+  author={Borenstein, Johann and Koren, Yoram},
+  journal={Robotics and Automation, IEEE Transactions on},
+  volume={7},
+  number={3},
+  pages={278--288},
+  year={1991},
+  publisher={IEEE}
+}
+
+@inproceedings{ulrich1998vfh+,
+  title={VFH+: Reliable obstacle avoidance for fast mobile robots},
+  author={Ulrich, Iwan and Borenstein, Johann},
+  booktitle={Robotics and Automation, 1998. Proceedings. 1998 IEEE International Conference on},
+  volume={2},
+  pages={1572--1577},
+  year={1998},
+  organization={IEEE}
+}
+
+@inproceedings{ulrich2000vfh,
+  title={VFH\^{}*: Local obstacle avoidance with look-ahead verification},
+  author={Ulrich, Iwan and Borenstein, Johann},
+  booktitle={ICRA},
+  pages={2505--2511},
+  year={2000}
+}
+
+@book{Gendreau2010,
+ author = {Gendreau, Michel and Potvin, Jean-Yves},
+ title = {Handbook of Metaheuristics},
+ year = {2010},
+ isbn = {1441916636, 9781441916631},
+ edition = {2nd},
+ publisher = {Springer Publishing Company, Incorporated},
+} 
+
+@inproceedings{minguez2001global,
+  title={Global nearness diagram navigation ({GND})},
+  author={Minguez, Javier and Montano, Luis and Sim{\'e}on, Thierry and Alami, Rachid},
+  booktitle={Robotics and Automation, 2001. Proceedings 2001 ICRA. IEEE International Conference on},
+  volume={1},
+  pages={33--39},
+  year={2001},
+  organization={IEEE}
+}
+
+@inproceedings{durham2008smooth,
+  title={Smooth nearness-diagram navigation},
+  author={Durham, Joseph W and Bullo, Francesco},
+  booktitle={Intelligent Robots and Systems, 2008. IROS 2008. IEEE/RSJ International Conference on},
+  pages={690--695},
+  year={2008},
+  organization={IEEE}
+}
+
+@article{lumelsky1987path,
+  title={Path-planning strategies for a point mobile automaton moving amidst unknown obstacles of arbitrary shape},
+  author={Lumelsky, Vladimir J and Stepanov, Alexander A},
+  journal={Algorithmica},
+  volume={2},
+  number={1-4},
+  pages={403--430},
+  year={1987},
+  publisher={Springer}
+}
+
+@article{ribeiro2005obstacle,
+  title={Obstacle avoidance},
+  author={Ribeiro, Maria Isabel},
+  year={2005},
+  publisher={Citeseer},
+  url={http://users.isr.ist.utl.pt/~mir/pub/ObstacleAvoidance.pdf},
+}
+
+@book{Choset_2005_5167,
+   author = "Howie Choset and Kevin M. Lynch and Seth Hutchinson and George A Kantor and Wolfram Burgard and Lydia E. Kavraki and Sebastian Thrun",
+   title = "Principles of Robot Motion: Theory, Algorithms, and Implementations",
+   booktitle = "Principles of Robot Motion: Theory, Algorithms, and Implementations",
+   publisher = "MIT Press",
+   address = "Cambridge, MA",
+   month = "June",
+   year = "2005",
+   Notes = "ISBN 0-262-03327-5"
+}
+
+@inproceedings{zhou2010improvedantcolony,
+  title={Improved ant colony algorithm based on cellular automata for obstacle avoidance in robot soccer},
+  author={Zhou, Kunli and Ma, Song and Zhu, Xuliang and Tang, Lei and Feng, Xinhuan},
+  booktitle={Computer Science and Information Technology (ICCSIT), 2010 3rd IEEE International Conference on},
+  volume={5},
+  pages={298--302},
+  year={2010},
+  organization={IEEE}
+}
+
+@article{buniyamin2011robotantcolony,
+  title={Robot global path planning overview and a variation of ant colony system algorithm},
+  author={Buniyamin, N and Sariff, N and Wan Ngah, WAJ and Mohamad, Z},
+  journal={International journal of mathematics and computers in simulation},
+  volume={5},
+  number={1},
+  pages={9--16},
+  year={2011}
+}
+
+@article{mei2006hybrid,
+  title={A hybrid ant colony optimization algorithm for path planning of robot in dynamic environment},
+  author={Mei, Hao and Tian, Yantao and Zu, Linan},
+  journal={International Journal of Information Technology},
+  volume={12},
+  number={3},
+  pages={78--88},
+  year={2006}
+}
+
+@inproceedings{park2001obstacle,
+  title={Obstacle avoidance for mobile robots using artificial potential field approach with simulated annealing},
+  author={Park, Min Gyu and Jeon, Jae Hyun and Lee, Min Cheol},
+  booktitle={Industrial Electronics, 2001. Proceedings. ISIE 2001. IEEE International Symposium on},
+  volume={3},
+  pages={1530--1535},
+  year={2001},
+  organization={IEEE}
+}
+
+@article{manikas2007genetic,
+  title={Genetic algorithms for autonomous robot navigation},
+  author={Manikas, Theodore W and Ashenayi, Kaveh and Wainwright, Roger L},
+  journal={Instrumentation \& Measurement Magazine, IEEE},
+  volume={10},
+  number={6},
+  pages={26--31},
+  year={2007},
+  publisher={IEEE}
+}
+
+@article{masehian2008sensor,
+  title={Sensor-based robot motion planning-a tabu search approach},
+  author={Masehian, Ellips and Amin-Naseri, Mohammad Reza},
+  journal={Robotics \& Automation Magazine, IEEE},
+  volume={15},
+  number={2},
+  pages={48--57},
+  year={2008},
+  publisher={IEEE}
+}
+
+@article{ogren2005convergent,
+  title={A convergent dynamic window approach to obstacle avoidance},
+  author={Ogren, Petter and Leonard, Naomi Ehrich},
+  journal={Robotics, IEEE Transactions on},
+  volume={21},
+  number={2},
+  pages={188--195},
+  year={2005},
+  publisher={IEEE}
+}
+
+@article{buniyamin2011simple,
+  title={A simple local path planning algorithm for autonomous mobile robots},
+  author={Buniyamin, N and Wan Ngah, WAJ and Sariff, N and Mohamad, Z},
+  journal={International journal of systems applications, Engineering \& development},
+  volume={5},
+  number={2},
+  pages={151--159},
+  year={2011}
+}
+
+
+

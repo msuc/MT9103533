@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with matplotlib (http://matplotlib.sourceforge.net/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="13.867493"
+   version="1.1"
+   viewBox="0 0 204.78813 11.093994"
+   width="255.98517"
+   id="svg2"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="legend_dwa.svg">
+  <metadata
+     id="metadata6534">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1031"
+     id="namedview6532"
+     showgrid="false"
+     inkscape:zoom="1.9216285"
+     inkscape:cx="255.95082"
+     inkscape:cy="-36.21429"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="text_10"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs4"
+     style="stroke-linecap:square;stroke-linejoin:round">
+    <style
+       type="text/css"
+       id="style6">
+*{stroke-linecap:square;stroke-linejoin:round;}
+  </style>
+  </defs>
+  <g
+     id="figure_1"
+     style="stroke-linecap:square;stroke-linejoin:round"
+     transform="translate(-1.7095869,-3.3207304)">
+    <g
+       id="legend_1"
+       transform="translate(-231.47034,-9.9915254)"
+       style="stroke-linecap:square;stroke-linejoin:round">
+      <g
+         id="patch_10"
+         style="stroke-linecap:square;stroke-linejoin:round"
+         transform="matrix(1.6905519,0,0,1,-161.61677,0)">
+        <path
+           d="m 234.04,23.9017 28.8,0 0,-10.08 -28.8,0 z"
+           style="fill:#6a5acd;stroke:#000000;stroke-linecap:square;stroke-linejoin:round"
+           id="path6473"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         id="text_10"
+         style="stroke-linecap:square;stroke-linejoin:round"
+         transform="translate(-107.46505,7.0773307)">
+        <!-- Rollout -->
+        <defs
+           id="defs6476">
+          <path
+             d="m 30.6094,48.3906 q -7.2188,0 -11.4219,-5.6406 -4.2031,-5.6406 -4.2031,-15.4531 0,-9.8125 4.1718,-15.4531 4.1876,-5.64068 11.4532,-5.64068 7.1875,0 11.375,5.65628 4.2031,5.6718 4.2031,15.4375 0,9.7187 -4.2031,15.4062 -4.1875,5.6875 -11.375,5.6875 m 0,7.6094 q 11.7187,0 18.4062,-7.625 6.7032,-7.6094 6.7032,-21.0781 0,-13.4219 -6.7032,-21.07815 -6.6875,-7.64063 -18.4062,-7.64063 -11.7656,0 -18.4375,7.64063 -6.65628,7.65625 -6.65628,21.07815 0,13.4687 6.65628,21.0781 Q 18.8438,56 30.6094,56"
+             id="DejaVuSans-6f"
+             inkscape:connector-curvature="0"
+             style="stroke-linecap:square;stroke-linejoin:round" />
+          <path
+             d="m 44.3906,34.1875 q 3.1719,-1.0781 6.1719,-4.5937 3,-3.5157 6.0313,-9.6719 L 66.6094,0 56,0 46.6875,18.7031 q -3.625,7.3281 -7.0156,9.7188 -3.3907,2.3906 -9.25,2.3906 l -10.75,0 0,-30.8125 -9.8594,0 0,72.9062 22.2656,0 q 12.5,0 18.6563,-5.2343 6.1562,-5.2188 6.1562,-15.7657 0,-6.8906 -3.2031,-11.4374 -3.2031,-4.5313 -9.2969,-6.2813 m -24.7187,30.6094 0,-25.875 12.4062,0 q 7.125,0 10.7657,3.2969 3.6406,3.2968 3.6406,9.6874 0,6.3907 -3.6406,9.6407 -3.6407,3.25 -10.7657,3.25 z"
+             id="DejaVuSans-52"
+             inkscape:connector-curvature="0"
+             style="stroke-linecap:square;stroke-linejoin:round" />
+          <path
+             d="m 8.5,21.5781 0,33.1094 8.9844,0 0,-32.7656 q 0,-7.7657 3.0156,-11.6563 3.0312,-3.87498 9.0938,-3.87498 7.2656,0 11.4843,4.64058 4.2344,4.6407 4.2344,12.6563 l 0,31 8.9844,0 0,-54.6875 -8.9844,0 0,8.40625 Q 42.0469,3.42188 37.7188,1 33.4062,-1.42188 27.6875,-1.42188 18.2656,-1.42188 13.375,4.4375 8.5,10.2969 8.5,21.5781 M 31.1094,56 z"
+             id="DejaVuSans-75"
+             inkscape:connector-curvature="0"
+             style="stroke-linecap:square;stroke-linejoin:round" />
+          <path
+             d="m 9.42188,75.9844 8.98432,0 0,-75.9844 -8.98432,0 z"
+             id="DejaVuSans-6c"
+             inkscape:connector-curvature="0"
+             style="stroke-linecap:square;stroke-linejoin:round" />
+          <path
+             d="m 18.3125,70.2188 0,-15.5313 18.5,0 0,-6.9844 -18.5,0 0,-29.6875 q 0,-6.6875 1.8281,-8.59372 1.8282,-1.90626 7.4532,-1.90626 l 9.2187,0 0,-7.51562 -9.2187,0 Q 17.1875,0 13.2344,3.875 9.28125,7.76562 9.28125,18.0156 l 0,29.6875 -6.59375,0 0,6.9844 6.59375,0 0,15.5313 z"
+             id="DejaVuSans-74"
+             inkscape:connector-curvature="0"
+             style="stroke-linecap:square;stroke-linejoin:round" />
+        </defs>
+        <text
+           xml:space="preserve"
+           style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="402.25729"
+           y="15.126295"
+           id="text3050"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3052"
+             x="402.25729"
+             y="15.126295">DWA</tspan></text>
+        <text
+           xml:space="preserve"
+           style="font-size:8px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+           x="506.97998"
+           y="15.231764"
+           id="text3054"
+           sodipodi:linespacing="125%"><tspan
+             sodipodi:role="line"
+             id="tspan3056"
+             x="506.97998"
+             y="15.231764">VNS-DWA</tspan></text>
+      </g>
+      <g
+         id="patch_11"
+         style="stroke-linecap:square;stroke-linejoin:round"
+         transform="matrix(1.6946742,0,0,1,-58.58155,-21.135808)">
+        <path
+           d="m 234.04,45.0383 28.8,0 0,-10.08 -28.8,0 z"
+           style="fill:#d2691e;stroke:#000000;stroke-linecap:square;stroke-linejoin:round"
+           id="path6500"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+  <defs
+     id="defs6527">
+    <clipPath
+       id="pd510645ad8">
+      <rect
+         height="345.60001"
+         width="279"
+         x="50.854374"
+         y="21.6"
+         id="rect6530"
+         style="stroke-linecap:square;stroke-linejoin:round" />
+    </clipPath>
+  </defs>
+</svg>
